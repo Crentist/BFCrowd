@@ -7,5 +7,9 @@ package bfcrowd
 class RecommendationController {
 
 	static scaffold = true
-//	def index = { }
+	def index() {
+		
+		
+		
+	}
 }

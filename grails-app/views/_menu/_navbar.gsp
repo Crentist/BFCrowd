@@ -17,7 +17,7 @@
 		</div>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li> Logged in </li>
+			<!-- poner el log out, el nombre del usuario actual, etc -->
 		</ul>
 	</div>
 </nav>

@@ -42,5 +42,10 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 				accessControl { role(AdminsService.ADMIN_ROLE) }
 			}
 		}
+		recommendation(controller: "recommendation", action:"*") {
+			before = {
+				accessControl { role(AdminsService.ADMIN_ROLE) }
+			}
+		}
 	}
 }
