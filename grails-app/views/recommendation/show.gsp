@@ -17,6 +17,13 @@
 		<tbody>
 		
 			<tr class="prop">
+				<td valign="top" class="name"><g:message code="recommendation.checkboxMode.label" default="Checkbox Mode" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: recommendationInstance, field: "checkboxMode")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
 				<td valign="top" class="name"><g:message code="recommendation.date.label" default="Date" /></td>
 				
 				<td valign="top" class="value"><g:formatDate date="${recommendationInstance?.date}" /></td>
@@ -27,6 +34,13 @@
 				<td valign="top" class="name"><g:message code="recommendation.fromPage.label" default="From Page" /></td>
 				
 				<td valign="top" class="value">${fieldValue(bean: recommendationInstance, field: "fromPage")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="recommendation.instructions.label" default="Instructions" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: recommendationInstance, field: "instructions")}</td>
 				
 			</tr>
 		

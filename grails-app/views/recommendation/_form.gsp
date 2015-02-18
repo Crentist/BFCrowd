@@ -2,6 +2,14 @@
 
 
 
+			<div class="${hasErrors(bean: recommendationInstance, field: 'checkboxMode', 'error')} required">
+				<label for="checkboxMode" class="control-label"><g:message code="recommendation.checkboxMode.label" default="Checkbox Mode" /><span class="required-indicator">*</span></label>
+				<div>
+					<g:select class="form-control" name="checkboxMode" from="${recommendationInstance.constraints.checkboxMode.inList}" required="" value="${fieldValue(bean: recommendationInstance, field: 'checkboxMode')}" valueMessagePrefix="recommendation.checkboxMode"/>
+					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'checkboxMode', 'error')}</span>
+				</div>
+			</div>
+
 			<div class="${hasErrors(bean: recommendationInstance, field: 'date', 'error')} required">
 				<label for="date" class="control-label"><g:message code="recommendation.date.label" default="Date" /><span class="required-indicator">*</span></label>
 				<div>
@@ -15,6 +23,14 @@
 				<div>
 					<g:textField class="form-control" name="fromPage" value="${recommendationInstance?.fromPage}"/>
 					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'fromPage', 'error')}</span>
+				</div>
+			</div>
+
+			<div class="${hasErrors(bean: recommendationInstance, field: 'instructions', 'error')} ">
+				<label for="instructions" class="control-label"><g:message code="recommendation.instructions.label" default="Instructions" /></label>
+				<div>
+					<g:textField class="form-control" name="instructions" value="${recommendationInstance?.instructions}"/>
+					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'instructions', 'error')}</span>
 				</div>
 			</div>
 

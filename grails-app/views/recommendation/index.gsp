@@ -17,17 +17,17 @@
 		<thead>
 			<tr>
 			
+				<g:sortableColumn property="checkboxMode" title="${message(code: 'recommendation.checkboxMode.label', default: 'Checkbox Mode')}" />
+			
 				<g:sortableColumn property="date" title="${message(code: 'recommendation.date.label', default: 'Date')}" />
 			
 				<g:sortableColumn property="fromPage" title="${message(code: 'recommendation.fromPage.label', default: 'From Page')}" />
 			
+				<g:sortableColumn property="instructions" title="${message(code: 'recommendation.instructions.label', default: 'Instructions')}" />
+			
 				<g:sortableColumn property="path" title="${message(code: 'recommendation.path.label', default: 'Path')}" />
 			
 				<th><g:message code="recommendation.project.label" default="Project" /></th>
-			
-				<g:sortableColumn property="property" title="${message(code: 'recommendation.property.label', default: 'Property')}" />
-			
-				<g:sortableColumn property="solved" title="${message(code: 'recommendation.solved.label', default: 'Solved')}" />
 			
 			</tr>
 		</thead>
@@ -35,17 +35,17 @@
 		<g:each in="${recommendationInstanceList}" status="i" var="recommendationInstance">
 			<tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
 			
-				<td><g:link action="show" id="${recommendationInstance.id}">${fieldValue(bean: recommendationInstance, field: "date")}</g:link></td>
+				<td><g:link action="show" id="${recommendationInstance.id}">${fieldValue(bean: recommendationInstance, field: "checkboxMode")}</g:link></td>
+			
+				<td><g:formatDate date="${recommendationInstance.date}" /></td>
 			
 				<td>${fieldValue(bean: recommendationInstance, field: "fromPage")}</td>
+			
+				<td>${fieldValue(bean: recommendationInstance, field: "instructions")}</td>
 			
 				<td>${fieldValue(bean: recommendationInstance, field: "path")}</td>
 			
 				<td>${fieldValue(bean: recommendationInstance, field: "project")}</td>
-			
-				<td>${fieldValue(bean: recommendationInstance, field: "property")}</td>
-			
-				<td><g:formatBoolean boolean="${recommendationInstance.solved}" /></td>
 			
 			</tr>
 		</g:each>

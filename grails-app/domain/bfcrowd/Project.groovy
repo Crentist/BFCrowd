@@ -33,4 +33,10 @@ class Project {
 	public String toString() {
 		return "${name}";
 	}
+	
+	public Recommendation getRecommendationFor(User u){
+		if(this.recommendations)
+			return this.recommendations.last()
+		return null
+	}
 }

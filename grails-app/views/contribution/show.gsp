@@ -31,6 +31,20 @@
 			</tr>
 		
 			<tr class="prop">
+				<td valign="top" class="name"><g:message code="contribution.state.label" default="State" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: contributionInstance, field: "state")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="contribution.text.label" default="Text" /></td>
+				
+				<td valign="top" class="value">${fieldValue(bean: contributionInstance, field: "text")}</td>
+				
+			</tr>
+		
+			<tr class="prop">
 				<td valign="top" class="name"><g:message code="contribution.user.label" default="User" /></td>
 				
 				<td valign="top" class="value"><g:link controller="user" action="show" id="${contributionInstance?.user?.id}">${contributionInstance?.user?.encodeAsHTML()}</g:link></td>

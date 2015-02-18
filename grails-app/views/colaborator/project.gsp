@@ -13,15 +13,24 @@
 
 <section id="show-project" class="first">
 	<h3>${project.name}</h3>
+	<g:if test="${recommendation}">
     <div id="instructions">
-        instrucciones
+        <h4>instrucciones</h4>
+        <p>${recommendation.instructions }</p>
     </div>
+    <br>
     <div id="feedback">
-        feedback!
-        - Done
-        - Already done
-        - ?
+        <h4>feedback!</h4>
+        <input type="${recommendation.checkboxMode }" name="state" value="done" />Done<br>
+        <input type="${recommendation.checkboxMode }" name="state" value="modified" />Modified Page<br>
+        <input type="${recommendation.checkboxMode }" name="state" value="alreadydone" />Already Done<br>
     </div>
+   	</g:if>
+	<g:else>
+	<div id="emptyProject">
+		There is no recommendations to solve.
+	</div>
+	</g:else>
 </section>
 
 </body>
