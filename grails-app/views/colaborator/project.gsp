@@ -21,9 +21,15 @@
     <br>
     <div id="feedback">
         <h4>feedback!</h4>
-        <input type="${recommendation.checkboxMode }" name="state" value="done" />Done<br>
-        <input type="${recommendation.checkboxMode }" name="state" value="modified" />Modified Page<br>
-        <input type="${recommendation.checkboxMode }" name="state" value="alreadydone" />Already Done<br>
+        <g:form action="saveContribution" class="form-horizontal" role="form" >
+        	<g:hiddenField name="recommendationId" value="${recommendation.id}"/>
+        	<ul id="feedbackOptions">
+	        <li><input type="${recommendation.checkboxMode }" name="state" value="Done" />Done</li>
+	        <li><input type="${recommendation.checkboxMode }" name="state" value="Moderated Page" />Moderated Page</li>
+	        <li><input type="${recommendation.checkboxMode }" name="state" value="Already Done" />Already Done</li>
+	        </ul>
+	        <g:submitButton name="save" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
+        </g:form>
     </div>
    	</g:if>
 	<g:else>

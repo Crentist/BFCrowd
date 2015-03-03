@@ -1,5 +1,7 @@
 package bfcrowd
 
+import grails.transaction.Transactional;
+
 import org.apache.shiro.subject.Subject
 
 /**
@@ -57,10 +59,27 @@ class ColaboratorController {
 			Project p = Project.get(id)
 			if(p){
 				def r = p.getRecommendationFor(getAuthenticatedUser())
-				[project: p, recommendation: r, contribution: r.contribution, layout_nosecondarymenu: true]
+				[project: p, recommendation: r, layout_nosecondarymenu: true]
 			} else
 				render "error"
 		}
 	}
 	
+	def saveContribution(int recommendationId, String state) {
+		// Acá deberían ser solo Recommendations a las que el User pueda contribuir
+		def r = Recommendation.get(recommendationId)
+		def u = getAuthenticatedUser()
+		Contribution c = new Contribution([text: "asdf", state: state, recomendation: r, user: u])
+		//c.save()
+		//c.date = new Date()
+		//c.recomendation = Recommendation.get(recommendationId)
+		//println c.recomendation.id
+		//c.user = getAuthenticatedUser()
+		//c.state = state
+		//getAuthenticatedUser().myContributions.add(c)
+		c.save(flush: true)
+		println c.id
+		//Recommendation.get(recommendationId).contribution = c
+		render c
+	}
 }

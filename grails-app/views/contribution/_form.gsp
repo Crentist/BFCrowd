@@ -2,14 +2,6 @@
 
 
 
-			<div class="${hasErrors(bean: contributionInstance, field: 'date', 'error')} required">
-				<label for="date" class="control-label"><g:message code="contribution.date.label" default="Date" /><span class="required-indicator">*</span></label>
-				<div>
-					<g:datePicker name="date" precision="day"  value="${contributionInstance?.date}"  />
-					<span class="help-inline">${hasErrors(bean: contributionInstance, field: 'date', 'error')}</span>
-				</div>
-			</div>
-
 			<div class="${hasErrors(bean: contributionInstance, field: 'recomendation', 'error')} required">
 				<label for="recomendation" class="control-label"><g:message code="contribution.recomendation.label" default="Recomendation" /><span class="required-indicator">*</span></label>
 				<div>
