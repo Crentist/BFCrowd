@@ -30,6 +30,10 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 		secure(controller: "main") {
 			before = { accessControl { true } }
 		}
+		
+		secureedit(controller: "user", action: "edit") {
+			before = { accessControl { true } }
+		}
 
 		// Account management requiring authentication
 		accountsecure(controller: "account", action: "(changepassword|updatepassword|changedpassword)") {
@@ -42,6 +46,7 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 				accessControl { role(AdminsService.ADMIN_ROLE) }
 			}
 		}
+		
 		recommendation(controller: "recommendation", action:"*") {
 			before = {
 				accessControl { role(AdminsService.ADMIN_ROLE) }

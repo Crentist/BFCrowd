@@ -24,7 +24,7 @@ class User extends grails.plugin.nimble.core.UserBase {
 	}
 	
 	static	constraints = {
-		wikipediaUserID nullable:true
+		wikipediaUserID nullable:true, blank: false
 	}
 	
 	public String toString() {

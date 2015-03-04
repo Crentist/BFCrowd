@@ -22,7 +22,7 @@
 			</g:link>
 		</li>
 		<li class="controller">
-			<g:link controller="user" action="index">
+			<g:link controller="user" action="list">
 				<g:message code="user.label" default="User"/>
 			</g:link>
 		</li>

@@ -21,9 +21,10 @@
 					<g:message code="error.403.title"/>
 				</h2>
 				<p>
-					<g:message code="error.403.message"/>
+				
+					You do not have the permission to access this page
+					<!--<g:message code="error.403.message"/>-->
 				</p>
-				lsdgñhhhhhhhhhhhhhhhhhsidufghdf
 				<div class="actions">
 					<a href="${createLink(uri: '/')}" class="btn btn-large btn-primary">
 						<i class="glyphicon glyphicon-chevron-left icon-white"></i>
