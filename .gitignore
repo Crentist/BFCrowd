@@ -39,6 +39,7 @@
 # "temporary" build files
 /target
 /target-eclipse
+!/target/work/plugins/nimble-0.7/*
 
 # other
 *.iws
