@@ -37,8 +37,12 @@
 /web-app/WEB-INF/classes
 
 # "temporary" build files
-/target
 /target-eclipse
+/target/*
+!/target/work
+/target/work*
+!/target/work/plugins
+/target/work/plugins/*
 !/target/work/plugins/nimble-0.7/*
 
 # other
