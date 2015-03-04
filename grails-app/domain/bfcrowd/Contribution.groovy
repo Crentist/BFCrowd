@@ -6,7 +6,7 @@ package bfcrowd
  */
 class Contribution {
 	
-	Date date
+	//Date date
 
 	/* Default (injected) attributes of GORM */
 //	Long	id
@@ -15,6 +15,8 @@ class Contribution {
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
 //	Date	lastUpdated
+	String text
+	String state
 	
 	static	belongsTo	= [user:User, recomendation:Recommendation]	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
 //	static	hasOne		= []	// tells GORM to associate another domain object as an owner in a 1-1 mapping
@@ -25,6 +27,7 @@ class Contribution {
     }
     
 	static	constraints = {
+		state inList: ["Done", "Moderated Page", "Already Done"]
     }
 	
 	/*

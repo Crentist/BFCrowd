@@ -21,6 +21,10 @@
 			
 				<th><g:message code="contribution.recomendation.label" default="Recomendation" /></th>
 			
+				<g:sortableColumn property="state" title="${message(code: 'contribution.state.label', default: 'State')}" />
+			
+				<g:sortableColumn property="text" title="${message(code: 'contribution.text.label', default: 'Text')}" />
+			
 				<th><g:message code="contribution.user.label" default="User" /></th>
 			
 			</tr>
@@ -32,6 +36,10 @@
 				<td><g:link action="show" id="${contributionInstance.id}">${fieldValue(bean: contributionInstance, field: "date")}</g:link></td>
 			
 				<td>${fieldValue(bean: contributionInstance, field: "recomendation")}</td>
+			
+				<td>${fieldValue(bean: contributionInstance, field: "state")}</td>
+			
+				<td>${fieldValue(bean: contributionInstance, field: "text")}</td>
 			
 				<td>${fieldValue(bean: contributionInstance, field: "user")}</td>
 			
