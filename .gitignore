@@ -38,12 +38,12 @@
 
 # "temporary" build files
  /target-eclipse
-# /target/*
-# !/target/work
-# /target/work*
-# !/target/work/plugins
-# /target/work/plugins/*
-# !/target/work/plugins/nimble-0.7/*
+ /target/*
+ !/target/work
+ /target/work*
+ !/target/work/plugins
+ /target/work/plugins/*
+ !/target/work/plugins/nimble-0.7/*
 
 # other
 *.iws
