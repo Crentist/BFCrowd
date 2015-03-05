@@ -16,6 +16,8 @@
  */
 import grails.plugin.nimble.core.AdminsService
 import grails.plugin.nimble.security.NimbleFilterBase
+import org.apache.shiro.SecurityUtils
+import grails.plugin.nimble.core.UserBase
 
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views
@@ -31,7 +33,7 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 			before = { accessControl { true } }
 		}
 		
-		secureedit(controller: "user", action: "edit") {
+		secureedit(controller: "user", action: "edit") { //Me sigue filtrando por rol admin
 			before = { accessControl { true } }
 		}
 
@@ -49,14 +51,20 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 		
 		recommendation(controller: "recommendation", action:"*") {
 			before = {
-				accessControl { role(AdminsService.ADMIN_ROLE) }
+				accessControl {
+					role("Investigador")
+				}
 			}
 		}
+		
 		project(controller: "project", action:"*") {
 			before = {
-				accessControl { role(AdminsService.ADMIN_ROLE) }
+				accessControl {
+					role("Investigador")
+				}
 			}
 		}
+		
 		project(controller: "colaborator", action:"*") {
 			before = {
 				accessControl { role(AdminsService.ADMIN_ROLE) }

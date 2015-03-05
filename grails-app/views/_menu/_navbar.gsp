@@ -45,7 +45,7 @@
 			</div>	
 			</g:if>	
 			<g:else>
-				<ul class="nav pull-right">
+				<ul class="nav pull-right" style="top:10px">
 					<li style="color:#0088cc">
 						<g:message code="nimble.label.notloggedin" />
 					</li>		

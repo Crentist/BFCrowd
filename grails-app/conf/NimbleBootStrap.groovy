@@ -17,7 +17,7 @@
 
 import grails.plugin.nimble.InstanceGenerator
 import grails.plugin.nimble.core.AdminsService
-import grails.plugin.nimble.core.Role
+import grails.plugin.nimble.core.RoleService
 import grails.plugin.nimble.core.UserBase
 
 /*
@@ -88,6 +88,9 @@ class NimbleBootStrap {
 
 			adminsService.add(admin)
 		}
+	//Chequear si funciona esto >>
+	RoleService.createRole("Investigador","Encargado de crear proyectos y asignarle tareas a los mismos",false)	
+		
 	}
 
 	private internalBootStap(servletContext) {
