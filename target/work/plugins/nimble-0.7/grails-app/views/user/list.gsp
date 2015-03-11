@@ -1,4 +1,5 @@
 <%@ page import="grails.plugin.nimble.core.UserBase" %>
+<%@page import="org.apache.shiro.SecurityUtils"%>
 <head>
    <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}" />
    <title>
@@ -29,6 +30,12 @@
                         <g:message code="nimble.label.fullname" />
                      </th>
                      <g:sortableColumn property="enabled" titleKey="nimble.label.state" />
+                     <th>
+                        <g:message code="nimble.label.user.request" />
+                     </th>
+                     <th>
+                        Roles
+                     </th>
                      <g:sortableColumn property="dateCreated" titleKey="nimble.label.created" />
                      <g:sortableColumn property="lastUpdated" titleKey="nimble.label.lastupdated" />
                      <th class="center">Actions</th>
@@ -62,6 +69,26 @@
                               <g:message code="nimble.label.disabled" />
                            </g:else>
                         </td>
+
+                        <td>
+							<g:if test="${user.requests}">
+								<g:if test="${!user.hasRole("Investigador")}">
+									<g:message code="nimble.label.user.requestYay" />.
+										<a href="./show/${user.id}">Assign role now</a>		
+								</g:if>
+								<g:else>
+									<p style="text-align:center"> - </p>
+								</g:else>	
+							</g:if>	
+							<g:else>
+								<p style="text-align:center"> - </p>
+							</g:else>				
+                        </td> 
+                        
+                        <td>
+                           ${user.rolesByName()}
+                        </td>                                               
+                        
                         <td>
                            <g:formatDate date="${user.dateCreated}"/>
                         </td>

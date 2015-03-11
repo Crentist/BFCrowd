@@ -18,6 +18,7 @@ package grails.plugin.nimble
 
 import grails.plugin.nimble.core.ProfileBase
 import grails.plugin.nimble.core.UserBase
+import grails.plugin.nimble.core.Role
 
 /**
  * Determines correct version of class to load for classes commonly overloaded by host applications
@@ -45,6 +46,17 @@ class InstanceGenerator {
 				ProfileBase.newInstance()
 		} catch(ClassNotFoundException e){
 			ProfileBase.newInstance()
+		}
+	}
+	
+	static role(grailsApplication) {
+		try {
+			if(grailsApplication.config?.nimble?.implementation?.role)
+				InstanceGenerator.classLoader.loadClass(grailsApplication.config.nimble.implementation.role).newInstance()
+			else
+				Role.newInstance()
+		} catch(ClassNotFoundException e){
+			Role.newInstance()
 		}
 	}
 }

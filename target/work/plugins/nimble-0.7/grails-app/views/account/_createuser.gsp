@@ -46,8 +46,20 @@
 				     <div class="controls">      
 				        <input type="text" id="wikipediaUserID" name="wikipediaUserID" value="${user.wikipediaUserID?.encodeAsHTML()}" placeholder="Wikipedia username">
 				     </div>
-				  </div>       
+				  </div>   
+				  
+				  <div class="control-group">
+				     <div class="controls">   
+				     	<div>
+				     	<label style="display:inline"> Request for researcher role </label> 
+				     	<input style="float:right;width:10%" type="checkbox" name="requests" >
+				        </div>
+				     </div>
+				  </div>   		
+				      
                </div>
+               
+               
                <div class="login-actions">
                   <span class="pull-right clearfix">
                      <button type="submit" class="btn btn-primary">
@@ -55,6 +67,11 @@
                      </button>
                   </span>
                </div>
+               
+               
+               
+               
+               
             </g:form>
          </div>
       </div>

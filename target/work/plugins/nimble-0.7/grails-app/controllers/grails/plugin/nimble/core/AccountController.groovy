@@ -111,10 +111,10 @@ class AccountController {
 		def user = InstanceGenerator.user(grailsApplication)
 		user.profile = InstanceGenerator.profile(grailsApplication)
 		user.profile.owner = user
-		user.properties['username', 'pass', 'passConfirm', 'wikipediaUserID'] = params
+		user.properties['username', 'pass', 'passConfirm', 'wikipediaUserID', 'requests'] = params
 		user.profile.properties['fullName', 'email'] = params
 		user.enabled = nimbleConfig.localusers.provision.active
-		user.external = false
+		user.external = false		
 
 		user.validate()
 

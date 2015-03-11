@@ -33,9 +33,9 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 			before = { accessControl { true } }
 		}
 		
-		secureedit(controller: "user", action: "edit") { //Me sigue filtrando por rol admin
+	/*	secureedit(controller: "user", action: "edit") { //Me sigue filtrando por rol admin
 			before = { accessControl { true } }
-		}
+		}*/
 
 		// Account management requiring authentication
 		accountsecure(controller: "account", action: "(changepassword|updatepassword|changedpassword)") {
@@ -48,6 +48,12 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 				accessControl { role(AdminsService.ADMIN_ROLE) }
 			}
 		}
+		
+		/*administration(controller: "user", action:"*", actionExclude:"edit") {
+			before = {
+				accessControl { role(AdminsService.ADMIN_ROLE) }
+			}
+		}*/
 		
 		recommendation(controller: "recommendation", action:"*") {
 			before = {
@@ -65,10 +71,19 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 			}
 		}
 		
-		project(controller: "colaborator", action:"*") {
+		colaborator(controller: "colaborator", action:"*") {
+			before = { 
+				accessControl { 
+					true //O algún rol en particular
+				} 
+			}
+		}
+		
+		contribution(controller: "contribution", action:"*") {
 			before = {
 				accessControl { role(AdminsService.ADMIN_ROLE) }
 			}
 		}
+		
 	}
 }

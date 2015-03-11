@@ -5,6 +5,7 @@ class User extends grails.plugin.nimble.core.UserBase {
 
 	// Extend UserBase with your custom values here
 	String wikipediaUserID
+	boolean requests //Indicates whether the user wants to be promoted to researcher
 
 	/* Default (injected) attributes of GORM */
 //	Long	id
@@ -33,6 +34,24 @@ class User extends grails.plugin.nimble.core.UserBase {
 	
 	def next() {
 		//Siguiente recomendación o contribución para completar
+	}
+	
+	def hasRole(String role) {
+		def roles = this.getRoles()
+		for (r in roles) {
+			if (r.name == role)
+				return true
+		}
+		return false		
+	}
+	
+	def rolesByName() {
+		def roles = this.getRoles()
+		def rolesNames = []
+		for (r in roles) {
+			rolesNames.add(r.name)
+		}
+		return rolesNames
 	}
 	
 }

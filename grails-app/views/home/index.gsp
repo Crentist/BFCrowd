@@ -1,6 +1,7 @@
 <html>
 <%@page import="org.apache.shiro.SecurityUtils"%>
 <%@page import="grails.plugin.nimble.core.UserBase"%>
+<%@page import="grails.plugin.nimble.core.Role"%>
 <head>
 	<title><g:message code="default.welcome.title" args="[meta(name:'app.name')]"/> </title>
 	<meta name="layout" content="kickstart" />
@@ -30,7 +31,10 @@
 			<g:message code="nimble.label.login.signup.descriptive"/>
 			<br/>
 			<g:link class="btn btn-large btn-primary" controller="account" action="createuser">Sign up</g:link>
-			<g:link controller="user" action="edit" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}">Edit</g:link>
+			<!-- <g:link controller="user" action="edit" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}">Edit</g:link> -->
+			<g:if test="${!UserBase.get(SecurityUtils.subject.principal).hasRole("Investigador")}">
+				<g:link controller="user" action="requestPromotion" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}"> Solicitar rol de investigador </g:link>
+			</g:if>			
 		</g:else>
 	</section>
 
