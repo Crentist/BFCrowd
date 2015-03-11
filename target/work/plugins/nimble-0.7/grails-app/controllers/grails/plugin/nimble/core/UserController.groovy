@@ -547,6 +547,8 @@ class UserController {
 		log.info("Removed user [$user.id]$user.username from role [$role.id]$role.name")
 		render message(code: 'nimble.role.removemember.success', args: [role.name, user.username])
 	}
+	
+
 
 	private getNimbleConfig() {
 		grailsApplication.config.nimble

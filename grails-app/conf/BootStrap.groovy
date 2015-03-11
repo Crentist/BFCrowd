@@ -35,7 +35,7 @@ class BootStrap {
 			def savedUser = userService.createUser(user)
 			if (savedUser.hasErrors()) {
 				savedUser.errors.each { log.error(it) }
-				throw new RuntimeException("Error creating example user")
+				throw new RuntimeException("Error creating user")
 			}
 			
 			roleService.addMember(user, cciudadano)
@@ -57,7 +57,7 @@ class BootStrap {
 			def savedUser = userService.createUser(user)
 			if (savedUser.hasErrors()) {
 				savedUser.errors.each { log.error(it) }
-				throw new RuntimeException("Error creating example user")
+				throw new RuntimeException("Error creating user")
 			}
 			
 			roleService.addMember(user, investigador)
@@ -77,16 +77,28 @@ class BootStrap {
 		recomm1.save()
 		
 		def recomm2 = new Recommendation(property: "peopleFrom",
-			path: "path2",
-			fromPage: "fromPage",
-			toPage: "toPage",
-			solved: false,
-			date: new Date(),
-			instructions: "Click por ahi y otro por allá",
-			checkboxMode: "Checkbox")
+										path: "path2",
+										fromPage: "fromPage",
+										toPage: "toPage",
+										solved: false,
+										date: new Date(),
+										instructions: "Click por ahi y otro por allá",
+										checkboxMode: "Checkbox")
 		
 		recomm2.project = project
 		recomm2.save()
+		
+		def recomm3 = new Recommendation(property: "peopleFrom",
+										path: "path3",
+										fromPage: "fromPage",
+										toPage: "toPage",
+										solved: false,
+										date: new Date(),
+										instructions: "Click por ahi y otro por allá",
+										checkboxMode: "Checkbox")
+
+		recomm3.project = project
+		recomm3.save()
 		//recomm1.contribution =
 		//Crear proyectos y recomendaciones acá
     }

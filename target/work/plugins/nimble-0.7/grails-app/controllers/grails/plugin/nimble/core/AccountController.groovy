@@ -19,6 +19,8 @@ package grails.plugin.nimble.core
 
 import grails.plugin.nimble.InstanceGenerator
 
+import bfcrowd.User
+
 import org.apache.shiro.crypto.hash.Sha256Hash
 
 /**
@@ -318,6 +320,13 @@ class AccountController {
 	}
 
 	def forgottenpasswordcomplete() {}
+	
+	def requestPromotion(Long id) {
+		User user = User.get(id)
+		user.setRequests(true)
+		//redirect(uri: '/')
+		render(view: 'requestedpromotion')
+	}
 
 	private void resetNewUser(user) {
 		log.debug("New user creation failed, resetting user input to accepted state")

@@ -21,7 +21,13 @@
 			the related paths in WikiPedia. Thanks for your help!!			
 		</p>
 		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">
-			<g:link class="btn btn-large btn-primary">Join project</g:link>
+			<g:link class="btn btn-large btn-primary" controller="colaborator" action="index">Unirse a un proyecto!</g:link>
+			<br/>
+			<g:if test="${!UserBase.get(SecurityUtils.subject.principal).hasRole("Investigador")}">
+				<g:if test="${!UserBase.get(SecurityUtils.subject.principal).requests}">
+					<g:link controller="account" action="requestPromotion" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}"> Solicitar rol de investigador </g:link>
+				</g:if>	
+			</g:if>		
 		</g:if>
 		<g:else>
 			<g:link class="btn btn-large btn-primary" controller="auth" action="login">Log in</g:link>
@@ -31,10 +37,7 @@
 			<g:message code="nimble.label.login.signup.descriptive"/>
 			<br/>
 			<g:link class="btn btn-large btn-primary" controller="account" action="createuser">Sign up</g:link>
-			<!-- <g:link controller="user" action="edit" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}">Edit</g:link> -->
-			<g:if test="${!UserBase.get(SecurityUtils.subject.principal).hasRole("Investigador")}">
-				<g:link controller="user" action="requestPromotion" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}"> Solicitar rol de investigador </g:link>
-			</g:if>			
+
 		</g:else>
 	</section>
 
