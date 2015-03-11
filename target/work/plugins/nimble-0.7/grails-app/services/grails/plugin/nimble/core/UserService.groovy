@@ -32,6 +32,7 @@ class UserService {
 
 	public static final String USER_ROLE = "USER"
 
+
 	def permissionService
 	def grailsApplication
 	def events = [:]

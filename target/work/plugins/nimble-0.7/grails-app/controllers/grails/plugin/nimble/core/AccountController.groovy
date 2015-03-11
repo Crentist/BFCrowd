@@ -19,6 +19,7 @@ package grails.plugin.nimble.core
 
 import bfcrowd.User
 import grails.plugin.nimble.InstanceGenerator
+import grails.plugin.nimble.core.RoleService
 
 
 import org.apache.shiro.crypto.hash.Sha256Hash
@@ -32,6 +33,7 @@ class AccountController {
 
 	static Map allowedMethods = [saveuser: 'POST', validusername: 'POST', forgottenpasswordprocess: 'POST', updatepassword: 'POST']
 
+	def roleService
 	def userService
 	def recaptchaService
 
@@ -119,7 +121,7 @@ class AccountController {
 		user.external = false		
 
 		user.validate()
-
+		
 		log.debug("Attempting to create new user account identified as $user.username")
 
 		// Enforce username restrictions on local accounts, letters + numbers only
@@ -175,7 +177,10 @@ class AccountController {
 		else {
 			log.debug "Messaging disabled would have sent: \n${user.profile.email} \n Message: \n ${g.render(template: "/templates/nimble/mail/accountregistration_email", model: [user: user]).toString()}"
 		}
-
+		//Rol agregado
+		def defaultRole = Role.findByName("Científico Ciudadano")
+		roleService.addMember(user, defaultRole)
+		
 		log.info("Created new account identified as $user.username with internal id $savedUser.id")
 
 		redirect action: 'createduser'
