@@ -2,19 +2,27 @@
 
 
 
-			<div class="${hasErrors(bean: recommendationInstance, field: 'checkboxMode', 'error')} required">
-				<label for="checkboxMode" class="control-label"><g:message code="recommendation.checkboxMode.label" default="Checkbox Mode" /><span class="required-indicator">*</span></label>
+			<div class="${hasErrors(bean: recommendationInstance, field: 'checkboxMode', 'error')} ">
+				<label for="checkboxMode" class="control-label"><g:message code="recommendation.checkboxMode.label" default="Checkbox Mode" /></label>
 				<div>
-					<g:select class="form-control" name="checkboxMode" from="${recommendationInstance.constraints.checkboxMode.inList}" required="" value="${fieldValue(bean: recommendationInstance, field: 'checkboxMode')}" valueMessagePrefix="recommendation.checkboxMode"/>
+					<g:select class="form-control" name="checkboxMode" from="${recommendationInstance.constraints.checkboxMode.inList}" value="${recommendationInstance?.checkboxMode}" valueMessagePrefix="recommendation.checkboxMode" noSelection="['': '']"/>
 					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'checkboxMode', 'error')}</span>
 				</div>
 			</div>
 
-			<div class="${hasErrors(bean: recommendationInstance, field: 'date', 'error')} required">
-				<label for="date" class="control-label"><g:message code="recommendation.date.label" default="Date" /><span class="required-indicator">*</span></label>
+			<div class="${hasErrors(bean: recommendationInstance, field: 'contribution', 'error')} ">
+				<label for="contribution" class="control-label"><g:message code="recommendation.contribution.label" default="Contribution" /></label>
 				<div>
-					<g:datePicker name="date" precision="day"  value="${recommendationInstance?.date}"  />
-					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'date', 'error')}</span>
+					<g:select class="form-control" id="contribution" name="contribution.id" from="${bfcrowd.Contribution.list()}" optionKey="id" value="${recommendationInstance?.contribution?.id}" class="many-to-one" noSelection="['null': '']"/>
+					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'contribution', 'error')}</span>
+				</div>
+			</div>
+
+			<div class="${hasErrors(bean: recommendationInstance, field: 'dateAssigned', 'error')} required">
+				<label for="dateAssigned" class="control-label"><g:message code="recommendation.dateAssigned.label" default="Date Assigned" /><span class="required-indicator">*</span></label>
+				<div>
+					<g:datePicker name="dateAssigned" precision="minute"  value="${new Date(0)}"  />
+					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'dateAssigned', 'error')}</span>
 				</div>
 			</div>
 

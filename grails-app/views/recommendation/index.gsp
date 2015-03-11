@@ -19,15 +19,15 @@
 			
 				<g:sortableColumn property="checkboxMode" title="${message(code: 'recommendation.checkboxMode.label', default: 'Checkbox Mode')}" />
 			
-				<g:sortableColumn property="date" title="${message(code: 'recommendation.date.label', default: 'Date')}" />
+				<th><g:message code="recommendation.contribution.label" default="Contribution" /></th>
+			
+				<g:sortableColumn property="dateAssigned" title="${message(code: 'recommendation.dateAssigned.label', default: 'Date Assigned')}" />
 			
 				<g:sortableColumn property="fromPage" title="${message(code: 'recommendation.fromPage.label', default: 'From Page')}" />
 			
 				<g:sortableColumn property="instructions" title="${message(code: 'recommendation.instructions.label', default: 'Instructions')}" />
 			
 				<g:sortableColumn property="path" title="${message(code: 'recommendation.path.label', default: 'Path')}" />
-			
-				<th><g:message code="recommendation.project.label" default="Project" /></th>
 			
 			</tr>
 		</thead>
@@ -37,15 +37,15 @@
 			
 				<td><g:link action="show" id="${recommendationInstance.id}">${fieldValue(bean: recommendationInstance, field: "checkboxMode")}</g:link></td>
 			
-				<td><g:formatDate date="${recommendationInstance.date}" /></td>
+				<td>${fieldValue(bean: recommendationInstance, field: "contribution")}</td>
+			
+				<td><g:formatDate date="${recommendationInstance.dateAssigned}" /></td>
 			
 				<td>${fieldValue(bean: recommendationInstance, field: "fromPage")}</td>
 			
 				<td>${fieldValue(bean: recommendationInstance, field: "instructions")}</td>
 			
 				<td>${fieldValue(bean: recommendationInstance, field: "path")}</td>
-			
-				<td>${fieldValue(bean: recommendationInstance, field: "project")}</td>
 			
 			</tr>
 		</g:each>

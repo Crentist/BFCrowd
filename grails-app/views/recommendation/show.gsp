@@ -24,9 +24,16 @@
 			</tr>
 		
 			<tr class="prop">
-				<td valign="top" class="name"><g:message code="recommendation.date.label" default="Date" /></td>
+				<td valign="top" class="name"><g:message code="recommendation.contribution.label" default="Contribution" /></td>
 				
-				<td valign="top" class="value"><g:formatDate date="${recommendationInstance?.date}" /></td>
+				<td valign="top" class="value"><g:link controller="contribution" action="show" id="${recommendationInstance?.contribution?.id}">${recommendationInstance?.contribution?.encodeAsHTML()}</g:link></td>
+				
+			</tr>
+		
+			<tr class="prop">
+				<td valign="top" class="name"><g:message code="recommendation.dateAssigned.label" default="Date Assigned" /></td>
+				
+				<td valign="top" class="value"><g:formatDate date="${recommendationInstance?.dateAssigned}" /></td>
 				
 			</tr>
 		

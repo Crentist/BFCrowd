@@ -22,7 +22,7 @@ class Recommendation {
 	String fromPage 
 	String toPage
 	Boolean solved
-	Date date //Fecha en la que se realizó la recomendación. Podría funcionar como historial, con varias fechas (nueva clase?)
+	Date dateAssigned = new Date(0) // Fecha en que se asignó la recomendación a un colaborador, para que no sea vuelta a asignar instantaneamente
 
 	/* Default (injected) attributes of GORM */
 //	Long	id
@@ -57,6 +57,10 @@ class Recommendation {
 	
 	Boolean isSolved(){
 		this.solved
+	}
+	
+	def setAssigned(){
+		this.dateAssigned = new Date()
 	}
 	
 	Boolean setAsSolved() {

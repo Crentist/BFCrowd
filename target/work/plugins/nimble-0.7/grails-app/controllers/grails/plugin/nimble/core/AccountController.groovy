@@ -17,9 +17,9 @@
 
 package grails.plugin.nimble.core
 
+import bfcrowd.User
 import grails.plugin.nimble.InstanceGenerator
 
-import bfcrowd.User
 
 import org.apache.shiro.crypto.hash.Sha256Hash
 
