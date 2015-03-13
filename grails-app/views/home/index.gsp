@@ -25,7 +25,7 @@
 			<br/>
 			<g:if test="${!UserBase.get(SecurityUtils.subject.principal).hasRole("Investigador")}">
 				<g:if test="${!UserBase.get(SecurityUtils.subject.principal).requests}">
-					<g:link controller="account" action="requestPromotion" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}"> Solicitar rol de investigador </g:link>
+					<g:link controller="userBF" action="requestPromotion" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}"> Solicitar rol de investigador </g:link>
 				</g:if>	
 			</g:if>		
 		</g:if>

@@ -28,11 +28,11 @@
 			               <b class="caret icon-white"></b>                           
 			               </a>        
 			               <ul class="dropdown-menu">
-			                  <li>
+			                  <!-- <li>
 			                     <g:link controller="user" action="show" id="${currentUser?.id}">
 			                        <g:message code="nimble.link.myaccount" />
 			                     </g:link>
-			                  </li>
+			                  </li>-->
 			                  <li>
 			                     <g:link controller="auth" action="signout">
 			                        <g:message code="nimble.link.logout.basic" />

@@ -14,26 +14,25 @@
   	<section id="Error" class="">
 		<div class="big-message">
 			<div class="container">
-				<h1>
-					<g:message code="error.403.callout"/>
-				</h1>
 				<h2>
-					<g:message code="error.403.title"/>
+					403 - Forbidden
 				</h2>
 				<p>
-				
-					You do not have the permission to access this page
-					<!--<g:message code="error.403.message"/>-->
+					No posee el rol requerido para visualizar el contenido de esta página.
+				</p>
+				<p>
+					Contáctese con el administrador si desea solicitar un rol diferente.
 				</p>
 				<div class="actions">
 					<a href="${createLink(uri: '/')}" class="btn btn-large btn-primary">
 						<i class="glyphicon glyphicon-chevron-left icon-white"></i>
-						<g:message code="error.button.backToHome"/>
+						Volver al inicio
+						<!--<g:message code="error.button.backToHome"/>-->
 					</a>
-					<a href="${createLink(uri: '/contact')}" class="btn btn-large btn-success">
+					<!--  <a href="${createLink(uri: '/contact')}" class="btn btn-large btn-success">
 						<i class="glyphicon glyphicon-envelope"></i>
 						<g:message code="error.button.contactSupport"/>
-					</a>					
+					</a>				-->	
 				</div>
 			</div>
 		</div>
