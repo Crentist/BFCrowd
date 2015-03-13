@@ -15,12 +15,12 @@
 	<h3>${project.name}</h3>
 	<g:if test="${recommendation}">
     <div id="instructions">
-        <h4>instrucciones</h4>
+        <h4>Instrucciones:</h4>
         <p>${recommendation.instructions }</p>
     </div>
     <br>
     <div id="feedback">
-        <h4>feedback!</h4>
+        <h4>Feedback!</h4>
         <g:form controller="colaborator" class="form-horizontal" role="form" >
         	<g:hiddenField name="recommendationId" value="${recommendation.id}"/>
         	<g:textArea name="text"></g:textArea>
@@ -36,7 +36,7 @@
    	</g:if>
 	<g:else>
 	<div id="emptyProject">
-		There is no recommendations to solve.
+		There are no recommendations to solve.
 	</div>
 	</g:else>
 </section>

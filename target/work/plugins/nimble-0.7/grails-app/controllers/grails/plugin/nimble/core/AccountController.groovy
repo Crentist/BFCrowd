@@ -18,8 +18,6 @@
 package grails.plugin.nimble.core
 //import bfcrowd.User
 
-
-import bfcrowd.User
 import grails.plugin.nimble.InstanceGenerator
 
 import grails.plugin.nimble.core.RoleService

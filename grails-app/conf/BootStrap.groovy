@@ -20,7 +20,6 @@ class BootStrap {
 		cciudadano.save()
 		
 		if(!UserBase.findByUsername("cCiudadano")) {
-			// Create example User account
 			def user = InstanceGenerator.user(grailsApplication)
 			user.username = "cCiudadano"
 			user.pass = 'ciudadano'
@@ -42,7 +41,6 @@ class BootStrap {
 		}	
 		
 		if(!UserBase.findByUsername("researcher")) {
-			// Create example User account
 			def user = InstanceGenerator.user(grailsApplication)
 			user.username = "researcher"
 			user.pass = 'researcher'
@@ -67,22 +65,22 @@ class BootStrap {
 		project.save()
 		def recomm1 = new Recommendation(property: "peopleFrom",
 										path: "path",
-										fromPage: "fromPage",
-										toPage: "toPage",
+										fromPage: "Rosario",
+										toPage: "Lionel_Messi",
 										solved: false,
 										date: new Date(),
-										instructions: "Click por ahi y otro por allá",
+										instructions: "Agregar el articulo Lionel Messi (http://en.wikipedia.org/wiki/Lionel_Messi) a la categoría People From Rosario.",
 										checkboxMode: "Checkbox")
 		recomm1.project = project
 		recomm1.save()
 		
 		def recomm2 = new Recommendation(property: "peopleFrom",
 										path: "path2",
-										fromPage: "fromPage",
-										toPage: "toPage",
+										fromPage: "Paris",
+										toPage: "Pierre_Curie",
 										solved: false,
 										date: new Date(),
-										instructions: "Click por ahi y otro por allá",
+										instructions: "Agregar el articulo Pierre Curie (http://en.wikipedia.org/wiki/Pierre_Curie) a la categoría People From Paris.",
 										checkboxMode: "Checkbox")
 		
 		recomm2.project = project
@@ -94,13 +92,12 @@ class BootStrap {
 										toPage: "toPage",
 										solved: false,
 										date: new Date(),
-										instructions: "Click por ahi y otro por allá",
+										instructions: "Agregar el articulo Robin Moore (http://en.wikipedia.org/wiki/Robin_Moore) a la categoría People From Boston, Massachusetts.",
 										checkboxMode: "Checkbox")
 
 		recomm3.project = project
 		recomm3.save()
-		//recomm1.contribution =
-		//Crear proyectos y recomendaciones acá
+
     }
     def destroy = {
     }
