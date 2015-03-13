@@ -1,6 +1,6 @@
 <!doctype html>
 <html>
-   <head>
+   <head>  
       <title>
          <g:message code="nimble.view.account.registeraccount.initiate.title" />
       </title>
