@@ -21,14 +21,16 @@
     <br>
     <div id="feedback">
         <h4>feedback!</h4>
-        <g:form action="saveContribution" class="form-horizontal" role="form" >
+        <g:form controller="colaborator" class="form-horizontal" role="form" >
         	<g:hiddenField name="recommendationId" value="${recommendation.id}"/>
+        	<g:textArea name="text"></g:textArea>
         	<ul id="feedbackOptions">
 	        <li><input type="${recommendation.checkboxMode }" name="state" value="Done" />Done</li>
 	        <li><input type="${recommendation.checkboxMode }" name="state" value="Moderated Page" />Moderated Page</li>
 	        <li><input type="${recommendation.checkboxMode }" name="state" value="Already Done" />Already Done</li>
 	        </ul>
-	        <g:submitButton name="save" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
+	        <g:actionSubmit name="save" action="saveContribution" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
+	        <g:actionSubmit name="skip" action="skip" class="btn btn-primary" value="${message(code: 'default.button.skip.label', default: 'Skip')}" />
         </g:form>
     </div>
    	</g:if>

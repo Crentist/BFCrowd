@@ -65,21 +65,25 @@ class ColaboratorController {
 		}
 	}
 	
-	def saveContribution(int recommendationId, String state) {
+	def skip(int recommendationId) {
+		def r = Recommendation.get(recommendationId)
+		def u = getAuthenticatedUser()
+		r.dateAssigned = new Date(0)
+		u.skippedRecom.add(r)
+		Project p = Project.get(r.project.id)
+		def recom = p.getRecommendationFor(getAuthenticatedUser())
+		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true]
+	}
+	
+	def saveContribution(int recommendationId, String state, String text) {
 		// Acá deberían ser solo Recommendations a las que el User pueda contribuir
 		def r = Recommendation.get(recommendationId)
 		def u = getAuthenticatedUser()
-		Contribution c = new Contribution([text: "asdf", state: state, recomendation: r, user: u])
-		//c.save()
-		//c.date = new Date()
-		//c.recomendation = Recommendation.get(recommendationId)
-		//println c.recomendation.id
-		//c.user = getAuthenticatedUser()
-		//c.state = state
-		//getAuthenticatedUser().myContributions.add(c)
+		Contribution c = new Contribution([text: text, state: state, recomendation: r, user: u])
 		c.save(flush: true)
-		println c.id
-		//Recommendation.get(recommendationId).contribution = c
-		render c
+		println c
+		Project p = Project.get(r.project.id)
+		def recom = p.getRecommendationFor(getAuthenticatedUser())
+		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true]
 	}
 }
