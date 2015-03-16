@@ -7,6 +7,7 @@
 	<meta name="layout" content="kickstart" />
 	<g:set var="entityName" value="${message(code: 'colaborator.label', default: 'Colaborator')}" />
 	<title><g:message code="default.show.label" args="[entityName]" /></title>
+	<g:javascript src="autolinker.js" />
 </head>
 
 <body>
@@ -16,8 +17,8 @@
 	<g:if test="${recommendation}">
     <div id="instructions">
         <h4>Instrucciones:</h4>
-        <p>${recommendation.instructions }</p>
-        
+        <p id="instruction">${recommendation.instructions }</p>
+        <script>document.getElementById('instruction').innerHTML = Autolinker.link( "${recommendation.instructions.encodeAsHTML() }" );</script>
         
     </div>
     <br>
