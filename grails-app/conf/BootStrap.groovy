@@ -77,7 +77,7 @@ class BootStrap {
 										date: new Date(),
 										instructions: "Agregar el articulo Lionel Messi (http://en.wikipedia.org/wiki/Lionel_Messi) a la categoría People From Rosario.",
 										checkboxMode: "Checkbox")
-		recomm1.project = project
+		recomm1.project = project1
 		recomm1.save()
 		
 		def recomm2 = new Recommendation(property: "peopleFrom",
@@ -89,7 +89,7 @@ class BootStrap {
 										instructions: "Agregar el articulo Pierre Curie (http://en.wikipedia.org/wiki/Pierre_Curie) a la categoría People From Paris.",
 										checkboxMode: "Checkbox")
 		
-		recomm2.project = project
+		recomm2.project = project1
 		recomm2.save()
 		
 		def recomm3 = new Recommendation(property: "peopleFrom",
@@ -101,7 +101,7 @@ class BootStrap {
 										instructions: "Agregar el articulo Robin Moore (http://en.wikipedia.org/wiki/Robin_Moore) a la categoría People From Boston, Massachusetts.",
 										checkboxMode: "Checkbox")
 
-		recomm3.project = project
+		recomm3.project = project1
 		recomm3.save()
 
     }
