@@ -60,9 +60,15 @@ class BootStrap {
 			
 			roleService.addMember(user, investigador)
 		}
-	
-		def project = new Project(name: "peopleFrom")
-		project.save()
+		
+		def project1 = new Project(name: "Wikipedia tasks")
+		project1.save()
+		def project2 = new Project(name: "Spam filter")
+		project2.save()
+		def project3 = new Project(name: "Prank call")
+		project3.save()
+		def project4 = new Project(name: "Drink supplier")
+		project4.save()
 		def recomm1 = new Recommendation(property: "peopleFrom",
 										path: "path",
 										fromPage: "Rosario",

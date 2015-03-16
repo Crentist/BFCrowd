@@ -17,6 +17,8 @@
     <div id="instructions">
         <h4>Instrucciones:</h4>
         <p>${recommendation.instructions }</p>
+        
+        
     </div>
     <br>
     <div id="feedback">

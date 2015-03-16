@@ -23,6 +23,7 @@
 
 	<r:layoutResources />
 	<g:layoutHead />
+	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bfcrowd.css')}" type="text/css">
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
