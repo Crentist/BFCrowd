@@ -9,38 +9,41 @@
 
 <body>
 
-	<section id="intro" class="first">
+<div class="container">
+
+	<section style="width:45%;float:left">
 		<h1>Welcome to BFCrowd!</h1>
 		<p>
-			The collaborative project...
+			BFCrowd es un proyecto que permite...
 		</p>
-		<h2>Let's get started!</h2>
 		<p>
-			To start collaborating with our project, you must first register an account and provide a valid WikiPedia user. 
-			After that you're all set, and you can start requesting for recommendations made by BlueFinder, and fixing
-			the related paths in WikiPedia. Thanks for your help!!			
+			Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod 
+			tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam,
+			quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo
+			consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie
+			consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto
+			odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait
+			nulla facilisi. Nam liber tempor cum soluta nobis eleifend option congue nihil
+			imperdiet doming id quod mazim placerat facer possim assum. Typi non habent claritatem
+			insitam; est usus legentis in iis qui facit eorum claritatem. Investigationes
+			demonstraverunt lectores legere me lius quod ii legunt saepius.		
 		</p>
-		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">
-			<g:link class="btn btn-large btn-primary" controller="colaborator" action="index">Unirse a un proyecto!</g:link>
-			<br/>
-			<g:if test="${!UserBase.get(SecurityUtils.subject.principal).hasRole("Investigador")}">
-				<g:if test="${!UserBase.get(SecurityUtils.subject.principal).requests}">
-					<g:link controller="userBF" action="requestPromotion" id="${(UserBase.get(SecurityUtils.subject.principal))?.id}"> Solicitar rol de investigador </g:link>
-				</g:if>	
-			</g:if>		
-		</g:if>
-		<g:else>
-			<g:link class="btn btn-large btn-primary" controller="auth" action="login">Log in</g:link>
-			<br/>
-			<br/>
-			<g:message code="nimble.label.login.signup.heading"/>
-			<g:message code="nimble.label.login.signup.descriptive"/>
-			<br/>
-			<g:link class="btn btn-large btn-primary" controller="account" action="createuser">Sign up</g:link>
 
-		</g:else>
+	</section>
+	
+	<section style="width:38%;float:right;margin-left:5px">
+		<h1>Participar / Proyectos</h1>
+		<!-- Listar los proyectos disponibles dentro de recuadros o algo por el estilo -->
+		<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px;"> 
+		
+			<p> Mejorando Wikipedia </p>
+			<p> Ayudanos a agregar información en Wikipedia ... </p>
+
+		
+		</div>
 	</section>
 
+</div>
 
 </body>
 
