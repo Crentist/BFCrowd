@@ -63,7 +63,7 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 			}
 		}
 		
-		project(controller: "project", action:"*") {
+		project(controller: "project", action:"*", actionExclude:"show") {
 			before = {
 				accessControl {
 					role("Investigador")

@@ -24,6 +24,9 @@ class ProjectController {
     }
 
     def show(Project projectInstance) {
+		/*
+		 * Modificar para tener una vista personalizada del proyecto 
+		 */
         respond projectInstance
     }
 

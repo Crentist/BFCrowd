@@ -1,6 +1,7 @@
 <div id="Content" class="container">
 	<!-- Main menu in one row (e.g., controller entry points -->
-	<g:if test="${!layout_nomainmenu}">
+	<g:if test="${1==2}">
+		<!-- render de esto si es el super admin -->
 		<g:render template="/_menu/menubar"/>
 	</g:if>
 	

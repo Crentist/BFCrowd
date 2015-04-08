@@ -44,12 +44,12 @@
 			      </div>
 			</div>	
 			</g:if>	
-			<g:else>
-				<ul class="nav pull-right" style="top:10px">
-					<li style="color:#0088cc">
-						<g:message code="nimble.label.notloggedin" />
+			<g:else>	
+				<ul class="nav pull-right" >	
+					<li>
+						<g:link controller="auth" action="login" style="color:#0088cc">Log in</g:link>
 					</li>		
-				</ul>												
+				</ul>														
 			</g:else>	
 
 	</div>
