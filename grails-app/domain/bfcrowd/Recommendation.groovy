@@ -21,7 +21,7 @@ class Recommendation {
 	String path  //Featured Path Query a utilizar
 	String fromPage 
 	String toPage
-	Boolean solved
+	Boolean solved = false
 	Date dateAssigned = new Date(0) // Fecha en que se asignó la recomendación a un colaborador, para que no sea vuelta a asignar instantaneamente
 
 	/* Default (injected) attributes of GORM */
