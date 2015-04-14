@@ -12,38 +12,82 @@
 
 <body>
 
-<section id="show-project" class="first">
-	<h3>${project.name}</h3>
-	<g:if test="${recommendation}">
-    <div id="instructions">
-        <h4>Instrucciones:</h4>
-        <p id="instruction">${recommendation.instructions }</p>
-        <script>document.getElementById('instruction').innerHTML = Autolinker.link( "${recommendation.instructions.encodeAsHTML() }" );</script>
-        
-    </div>
-    <br>
-    <div id="feedback">
-        <h4>Feedback!</h4>
-        <g:form controller="colaborator" class="form-horizontal" role="form" >
-        	<g:hiddenField name="recommendationId" value="${recommendation.id}"/>
-        	<g:textArea name="text"></g:textArea>
-        	<ul id="feedbackOptions">
-	        <li><input type="${recommendation.checkboxMode }" name="state" value="Done" />Done</li>
-	        <li><input type="${recommendation.checkboxMode }" name="state" value="Moderated Page" />Moderated Page</li>
-	        <li><input type="${recommendation.checkboxMode }" name="state" value="Already Done" />Already Done</li>
-	        </ul>
-	        <g:actionSubmit name="save" action="saveContribution" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
-	        <g:actionSubmit name="skip" action="skip" class="btn btn-primary" value="${message(code: 'default.button.skip.label', default: 'Skip')}" />
-        </g:form>
-    </div>
-   	</g:if>
-	<g:else>
-	<div id="emptyProject">
-		There are no recommendations to solve.
+<div class="row-fluid">
+	<div class="span5 offset1">
+		<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+			<strong> ${project.name } </strong>
+			<p> Project description here ... </p>
+	    </div>
+	    <br/>
+	    <div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+			<g:if test="${recommendation}">
+		    	<div style="width:100%;height:100%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+					    	<div id="instructions">
+					        <h4>Instrucciones:</h4>
+					        <p id="instruction">${recommendation.instructions }</p>
+					        <script>document.getElementById('instruction').innerHTML = Autolinker.link( "${recommendation.instructions.encodeAsHTML() }" );</script>
+				        </div>
+			    </div>
+			    <br/>
+			    <div id="feedback" style="width:100%;height:100%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+					<h4>Feedback</h4>
+						<g:form controller="colaborator" class="form-horizontal" role="form" class="row-fluid">
+							<g:hiddenField name="recommendationId" value="${recommendation.id}"/>
+							<div class="span5">
+								<ul id="feedbackOptions">
+									<li><input type="${recommendation.checkboxMode }" name="state" value="Done" />Done</li>
+									<li><input type="${recommendation.checkboxMode }" name="state" value="Moderated Page" />Moderated Page</li>
+									<li><input type="${recommendation.checkboxMode }" name="state" value="Already Done" />Already Done</li>
+								</ul>
+							</div>
+							<div class="span6">
+								<g:textArea name="text">Additional comments...</g:textArea>	
+							</div>
+						</g:form>		    
+			    </div>
+				<br>
+				<div class="btn-group" style="float:right">
+					<g:actionSubmit name="save" action="saveContribution" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
+					<g:actionSubmit name="skip" action="skip" class="btn btn-primary" value="${message(code: 'default.button.skip.label', default: 'Skip')}"  />
+				</div>
+				<br>
+				<br>
+			</g:if>
+	    </div>
 	</div>
-	</g:else>
-</section>
 
+	<div class="span5">
+		<div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+			<strong>Mis insignias en ${project.name }</strong>
+				<div id="insignias" style="padding: 5px 5px 5px 5px">
+				TO DO
+				</div>
+			<strong>Mis estadísticas en ${project.name }</strong>
+				<div id="estadisticas" style="padding: 5px 5px 5px 5px">
+					<ul>
+						<li>
+							Experiencia ganada:
+						</li>
+						<li>
+							Actividad
+							<div id="imgActividad" style="height:50px">
+							</div>
+						</li>
+					</ul>
+				</div>		
+		</div>	
+		<br/>
+		<div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+			<strong>Ranking en ${project.name }</strong>
+			<table class="table">
+			</table>
+		</div>
+		
+	</div>
+	
+	
+	
+</div>
 </body>
 
 </html>
