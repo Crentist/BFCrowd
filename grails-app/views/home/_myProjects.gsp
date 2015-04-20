@@ -14,7 +14,7 @@
 	</g:each>	
 </g:if>
 <g:else>
-	You haven't joined any projects yet						
+	<g:message code="bfcrowd.label.user.emptyProjectList" />					
 </g:else>
 
 <h3> Other projects</h3>	

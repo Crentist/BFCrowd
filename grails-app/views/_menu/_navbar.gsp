@@ -14,7 +14,6 @@
 			<a class="navbar-brand" href="${createLink(uri: '/')}">
 				<img class="logo" src="${resource(plugin: 'kickstart', dir:'images', file:'brand_logo.png')}" alt="${meta(name:'app.name')}" width="16px" height="16px"/> 
 				${meta(name:'app.name')}
-				<small> v${meta(name:'app.version')}</small>
 			</a>
 		</div>
 		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">

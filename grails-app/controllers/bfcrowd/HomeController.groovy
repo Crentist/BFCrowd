@@ -7,7 +7,13 @@ package bfcrowd
 class HomeController {
 
 	//static scaffold = true
-	def index = { }
+	def index(){
+		/**
+		 * Ver si acá puedo mostrar la vista que corresponda de acuerdo al rol del usuario
+		 * logueado (o si no hay nadie logueado)
+		 */
+		
+	}
 	
 	def joinProjectById(int id) {
 		Project p = Project.get(id)

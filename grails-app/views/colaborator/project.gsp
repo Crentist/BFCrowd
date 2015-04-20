@@ -19,7 +19,7 @@
 			<p> Project description here ... </p>
 	    </div>
 	    <br/>
-	    <div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+	    <div style="width:90%;min-height:320px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
 			<g:if test="${recommendation}">
 		    	<div style="width:100%;height:100%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
 					    	<div id="instructions">
@@ -43,16 +43,24 @@
 							<div class="span6">
 								<g:textArea name="text">Additional comments...</g:textArea>	
 							</div>
-						</g:form>		    
-			    </div>
-				<br>
-				<div class="btn-group" style="float:right">
-					<g:actionSubmit name="save" action="saveContribution" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
-					<g:actionSubmit name="skip" action="skip" class="btn btn-primary" value="${message(code: 'default.button.skip.label', default: 'Skip')}"  />
+							    
+			    
+							<br>
+							<div class="btn-group" style="float:right;padding-top:5px">
+								<g:actionSubmit name="save" action="saveContribution" class="btn btn-primary" value="${message(code: 'default.button.ok.label', default: 'Ok')}" />
+								<g:actionSubmit name="skip" action="skip" class="btn btn-primary" value="${message(code: 'default.button.skip.label', default: 'Skip')}"  />
+							</div>
+							<br>
+							<br>
+						</g:form>	
 				</div>
-				<br>
-				<br>
+				
 			</g:if>
+			<g:else>
+				<div id="emptyProject" style="padding-top:50%;padding-bottom:50%">
+					<p style="text-align:center">There are no recommendations to solve.</p>
+				</div>
+			</g:else>			
 	    </div>
 	</div>
 
