@@ -25,7 +25,7 @@
          <div class="navbar-inner">
 			<a class="navbar-brand" href="${createLink(uri: '/')}">
 			<img class="logo" src="${resource(plugin: 'kickstart', dir:'images', file:'brand_logo.png')}" alt="${meta(name:'app.name')}" width="20px" height="20px"/> 
-			<p style="color:#fff;display:inline"> Home </p>
+			<p style="color:#fff;display:inline"> <g:message code="bfcrowd.label.admin.navbar.home"/> </p>
 
 			</a>
             <div class="container-fluid">             
@@ -38,12 +38,12 @@
                      <ul class="dropdown-menu">
                         <li>
                            <g:link controller="user" action="show" id="${currentUser.id}">
-                              <g:message code="nimble.link.myaccount" />
+                              <g:message code="bfcrowd.label.admin.dropdown.myAccount" />
                            </g:link>
                         </li>
                         <li>
                            <g:link controller="auth" action="signout">
-                              <g:message code="nimble.link.logout.basic" />
+                              <g:message code="bfcrowd.label.logout.navbar" />
                            </g:link>
                         </li>
                      </ul>

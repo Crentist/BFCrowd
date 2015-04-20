@@ -1,22 +1,23 @@
 <head>
    <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
    <title>
-      <g:message code="nimble.view.user.create.title" />
+      <g:message code="bfcrowd.label.admin.user.create.title" />
    </title>
 </head>
 <body>
    <h3>
-      <g:message code="nimble.view.user.create.heading" />
+      <g:message code="bfcrowd.label.admin.user.create.heading" />
+   </h3>   
       <span>
-         <g:message code="nimble.view.user.create.descriptive" />
+         <g:message code="bfcrowd.label.admin.user.create.descriptive" />
       </span>
-   </h3>
+
    <div class="box-generic">
       <n:errors bean="${user}"/>
       <g:form action="save" class="form-horizontal">
          <div class="control-group">
             <label class="control-label" for="username">
-               <g:message code="nimble.label.username" />
+               <g:message code="bfcrowd.label.admin.user.create.username" />
                * 
             </label>
             <div class="controls">      
@@ -30,7 +31,7 @@
          </div>
          <div class="control-group">
             <label class="control-label" for="pass">
-               <g:message code="nimble.label.password" />
+               <g:message code="bfcrowd.label.admin.user.create.password" />
                * 
             </label>
             <div class="controls">      
@@ -44,7 +45,7 @@
          </div>
          <div class="control-group">
             <label class="control-label" for="passConfirm">
-               <g:message code="nimble.label.password.confirmation" />
+               <g:message code="bfcrowd.label.admin.user.create.password.confirmation" />
                * 
             </label>
             <div class="controls">      
@@ -53,7 +54,7 @@
          </div>
          <div class="control-group">
             <label class="control-label" for="fullName">
-               <g:message code="nimble.label.fullname" />
+               <g:message code="bfcrowd.label.admin.user.create.fullname" />
             </label>
             <div class="controls">      
                <input type="text" id="fullName" name="fullName"  value="${user.profile?.fullName?.encodeAsHTML()}">
@@ -61,7 +62,7 @@
          </div>
          <div class="control-group">
             <label class="control-label" for="email">
-               <g:message code="nimble.label.email" />
+               <g:message code="bfcrowd.label.admin.user.create.email" />
             </label>
             <div class="controls">      
                <input type="email" id="email" name="email"  value="${user.profile?.email?.encodeAsHTML()}">
@@ -70,7 +71,7 @@
 
          <div class="control-group">
             <label class="control-label" for="wikiUser">
-               <g:message code="nimble.label.wikiUser" />
+               <g:message code="bfcrowd.label.admin.user.create.wikiUser" />
                * 
             </label>
             <div class="controls">      
@@ -81,11 +82,11 @@
          <div class="form-actions">
             <button type="submit" class="btn btn-primary">
                <i class="icon-ok icon-white"></i>
-               <g:message code="nimble.link.createuser" />
+               <g:message code="bfcrowd.label.admin.user.create.createUser" />
             </button>
             <g:link action="list" class="btn btn-warning">
                <i class="icon-arrow-left icon-white"></i>
-               <g:message code="nimble.link.cancel" />
+               <g:message code="bfcrowd.label.admin.user.create.cancel" />
             </g:link>
          </div>
       </g:form>

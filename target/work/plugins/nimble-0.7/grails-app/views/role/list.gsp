@@ -2,19 +2,19 @@
 <head>
    <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}"/>
    <title>
-      <g:message code="nimble.view.role.list.title" />
+      <g:message code="bfcrowd.label.admin.role.list.title" />
    </title>
 </head>
 <body>
    <h3>
-      <g:message code="nimble.view.role.list.heading" />
+      <g:message code="bfcrowd.label.admin.role.list.heading" />
    </h3>
    <div class="widget widget-heading-simple widget-body-gray">
       <div class="widget-body">
          <div class="row-fluid">
             <div class="span12">
                <g:link controller="role" action="create" class="btn btn-primary btn-small">
-                  <g:message code="nimble.link.createrole" />
+                  <g:message code="bfcrowd.label.admin.role.createRole" />
                </g:link>
             </div>
             <div class="pagination-info pull-right">
@@ -23,14 +23,14 @@
             <table class="table table-striped table-bordered table-white">
                <thead>
                   <tr>
-                     <g:sortableColumn property="id" titleKey="nimble.label.id" class="center" />
-                     <g:sortableColumn property="name" titleKey="nimble.label.name"/>
+                     <g:sortableColumn property="id" titleKey="bfcrowd.label.admin.role.id" class="center" />
+                     <g:sortableColumn property="name" titleKey="bfcrowd.label.admin.role.name"/>
                      <th>
-                        <g:message code="nimble.label.description" />
+                        <g:message code="bfcrowd.label.admin.role.description" />
                      </th>
-                     <g:sortableColumn property="dateCreated" titleKey="nimble.label.created" />
-                     <g:sortableColumn property="lastUpdated" titleKey="nimble.label.lastupdated" />
-                     <th class="center">Actions</th>
+                     <g:sortableColumn property="dateCreated" titleKey="bfcrowd.label.admin.role.created" />
+                     <g:sortableColumn property="lastUpdated" titleKey="bfcrowd.label.admin.role.lastUpdated" />
+                     <th class="center"><g:message code="bfcrowd.label.admin.role.actions" /></th>
                   </tr>
                </thead>
                <tbody>
@@ -51,7 +51,7 @@
                            <span class="actionButton">
                               <g:link action="show" id="${role.id}" class="btn btn-primary btn-mini">
                                  <i class="icon-user icon-white"></i>
-                                 <g:message code="nimble.link.view" />
+                                 <g:message code="bfcrowd.label.admin.role.view" />
                               </g:link>
                            </span>
                         </td>

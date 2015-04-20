@@ -34,7 +34,7 @@
 			                  </li>-->
 			                  <li>
 			                     <g:link controller="auth" action="signout">
-			                        <g:message code="nimble.link.logout.basic" />
+			                        <g:message code="bfcrowd.label.logout.navbar" />
 			                     </g:link>
 			                  </li>
 			               </ul>
@@ -46,7 +46,7 @@
 			<g:else>	
 				<ul class="nav pull-right" >	
 					<li>
-						<g:link controller="auth" action="login" style="color:#0088cc">Log in</g:link>
+						<g:link controller="auth" action="login" style="color:#0088cc"><g:message code="bfcrowd.label.login.navbar" /></g:link>
 					</li>		
 				</ul>														
 			</g:else>	

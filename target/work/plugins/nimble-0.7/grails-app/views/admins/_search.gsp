@@ -4,10 +4,10 @@
          <thead>
             <tr>
                <th>
-                  <g:message code="nimble.label.username" />
+                  <g:message code="bfcrowd.label.admins.search.username" />
                </th>
                <th>
-                  <g:message code="nimble.label.fullname" />
+                  <g:message code="bfcrowd.label.admins.search.fullname" />
                </th>
                <th>&nbsp;</th>
             </tr>
@@ -25,11 +25,11 @@
                   <td>
                      <g:link controller="user" action="show" id="${user.id.encodeAsHTML()}" class="btn btn-info btn-mini">
                         <i class="icon-user icon-white"></i>
-                        <g:message code="nimble.link.view" />
+                        <g:message code="bfcrowd.label.admins.view" />
                      </g:link>
                      <a onClick="grantAdministrator('${user.id.encodeAsHTML()}', '${user.username.encodeAsHTML()}');" class="btn btn-warning btn-mini">
                         <i class=" icon-ok icon-white"></i>
-                        <g:message code="nimble.link.grant" />
+                        <g:message code="bfcrowd.label.admins.grant" />
                      </a>
                   </td>
                </tr>

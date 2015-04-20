@@ -12,7 +12,19 @@ class HomeController {
 		 * Ver si acá puedo mostrar la vista que corresponda de acuerdo al rol del usuario
 		 * logueado (o si no hay nadie logueado)
 		 */
-		
+		//println getAuthenticatedUser()?.getRoles()*.getName();
+		/**
+		 * Cambiar lo siguiente por una cláusula Switch si es posible
+		 * http://mrhaki.blogspot.com.ar/2009/08/groovy-goodness-switch-statement.html
+		 */
+		if (getAuthenticatedUser()?.hasRole("Científico Ciudadano")) {
+			render view: "collabIndex"
+		}
+		else
+			if (getAuthenticatedUser()?.hasRole("Investigador")) {
+				render view: "researcherIndex"
+			}
+			else render view: "index"
 	}
 	
 	def joinProjectById(int id) {
