@@ -14,7 +14,6 @@
 			<a class="navbar-brand" href="${createLink(uri: '/')}">
 				<img class="logo" src="${resource(plugin: 'kickstart', dir:'images', file:'brand_logo.png')}" alt="${meta(name:'app.name')}" width="16px" height="16px"/> 
 				${meta(name:'app.name')}
-				<small> v${meta(name:'app.version')}</small>
 			</a>
 		</div>
 		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">
@@ -35,7 +34,7 @@
 			                  </li>-->
 			                  <li>
 			                     <g:link controller="auth" action="signout">
-			                        <g:message code="nimble.link.logout.basic" />
+			                        <g:message code="bfcrowd.label.logout.navbar" />
 			                     </g:link>
 			                  </li>
 			               </ul>
@@ -47,7 +46,7 @@
 			<g:else>	
 				<ul class="nav pull-right" >	
 					<li>
-						<g:link controller="auth" action="login" style="color:#0088cc">Log in</g:link>
+						<g:link controller="auth" action="login" style="color:#0088cc"><g:message code="bfcrowd.label.login.navbar" /></g:link>
 					</li>		
 				</ul>														
 			</g:else>	

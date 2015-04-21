@@ -119,8 +119,11 @@ class UserController {
 		def userFields = nimbleConfig.fields.enduser.user
 		def profileFields = nimbleConfig.fields.enduser.profile
 
-		user.properties[userFields] = params
-		user.profile.properties[profileFields] = params
+		//user.properties[userFields] = params
+		//user.profile.properties[profileFields] = params
+		
+		user.properties['username', 'pass', 'passConfirm', 'wikipediaUserID', 'requests'] = params
+		user.profile.properties['fullName', 'email'] = params
 
 		user.enabled = false
 		user.external = false

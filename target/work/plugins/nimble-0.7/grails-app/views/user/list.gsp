@@ -3,19 +3,19 @@
 <head>
    <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}" />
    <title>
-      <g:message code="nimble.view.user.list.title" />
+      <g:message code="bfcrowd.label.admin.user.list.title" />
    </title>
 </head>
 <body>
    <h3>
-      <g:message code="nimble.view.user.list.heading" />
+      <g:message code="bfcrowd.label.admin.user.list.heading" />
    </h3>
    <div class="widget widget-heading-simple widget-body-gray">
       <div class="widget-body">
          <div class="row-fluid">
             <div class="span12">
                <g:link controller="user" action="create" class="btn btn-primary btn-small">
-                  <g:message code="nimble.link.createuser" />
+                  <g:message code="bfcrowd.label.admin.user.createUser" />
                </g:link>
             </div>
             <div class="pagination-info pull-right">
@@ -24,21 +24,21 @@
             <table class="table table-striped table-bordered table-white">
                <thead>
                   <tr>
-                     <g:sortableColumn property="id" titleKey="nimble.label.id" class="center" />
-                     <g:sortableColumn property="username" titleKey="nimble.label.username"/>
+                     <g:sortableColumn property="id" titleKey="bfcrowd.label.admin.user.id" class="center" />
+                     <g:sortableColumn property="username" titleKey="bfcrowd.label.admin.user.username"/>
                      <th>
-                        <g:message code="nimble.label.fullname" />
+                        <g:message code="bfcrowd.label.admin.user.fullname" />
                      </th>
-                     <g:sortableColumn property="enabled" titleKey="nimble.label.state" />
+                     <g:sortableColumn property="enabled" titleKey="bfcrowd.label.admin.user.enabled.state" />
                      <th>
-                        <g:message code="nimble.label.user.request" />
+                        <g:message code="bfcrowd.label.admin.user.request" />
                      </th>
                      <th>
-                        Roles
+                        <g:message code="bfcrowd.label.admin.user.roles" />
                      </th>
-                     <g:sortableColumn property="dateCreated" titleKey="nimble.label.created" />
-                     <g:sortableColumn property="lastUpdated" titleKey="nimble.label.lastupdated" />
-                     <th class="center">Actions</th>
+                     <g:sortableColumn property="dateCreated" titleKey="bfcrowd.label.admin.user.created" />
+                     <g:sortableColumn property="lastUpdated" titleKey="bfcrowd.label.admin.user.lastUpdated" />
+                     <th class="center"><g:message code="bfcrowd.label.admin.user.actions" /></th>
                   </tr>
                </thead>
                <tbody>
@@ -62,19 +62,19 @@
                         <td>
                            <g:if test="${user.enabled}">
                               <span class="icon icon_tick">&nbsp;</span>
-                              <g:message code="nimble.label.enabled" />
+                              <g:message code="bfcrowd.label.admin.user.enabled" />
                            </g:if>
                            <g:else>
                               <span class="icon icon_cross">&nbsp;</span>
-                              <g:message code="nimble.label.disabled" />
+                              <g:message code="bfcrowd.label.admin.user.disabled" />
                            </g:else>
                         </td>
 
                         <td>
 							<g:if test="${user.requests}">
 								<g:if test="${!user.hasRole("Investigador")}">
-									<g:message code="nimble.label.user.requestYay" />.
-										<a href="./show/${user.id}">Assign role now</a>		
+									<g:message code="bfcrowd.label.admin.user.requestYay" />.
+										<a href="./show/${user.id}"><g:message code="bfcrowd.label.admin.user.assignRole" /></a>		
 								</g:if>
 								<g:else>
 									<p style="text-align:center"> - </p>
@@ -99,7 +99,7 @@
                            <span class="actionButton">
                               <g:link action="show" id="${user.id}" class="btn btn-primary btn-mini">
                                  <i class="icon-user icon-white"></i>
-                                 <g:message code="nimble.link.view" />
+                                 <g:message code="bfcrowd.label.admin.user.view" />
                               </g:link>
                            </span>
                         </td>
