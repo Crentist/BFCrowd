@@ -1,20 +1,20 @@
 <h3>
-   <g:message code="nimble.template.permissions.heading" />
+   <g:message code="bfcrowd.label.admin.user.show.permissions.heading" />
 </h3>
 <div id="currentpermission"> </div>
 <div id="showaddpermissions">
    <a id="showaddpermissionsbtn" class="btn btn-success btn-small">
       <i class="icon-plus icon-white"></i>
-      <g:message code="nimble.link.addpermission" />
+      <g:message code="bfcrowd.label.admin.user.show.permissions.addpermission" />
    </a>
 </div>
 <div id="addpermissions">
    <h4>
-      <g:message code="nimble.template.permission.add.heading" />
-      <span>
-         <g:message code="nimble.template.permission.add.descriptive" />
-      </span>
+      <g:message code="bfcrowd.label.admin.user.show.permissions.add.heading" />
    </h4>
+	<span>
+		<g:message code="bfcrowd.label.admin.user.show.permissions.add.descriptive" />
+	</span>
    <div id="addpermissionserror"></div>
    <form class="well form-inline">
       <g:textField size="15" name="first_p" class="span2"/>
@@ -27,9 +27,9 @@
    </form>
    <button type="button" onClick="createPermission(${parent.id.encodeAsHTML()});" class="btn btn-success btn-small">
       <i class="icon-ok-sign icon-white"></i>
-      <g:message code="nimble.link.createpermission" />
+      <g:message code="bfcrowd.label.admin.user.show.permissions.createpermission" />
    </button>
    <button type="button" id="closepermissionsaddbtn" class="btn btn-warning btn-small">
-      <g:message code="nimble.link.close" />
+      <g:message code="bfcrowd.label.admin.user.show.permissions.close" />
    </button>
 </div>

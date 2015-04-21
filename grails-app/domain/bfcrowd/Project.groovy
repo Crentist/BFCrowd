@@ -10,7 +10,8 @@ class Project {
 //	Long	id
 //	Long	version
 	String name
-	//String description
+	String description
+	int xpValue //Amount of XP obtained by the user per recommendation solved (i.e Contribution) within the project
 	
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated

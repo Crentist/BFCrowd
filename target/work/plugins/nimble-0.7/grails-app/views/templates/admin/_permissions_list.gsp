@@ -3,13 +3,13 @@
       <thead>
          <tr>
             <th>
-               <g:message code="nimble.label.type" />
+               <g:message code="bfcrowd.label.admin.user.show.permissions.type" />
             </th>
             <th>
-               <g:message code="nimble.label.target" />
+               <g:message code="bfcrowd.label.admin.user.show.permissions.target" />
             </th>
             <th>
-               <g:message code="nimble.label.managed" />
+               <g:message code="bfcrowd.label.admin.user.show.permissions.managed" />
             </th>
             <th></th>
          </tr>

@@ -2,7 +2,7 @@
 <html>
    <head>  
       <title>
-         <g:message code="nimble.view.account.registeraccount.initiate.title" />
+         <g:message code="bfcrowd.label.account.registeraccount.title" />
       </title>
       <r:require modules="nimble-login"/>
       <r:layoutResources/>
@@ -11,7 +11,7 @@
       <div class="login-container">
          <div class="login-content">
             <h2 class="border-bottom">
-               <g:message code="nimble.view.account.registeraccount.initiate.heading" />
+               <g:message code="bfcrowd.label.account.registeraccount.heading" />
             </h2>
             <n:flashembed/>
             <n:errors bean="${user}"/>
@@ -19,58 +19,53 @@
                <div class="login-input">
                   <div class="control-group">
                      <div class="controls ">                         
-                        <input type="text" id="username" name="username" value="${fieldValue(bean: user, field: 'username')}" placeholder="username"/>                                                  
+                        <input type="text" id="username" name="username" value="${fieldValue(bean: user, field: 'username')}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.username')}"/>                                                  
                      </div>
                   </div>
                   <div class="control-group">
                      <div class="controls">
-                        <input type="password" size="30" id="pass" name="pass" value="${user.pass?.encodeAsHTML()}" placeholder="password"/> 
+                        <input type="password" size="30" id="pass" name="pass" value="${user.pass?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.password')}"/> 
                      </div>
                   </div>
                   <div class="control-group">
                      <div class="controls">
-                        <input type="password" size="30" id="passConfirm" name="passConfirm" value="${user.passConfirm?.encodeAsHTML()}" placeholder="confirm password"/> 						                   
+                        <input type="password" size="30" id="passConfirm" name="passConfirm" value="${user.passConfirm?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.confirmPass')}"/> 						                   
                      </div>
                   </div>
                   <div class="control-group">
                      <div class="controls">
-                        <input type="text" size="30" id="fullName" name="fullName" value="${user.profile?.fullName?.encodeAsHTML()}" placeholder="full name"]> 						                   
+                        <input type="text" size="30" id="fullName" name="fullName" value="${user.profile?.fullName?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.fullName')}"]> 						                   
                      </div>
                   </div>
                   <div class="control-group">
                      <div class="controls">
-                        <input type="text" size="30" id="email" name="email" value="${user.profile?.email?.encodeAsHTML()}" placeholder="email"/> 						                   
+                        <input type="text" size="30" id="email" name="email" value="${user.profile?.email?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.email')}"/> 						                   
                      </div>
                   </div>
 				  <div class="control-group">
 				     <div class="controls">      
-				        <input type="text" id="wikipediaUserID" name="wikipediaUserID" value="${user.wikipediaUserID?.encodeAsHTML()}" placeholder="Wikipedia username">
+				        <input type="text" id="wikipediaUserID" name="wikipediaUserID" value="${user.wikipediaUserID?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.wikiUser')}">
 				     </div>
 				  </div>   
 				  
 				  <div class="control-group">
 				     <div class="controls">   
 				     	<div>
-				     	<label style="display:inline"> Request for researcher role </label> 
+				     	<label style="display:inline"> <g:message code="bfcrowd.label.account.registeraccount.requestRole" /> </label> 
 				     	<input style="float:right;width:10%" type="checkbox" name="requests" >
 				        </div>
 				     </div>
 				  </div>   		
 				      
                </div>
-               
-               
+       
                <div class="login-actions">
                   <span class="pull-right clearfix">
                      <button type="submit" class="btn btn-primary">
-                        <g:message code="nimble.link.registeraccount" />
+                        <g:message code="bfcrowd.label.account.registeraccount.register" />
                      </button>
                   </span>
                </div>
-               
-               
-               
-               
                
             </g:form>
          </div>

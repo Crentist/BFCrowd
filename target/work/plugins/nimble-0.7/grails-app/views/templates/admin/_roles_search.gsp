@@ -3,10 +3,10 @@
       <thead>
          <tr>
             <th>
-               <g:message code="nimble.label.name" />
+               <g:message code="bfcrowd.label.admin.user.show.roles.name" />
             </th>
             <th>
-               <g:message code="nimble.label.description" />
+               <g:message code="bfcrowd.label.admin.user.show.roles.description" />
             </th>
             <th></th>
          </tr>
@@ -19,11 +19,11 @@
                <td>
                   <g:link controller="role" action="show" id="${role.id.encodeAsHTML()}" class="btn btn-info btn-mini">
                      <i class="icon-user icon-white"></i>
-                     <g:message code="nimble.link.view" />
+                     <g:message code="bfcrowd.label.admin.user.show.roles.view" />
                   </g:link>
                   <a onClick="grantRole('${ownerID.encodeAsHTML()}', '${role.id.encodeAsHTML()}');" class="btn btn-success btn-mini">
                      <i class="icon-question-sign icon-white"></i>
-                     <g:message code="nimble.link.assign" />
+                     <g:message code="bfcrowd.label.admin.user.show.roles.assign" />
                   </a>
                </td>
             </tr>
@@ -34,7 +34,7 @@
 <g:else>
    <p>
       <strong>
-         <g:message code="nimble.template.roles.add.noresults" />
+         <g:message code="bfcrowd.label.admin.user.show.roles.add.noresults" />
       </strong>
    </p>
 </g:else>

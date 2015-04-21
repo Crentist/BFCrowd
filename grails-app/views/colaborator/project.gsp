@@ -16,7 +16,7 @@
 	<div class="span5 offset1">
 		<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
 			<strong> ${project.name } </strong>
-			<p> Project description here ... </p>
+			<p> ${project.description } </p>
 	    </div>
 	    <br/>
 	    <div style="width:90%;min-height:320px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">

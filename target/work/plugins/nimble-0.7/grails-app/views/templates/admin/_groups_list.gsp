@@ -3,10 +3,10 @@
       <thead>
          <tr>
             <th>
-               <g:message code="nimble.label.name" />
+               <g:message code="bfcrowd.label.admin.user.show.groups.name" />
             </th>
             <th>
-               <g:message code="nimble.label.description" />
+               <g:message code="bfcrowd.label.admin.user.show.groups.description" />
             </th>
             <th></th>
          </tr>
@@ -19,12 +19,12 @@
                <td>
                   <g:link controller="group" action="show" id="${group.id.encodeAsHTML()}" class="btn btn-info btn-mini">
                      <i class="icon-user icon-white"></i>
-                     <g:message code="nimble.link.view" />
+                     <g:message code="bfcrowd.label.admin.user.show.groups.view" />
                   </g:link>
                   <g:if test="${group.protect == false}">
                      <a onClick="removeGroup('${ownerID.encodeAsHTML()}', '${group.id.encodeAsHTML()}');" class="btn btn-danger btn-mini">
                         <i class="icon-remove icon-white"></i>
-                        <g:message code="nimble.link.remove" />
+                        <g:message code="bfcrowd.label.admin.user.show.groups.remove" />
                      </a>
                   </g:if>
                   <g:else>&nbsp;</g:else>
@@ -36,6 +36,6 @@
 </g:if>
 <g:else>
    <p>
-      <g:message code="nimble.template.groups.list.noresults" />
+      <g:message code="bfcrowd.label.admin.user.show.groups.noresults" />
    </p>
 </g:else>

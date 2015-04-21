@@ -38,7 +38,7 @@
 		<g:each var="proj" in="${allProjects}">
 			<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
 				<strong> ${proj.name } </strong>
-				<p> Project description here ... </p>
+				<p> ${proj.description } </p>
 			</div>
 			<br/>
 		</g:each>
