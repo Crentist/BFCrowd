@@ -1,7 +1,7 @@
 <head>
    <meta name="layout" content="${grailsApplication.config.nimble.layout.administration}" />
    <title>
-      <g:message code="nimble.view.user.show.title" args="[user.username?.encodeAsHTML()]" />
+      <g:message code="bfcrowd.label.admin.user.show.title" />
    </title>
    <r:script>
       <njs:user user="${user}" />
@@ -12,7 +12,7 @@
 </head>
 <body>
    <h3>
-      <g:message code="nimble.view.user.show.heading" args="[user.username?.encodeAsHTML()]" />
+      <g:message code="bfcrowd.label.admin.user.show.heading"/>
       <span>
       </span>
    </h3>
@@ -21,24 +21,24 @@
          <div class="box-generic">
             <header>
                <h2>
-                  <g:message code="nimble.view.user.show.details.heading" />
+                  <g:message code="bfcrowd.label.admin.user.show.details.heading" />
                </h2>
                <div class="pull-right btn-group">
                   <g:link controller="user" action="edit" id="${user.id}" class="btn btn-success btn-small">
-                     <g:message code="nimble.link.edit" />
+                     <g:message code="bfcrowd.label.admin.user.show.edit" />
                   </g:link>
                   <g:if test="${user.external}">
                      <g:link controller="user" action="changelocalpassword" id="${user.id}" class="btn btn-small btn-success">
-                        <g:message code="nimble.link.changelocalpassword" />
+                        <g:message code="bfcrowd.label.admin.user.show.changelocalpassword" />
                      </g:link>
                   </g:if>
                   <g:else>
                      <g:link controller="user" action="changepassword" id="${user.id}" class="btn btn-small btn-success">
-                        <g:message code="nimble.link.changepassword" />
+                        <g:message code="bfcrowd.label.admin.user.show.changepassword" />
                      </g:link>
                   </g:else>
                   <a href="#" class="btn btn-info btn-small dropdown-toggle" data-toggle="dropdown">
-                     <g:message code="nimble.link.more" default="More"/>
+                     <g:message code="bfcrowd.label.admin.user.show.more" default="More"/>
                      <span class="caret"></span>
                   </a>
                   <g:render template="actions" model="[user:user]"></g:render>
@@ -46,60 +46,60 @@
             </header>
             <dl>
                <dt>
-                  <g:message code="nimble.label.username" />
+                  <g:message code="bfcrowd.label.admin.user.show.username" />
                </dt>
                <dd>${user.username?.encodeAsHTML()}</dd>
                <dt>
-                  <g:message code="nimble.label.fullname" />
+                  <g:message code="bfcrowd.label.admin.user.show.fullname" />
                </dt>
                <dd>${user.profile.fullName?.encodeAsHTML() ?: message(code:'nimble.label.none')}</dd>
                <dt>
-                  <g:message code="nimble.label.email" />
+                  <g:message code="bfcrowd.label.admin.user.show.email" />
                </dt>
                <dd>${user.profile.email?.encodeAsHTML() ?: g.message(code:'nimble.label.none')}</dd>
                <dt>
-                  <g:message code="nimble.label.created" />
+                  <g:message code="bfcrowd.label.admin.user.show.created" />
                </dt>
                <dd>
                   <g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.dateCreated}" />
                </dd>
                <dt>
-                  <g:message code="nimble.label.lastupdated" />
+                  <g:message code="bfcrowd.label.admin.user.show.lastupdated" />
                </dt>
                <dd>
                   <g:formatDate format="E dd/MM/yyyy HH:mm:s:S" date="${user.lastUpdated}" />
                </dd>
                <dt>
-                  <g:message code="nimble.label.type" />
+                  <g:message code="bfcrowd.label.admin.user.show.type" />
                </dt>
                <dd>
                   <g:if test="${user.external}">
-                     <g:message code="nimble.label.external.managment" />
+                     <g:message code="bfcrowd.label.admin.user.show.external.management" />
                   </g:if>
                   <g:else>
-                     <g:message code="nimble.label.local.managment" />
+                     <g:message code="bfcrowd.label.admin.user.show.local.management" />
                   </g:else>
                </dd>
                <dt>
-                  <g:message code="nimble.label.state" />
+                  <g:message code="bfcrowd.label.admin.user.show.state" />
                </dt>
                <dd>
                   <div id="disableduser">
-                     <g:message code="nimble.label.enabled" />
+                     <g:message code="bfcrowd.label.admin.user.show.enabled" />
                   </div>
                   <div id="enableduser">
-                     <g:message code="nimble.label.disabled" />
+                     <g:message code="bfcrowd.label.admin.user.show.disabled" />
                   </div>
                </dd>
                <dt>
-                  <g:message code="nimble.label.remoteapi" />
+                  <g:message code="bfcrowd.label.admin.user.show.remoteapi" />
                </dt>
                <dd>
                   <div id="enabledapi">
-                     <span class="icon icon_tick">&nbsp;</span>Enabled
+                     <span class="icon icon_tick">&nbsp;</span><g:message code="bfcrowd.label.admin.user.show.enabledapi"/>
                   </div>
                   <div id="disabledapi">
-                     <span class="icon icon_cross">&nbsp;</span>Disabled
+                     <span class="icon icon_cross">&nbsp;</span><g:message code="bfcrowd.label.admin.user.show.disabledapi"/>
                   </div>
                </dd>
             </dl>
@@ -111,27 +111,27 @@
          <ul class="nav nav-tabs">
             <li class="active">
                <a href="#tab-extendedinfo" class="icon icon_user" data-toggle="tab">
-                  <g:message code="nimble.label.extendedinformation" />
+                  <g:message code="bfcrowd.label.admin.user.show.extendedinformation" />
                </a>
             </li>
             <li>
                <a href="#tab-permissions" class="icon icon_lock" data-toggle="tab">
-                  <g:message code="nimble.label.permissions" />
+                  <g:message code="bfcrowd.label.admin.user.show.permissions" />
                </a>
             </li>
             <li>
                <a href="#tab-roles" class="icon icon_cog" data-toggle="tab">
-                  <g:message code="nimble.label.roles" />
+                  <g:message code="bfcrowd.label.admin.user.show.roles" />
                </a>
             </li>
             <li>
                <a href="#tab-groups" class="icon icon_group" data-toggle="tab">
-                  <g:message code="nimble.label.groups" />
+                  <g:message code="bfcrowd.label.admin.user.show.groups" />
                </a>
             </li>
             <li>
                <a href="#tab-logins" class="icon icon_key" data-toggle="tab">
-                  <g:message code="nimble.label.logins" />
+                  <g:message code="bfcrowd.label.admin.user.show.logins" />
                </a>
             </li>
          </ul>

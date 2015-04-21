@@ -1,16 +1,16 @@
 <g:if test="${logins?.size() > 0}">
 
   <p>
-	<g:message code="nimble.template.logins.list.heading" args="[logins.size(), totalCount]"/>
+	<g:message code="bfcrowd.label.admin.user.show.logins.list.heading" args="[logins.size(), totalCount]"/>
   </p>
 
   <table class="table table-striped">
     <thead>
 	    <tr>
-	      <th><g:message code="nimble.label.remoteaddress" /></th>
-	      <th><g:message code="nimble.label.remotehost" /></th>
-	      <th><g:message code="nimble.label.useragent" /></th>
-	      <th><g:message code="nimble.label.time" /></th>
+	      <th><g:message code="bfcrowd.label.admin.user.show.logins.list.remoteaddress" /></th>
+	      <th><g:message code="bfcrowd.label.admin.user.show.logins.list.remotehost" /></th>
+	      <th><g:message code="bfcrowd.label.admin.user.show.logins.list.useragent" /></th>
+	      <th><g:message code="bfcrowd.label.admin.user.show.logins.list.time" /></th>
 	    </tr>
     </thead>
     <tbody>
@@ -29,7 +29,7 @@
 <g:else>
 
   <p>
-    <g:message code="nimble.template.logins.list.noresults" />
+    <g:message code="bfcrowd.label.admin.user.show.logins.list.noresults" />
   </p>
   
 </g:else>
