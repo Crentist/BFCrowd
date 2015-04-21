@@ -25,6 +25,7 @@ class Project {
     }
     
 	static	constraints = {
+		name unique: true
     }
 	
 	/*
