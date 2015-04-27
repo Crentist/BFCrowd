@@ -25,7 +25,10 @@ class ColaboratorController {
 		if(name){
 			Project p = Project.findByName(name)
 			if(p){
-				getAuthenticatedUser().myProjects.add(p)
+				def user = getAuthenticatedUser()
+				user.myProjects.add(p)
+				p.usersXP[user.id]=0 //Initialize xp value on that project
+				assert p.usersXP.get(user.id) == 0
 			}
 		}
 		render template: "myProjects", model: [myProjects: getAuthenticatedUser().myProjects]
@@ -34,7 +37,11 @@ class ColaboratorController {
 	def joinProjectById(int id) {
 		Project p = Project.get(id)
 		if(p){
-			getAuthenticatedUser().myProjects.add(p)
+			def user = getAuthenticatedUser()
+			user.myProjects.add(p)
+			println p.name
+			p.usersXP[user.id]=0 //Initialize xp value on that project
+			assert p.usersXP.get(user.id) == 0
 		}
 		render template: "myProjects", model: [myProjects: getAuthenticatedUser().myProjects, otherProjects: Project.getAll() - getAuthenticatedUser().myProjects]
 	}
@@ -83,6 +90,8 @@ class ColaboratorController {
 		c.save(flush: true)
 		println c
 		Project p = Project.get(r.project.id)
+		p.usersXP[u.id] += p.xpValue
+		u.myXP += p.xpValue
 		def recom = p.getRecommendationFor(getAuthenticatedUser())
 		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true]
 	}

@@ -1,5 +1,7 @@
 
 <%@ page import="bfcrowd.User" %>
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="grails.plugin.nimble.core.UserBase"%>
 <!DOCTYPE html>
 <html>
 
@@ -74,7 +76,7 @@
 				<div id="estadisticas" style="padding: 5px 5px 5px 5px">
 					<ul>
 						<li>
-							<g:message code="bfcrowd.label.collab.project.xp"/>:
+							<g:message code="bfcrowd.label.collab.project.xp"/>: ${project.usersXP.get(UserBase.get(SecurityUtils.subject.principal).id)} 
 						</li>
 						<li>
 							<g:message code="bfcrowd.label.collab.project.activity"/>

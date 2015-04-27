@@ -30,7 +30,10 @@ class HomeController {
 	def joinProjectById(int id) {
 		Project p = Project.get(id)
 		if(p){
-			getAuthenticatedUser().myProjects.add(p)
+			def user = getAuthenticatedUser()
+			user.myProjects.add(p)
+			p.setUserXP(user.id, 0)
+			assert p.usersXP.get((user.id)) == 0
 		}
 		render template: "myProjects"
 	}
