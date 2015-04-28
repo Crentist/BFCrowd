@@ -19,15 +19,18 @@ class RecommendationCsvImporter {
 		String rows = new File("web-app/last_import.csv").getText('UTF-8')
 		//String rows = file.getText('UTF-8')
 		//println(rows)
-		rows.eachLine { line -> 
-			def cells = line.split(';')
+		def lines = rows.split('\n')
+//		def x = lines*.split(';')
+		
+		def x = lines*.split(';(?=([^\"]*\"[^\"]*\")*[^\"]*$)')
+		//println x
+//		println "valores en 0: "+x*.getAt(0)
+		lines.each { line -> 
+			//def cells = line.split(';')
+			def cells = line.split(';(?=([^\"]*\"[^\"]*\")*[^\"]*$)')
+			println(cells)
 			def project = Project.findByName(cells[0])
-			if (!project) {
-				project = new Project( name:cells[0] )
-				project.save()
-			}
 			if (project) {
-				//println(cells)
 				def params = [
 					project:project.id,
 					property:cells[1],
@@ -38,7 +41,9 @@ class RecommendationCsvImporter {
 					checkboxMode:cells[6]
 					]
 				Recommendation recomm = new Recommendation(params)
-				recomm.save()
+				recomm.save(flush:true)
+			} else {
+			// TODO EL project no existe
 			}
 		}
 	}

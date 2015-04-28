@@ -11,14 +11,13 @@ import bfcrowd.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(RecommendationCsvImporter)
-class RecommendationCsvImporterSpec extends Specification {
+//@TestFor(RecommendationCsvImporter)
+//@Mock([Project, Recommendation, Contribution, User, Profile])
+class RecommendationCsvImporterSpec extends GroovyTestCase {
 
     def setup() {
-		def project3 = new Project(name: "Project3", description: "Help us improve the contents on Wikipedia!", xpValue: 25)
-//		project1.save()
-		mockDomain(Project, [project3])
-		mockDomain(Recommendation)
+//		mockDomain(Project)
+//		mockDomain(Recommendation)
     }
 
     def cleanup() {
@@ -31,7 +30,7 @@ class RecommendationCsvImporterSpec extends Specification {
 		try {
 			//create a temporary file
 			File logFile = new File("web-app/last_import.csv");
-			
+
 			writer = new BufferedWriter(new FileWriter(logFile));
 			writer.write('''1project;property;path;fromPage;toPage;Instrucctions;Checkbox
 Project1;fff;asdf;fdsa;fdf;fff;Checkbox
@@ -56,6 +55,8 @@ Project3;propertyAA;pathBB;no?;asdf;asdf;Checkbox''');
 		
 		then:
 		println Project.getAll()
+		println Project.find { name == "Wikipedia tasks" }
+		println Project.find { name == "Project3" }
 		Project.findByName("Project3").recommendations.size() == 1
     }
 }
