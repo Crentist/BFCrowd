@@ -18,7 +18,6 @@ class RecommendationCsvImporterSpec extends Specification {
 		def project1 = new Project(name: "Project1", description: "Help us improve the contents on Wikipedia!", xpValue: 25)
 		def project2 = new Project(name: "Project2", description: "Help us improve the contents on Wikipedia!", xpValue: 25)
 		def project3 = new Project(name: "Project3", description: "Help us improve the contents on Wikipedia!", xpValue: 25)
-//		project1.save()
 		mockDomain(Project, [project1,project2,project3])
 		mockDomain(Recommendation)
     }
@@ -35,15 +34,16 @@ class RecommendationCsvImporterSpec extends Specification {
 			File logFile = new File("web-app/last_import.csv");
 			
 			writer = new BufferedWriter(new FileWriter(logFile));
-			writer.write('''Project1;property;path;fromPage;toPage;Instrucctions;Checkbox
-Project1;fff;asdf;fdsa;fdf;fff;Checkbox
-Project1;fff2;asdf2 fds fdsf;fdsa2;fdf2;fff2;Checkbox
-Project1;fff2;asdf2 fds fdsf;fdsa2;fdf2;fff2;Checkbox
-Project2;LLLL;LLLL;LLLL;LLLL;LLLL;Checkbox
-Project2;A1;A1;A1;A1;A1;Checkbox
-Project2;fff2;asdf2 fds fdsf;fdsa2;fdf2;fff2;Checkbox
-Project3;CCC;CCC;CCC;CCC;CCC;Checkbox
-Project3;GGGG;GGGG;GGGG;GGGG;GGGG;Checkbox''');
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2;Checkbox
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -53,12 +53,283 @@ Project3;GGGG;GGGG;GGGG;GGGG;GGGG;Checkbox''');
 			} catch (Exception e) {
 			}
 		}
-		importer.importFile()
+		def result = importer.importFile()
 		
 		then:
-//		println Project.getAll()
+		result.passed == 9
+		result.errors.size() == 0
 		Project.findByName("Project1").recommendations.size() == 4
 		Project.findByName("Project2").recommendations.size() == 3
 		Project.findByName("Project3").recommendations.size() == 2
     }
+	
+	
+	void "test importFile with less fields"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		result.passed == 0
+		result.errors.size() == 1
+		Recommendation.getAll().size() == 0
+	}
+	
+	void "test importFile with more fields"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		result.passed == 0
+		result.errors.size() == 1
+		Recommendation.getAll().size() == 0
+	}
+	
+	void "test importFile with blank lines"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''
+Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		result.passed == 0
+		result.errors.size() == 1
+		Recommendation.getAll().size() == 0
+	}
+	
+	void "test importFile with scaped delimiters and cut them"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2;Checkbox
+Project1;P1property3;P1path3;"P1 ; P1fromPage3";P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;""P1 " ; "P1fromPage4"";P1toPage4;P1instructions4;Checkbox
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		Recommendation.get(2).fromPage == "P1fromPage2"
+		Recommendation.get(3).fromPage == "P1 ; P1fromPage3"
+		Recommendation.get(4).fromPage == "\"P1 \" ; \"P1fromPage4\""
+		result.passed == 9
+		result.errors.size() == 0
+		Project.findByName("Project1").recommendations.size() == 4
+		Project.findByName("Project2").recommendations.size() == 3
+		Project.findByName("Project3").recommendations.size() == 2
+	}
+	
+	void "test importFile with non existent project"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2;Checkbox
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Proje;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Proje;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		result.passed == 7
+		result.errors.size() == 2
+		Project.findByName("Project1").recommendations.size() == 4
+		Project.findByName("Project2").recommendations.size() == 2
+		Project.findByName("Project3").recommendations.size() == 1
+	}
+	
+	void "test importFile with blank or wrong checkboxMode field"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2;Checkbox
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;""
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;XXXX
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		result.passed == 7
+		result.errors.size() == 2
+		Project.findByName("Project1").recommendations.size() == 3
+		Project.findByName("Project2").recommendations.size() == 2
+		Project.findByName("Project3").recommendations.size() == 2
+	}
+	
+	
+	void "test importFile repeating recommendations"() {
+		when:
+		def importer = new RecommendationCsvImporter()
+		BufferedWriter writer = null;
+		try {
+			//create a temporary file
+			File logFile = new File("web-app/last_import.csv");
+			
+			writer = new BufferedWriter(new FileWriter(logFile));
+			writer.write('''Project1;P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions2;Checkbox
+Project1;P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2;Checkbox
+Project1;P1property3;P1path3;P1fromPage3;P1toPage3;P1instructions3;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Checkbox
+Project1;P1property4;P1path4;P1fromPage4;P1toPage4;P1instructions4;Radio
+Project2;P2property1;P2path1;P2fromPage1;P2toPage1;P2instructions1;Radio
+Project2;P2property2;P2path2;P2fromPage2;P2toPage2;P2instructions2;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project2;P2property3;P2path3;P2fromPage3;P2toPage3;P2instructions3;Radio
+Project3;P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
+''');
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				// Close the writer regardless of what happens...
+				writer.close();
+			} catch (Exception e) {
+			}
+		}
+		def result = importer.importFile()
+		
+		then:
+		result.passed == 9
+		result.errors.size() == 3
+		Project.findByName("Project1").recommendations.size() == 4
+		Project.findByName("Project2").recommendations.size() == 3
+		Project.findByName("Project3").recommendations.size() == 2
+	}
 }

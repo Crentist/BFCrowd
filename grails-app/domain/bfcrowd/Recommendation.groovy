@@ -43,6 +43,7 @@ class Recommendation {
     }
     
 	static	constraints = {
+		property unique: ['project', 'path', 'fromPage', 'toPage', 'instructions']
 		checkboxMode inList: ["Checkbox", "Radio"]
 		contribution nullable: true
     }
