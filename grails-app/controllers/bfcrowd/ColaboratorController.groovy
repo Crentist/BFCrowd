@@ -1,6 +1,7 @@
 package bfcrowd
 
 import grails.transaction.Transactional;
+import java.text.SimpleDateFormat
 
 import org.apache.shiro.subject.Subject
 
@@ -86,13 +87,27 @@ class ColaboratorController {
 		// Acá deberían ser solo Recommendations a las que el User pueda contribuir
 		def r = Recommendation.get(recommendationId)
 		def u = getAuthenticatedUser()
-		Contribution c = new Contribution([text: text, state: state, recomendation: r, user: u])
+		Contribution c = new Contribution([text: text, state: state, recomendation: r, user: u, solvedDate: new Date()])
 		c.save(flush: true)
 		println c
 		Project p = Project.get(r.project.id)
-		p.usersXP[u.id] += p.xpValue
-		u.myXP += p.xpValue
+		def obtainedXP = p.xpValue + this.checkBonus(p, u)
+		p.usersXP[u.id] += obtainedXP
+		u.myXP += obtainedXP
+		
 		def recom = p.getRecommendationFor(getAuthenticatedUser())
 		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true]
+	}
+	
+	def checkBonus(Project p, User u) {
+		
+		def sdf = new SimpleDateFormat("dd/MM/yyyy")
+		def today = new Date()
+		
+		if (u.getMyContributions().count { sdf.format(it.solvedDate) == sdf.format(today) } == p.getRequiredForBonus()) {
+			return p.bonusXP
+			}
+			else return 0
+		
 	}
 }

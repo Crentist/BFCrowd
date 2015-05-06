@@ -6,7 +6,7 @@ package bfcrowd
  */
 class Contribution {
 	
-	//Date date
+	Date solvedDate
 
 	/* Default (injected) attributes of GORM */
 //	Long	id

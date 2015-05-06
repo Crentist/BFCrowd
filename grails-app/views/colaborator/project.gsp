@@ -76,7 +76,7 @@
 				<div id="estadisticas" style="padding: 5px 5px 5px 5px">
 					<ul>
 						<li>
-							<g:message code="bfcrowd.label.collab.project.xp"/>: ${project.usersXP.get(UserBase.get(SecurityUtils.subject.principal).id)} 
+							<g:message code="bfcrowd.label.collab.project.xp"/>: ${project.getUserXPByID(UserBase.get(SecurityUtils.subject.principal).id)} 
 						</li>
 						<li>
 							<g:message code="bfcrowd.label.collab.project.activity"/>
