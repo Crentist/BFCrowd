@@ -10,33 +10,33 @@
 
 <body>
 
+<g:set var="currentUser" value="${UserBase.get(SecurityUtils.subject.principal)}" />
 <div class="row-fluid">
 
 	<div class="span5 offset1">
-		<!-- Proyectos del usuario & resto de proyectos a los cuales unirse (mockup vista de la página de inicio del colaborador, lado izquierdo) -->
+		<div id="createProject">
+			<g:link class="btn btn-primary" controller="project" action="create"> <g:message code="bfcrowd.label.researcher.createProject"/> </g:link>
+		</div>
 		
-		<h3> My projects</h3>
-			<div id="createProject">
-				<g:link class="btn btn-primary" controller="project" action="create" value="${message(code: 'bfcrowd.label.researcher.createProject', default: 'Create project!')}"/>
-			</div>
+		<h3> <g:message code="bfcrowd.label.researcher.myProjects"/> </h3>
+				
+			<g:if test="${currentUser.getOwnedProjects()}">
+				<g:each var="proj" in="${currentUser.getOwnedProjects()}">
+					<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+						<strong> ${proj.name } </strong>
+						<p> ${proj.description}  </p>
+					</div>
+					<br/>
+				</g:each>
+			</g:if>
 	</div>
 	
 	<div class="span5">
 		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
-			<h4> Mis insignias </h4>
-			<div><!-- Insignias. TO DO --></div>
-			
-			<br/>
-			<h4> Mis logros </h4>
-			<div><!-- Logros. TO DO --></div>
-			
-			<br/>
-			<h4> Próxima... </h4>
-			<div><!-- Progress bar para la siguiente insignia. TO DO --></div>
+
 		</div>
 		<br/>
 		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
-			<h4> Ranking </h4>
 		</div>			
 	</div>
 
