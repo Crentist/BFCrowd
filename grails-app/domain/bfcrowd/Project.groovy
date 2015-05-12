@@ -12,6 +12,8 @@ class Project {
 //	Long	version
 	String name
 	String description
+	byte[] logo
+	String logoType
 	int xpValue //Amount of XP obtained by the user per recommendation solved (i.e Contribution) within the project
 	//LinkedHashMap usersXP = [:]//Colección que asocie a los usuarios con su experiencia ganada (ID de usuario + xp)
 	int bonusXP //Amount of XP obtained by the user when (s)he meets the required amount of recomendations solved (stored in 'requiredForBonus')
@@ -34,7 +36,11 @@ class Project {
     
 	static	constraints = {
 		name unique: true
-		usersXP blank: true
+		users nullable: true, blank: true
+		recommendations nullable: true, blank: true
+		usersXP nullable: true, blank: true
+		logo(nullable:true, maxSize: 50000 /* 16K */)
+		logoType(nullable:true)
     }
 	
 	/*

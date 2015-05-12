@@ -2,11 +2,6 @@
 <%@page import="grails.plugin.nimble.core.UserBase"%>
 <%@page import="grails.plugin.nimble.core.Role"%>
 <div id="Content" class="container">
-	<!-- Main menu in one row (e.g., controller entry points -->
-	<g:if test="${UserBase.get(SecurityUtils.subject?.principal)?.hasRole("SYSTEM ADMINISTRATOR")}">
-		<!-- render de esto si es el super admin -->
-		<g:render template="/_menu/menubar"/>
-	</g:if>
 	
 	<!-- Secondary menu in one row (e.g., actions for current controller) -->
 	<g:if test="${!layout_nosecondarymenu}">

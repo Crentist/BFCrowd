@@ -12,7 +12,8 @@ import grails.transaction.Transactional
 class ProjectController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
-
+	private static final okcontents = ['image/png', 'image/jpeg', 'image/gif']
+	
 	def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond Project.list(params), model:[projectInstanceCount: Project.count()]
@@ -41,13 +42,31 @@ class ProjectController {
             return
         }
 
+		def f = request.getFile('logo')
+		// List of OK mime-types
+		if (!okcontents.contains(f.getContentType())) {
+			flash.message = "Logo must be one of: ${okcontents}"
+			respond projectInstance.errors, view:'create'
+			return
+		}
+		
+		projectInstance.logo = f.bytes
+		projectInstance.logoType = f.contentType
+		
+		// Save the image and mime type
+		log.info("File uploaded: $projectInstance.logoType")
+		
         if (projectInstance.hasErrors()) {
             respond projectInstance.errors, view:'create'
             return
         }
-
+		
+		flash.message = "Logo (${projectInstance.logoType}, ${projectInstance.logo.size()} bytes) uploaded."
+		
         projectInstance.save flush:true
-
+		println "asdf"
+		render view: "show", model: [projectInstance:projectInstance]
+		/*
         request.withFormat {
             form {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'projectInstance.label', default: 'Project'), projectInstance.id])
@@ -55,8 +74,22 @@ class ProjectController {
             }
             '*' { respond projectInstance, [status: CREATED] }
         }
+        */
     }
-
+	
+	def logo_image() {
+		def logoProject = Project.get(params.id)
+		if (!logoProject || !logoProject.logo || !logoProject.logoType) {
+			response.sendError(404)
+			return
+		}
+		response.contentType = logoProject.logoType
+		response.contentLength = logoProject.logo.size()
+		OutputStream out = response.outputStream
+		out.write(logoProject.logo)
+		out.close()
+	}
+	
     def edit(Project projectInstance) {
         respond projectInstance
     }
