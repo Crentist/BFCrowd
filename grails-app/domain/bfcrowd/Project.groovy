@@ -3,7 +3,7 @@ package bfcrowd
 
 /**
  * Project
- * A domain class describes the data object and it's mapping to the database
+ * A domain class describes the data object and its mapping to the database
  */
 class Project {
 
@@ -22,8 +22,9 @@ class Project {
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
 //	Date	lastUpdated
-	static	belongsTo	= User 
-	static	hasMany		= [recommendations:Recommendation, users:User] //Debe conocer las contribuciones
+	static	belongsTo	= User
+	static  mappedBy = [users: 'myProjects',	owners: 'ownedProjects']
+	static	hasMany		= [recommendations:Recommendation, users:User, owners:User] //Debe conocer las contribuciones
 //	static	belongsTo	= []	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
 	static	hasOne		= [usersXP:LinkedHashMap] //Colección que asocia a los usuarios con su experiencia ganada (ID de usuario + xp)
 	 												// tells GORM to associate another domain object as an owner in a 1-1 mapping
@@ -73,6 +74,13 @@ class Project {
 	
 	public int getUserXPByID(Long id) {
 		this.usersXP[(id)]
+	}
+	
+	public addOwner(User owner) {
+		if (!owners){
+			this.owners = new ArrayList()
+		}
+		this.owners.add(owner)
 	}
 	
 	/*
