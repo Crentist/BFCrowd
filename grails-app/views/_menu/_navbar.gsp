@@ -33,6 +33,9 @@
 			                     </g:link>
 			                  </li>-->
 			                  <li>
+			                     <g:link controller="recommendationCsvImporter" action="index">
+			                        <g:message code="bfcrowd.label.import.navbar" />
+			                     </g:link>
 			                     <g:link controller="auth" action="signout">
 			                        <g:message code="bfcrowd.label.logout.navbar" />
 			                     </g:link>

@@ -15,10 +15,9 @@
 <g:form action="importFile" enctype="multipart/form-data" useToken="true">
 
 <span class="button">                   
-                    <input type="file" name="filecsv"/>
-                    <input type="submit" class="upload" value="upload"/>
-
-            </span>
+        <input type="file" name="filecsv"/>
+        <input type="submit" class="upload" value="upload"/>
+</span>
 
 </g:form>
 </section>
