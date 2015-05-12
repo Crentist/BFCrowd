@@ -16,8 +16,8 @@
 		<!-- Proyectos del usuario & resto de proyectos a los cuales unirse (mockup vista de la página de inicio del colaborador, lado izquierdo) -->
 		
 		<h3> My projects</h3>
-			<div id="myProjects">
-				<g:render template="/home/myProjects"/>
+			<div id="createProject">
+				<g:link class="btn btn-primary" controller="project" action="create" value="${message(code: 'bfcrowd.label.researcher.createProject', default: 'Create project!')}"/>
 			</div>
 	</div>
 	
