@@ -85,5 +85,13 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 			}
 		}
 		
+		recommendationCsvImporter(controller: "recommendationCsvImporter", action:"*") {
+			before = {
+				accessControl {
+					role("Investigador")
+				}
+			}
+		}
+		
 	}
 }
