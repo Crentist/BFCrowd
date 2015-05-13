@@ -29,6 +29,9 @@
 					<br/>
 				</g:each>
 			</g:if>
+			<g:else>
+				<g:message code="bfcrowd.label.researcher.emptyProjectList" />	
+			</g:else>
 	</div>
 	
 	<div class="span5">
