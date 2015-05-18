@@ -90,6 +90,26 @@
 		<div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
 			<strong><g:message code="bfcrowd.label.collab.project.ranking"/> ${project.name }</strong>
 			<table class="table">
+				<thead>
+					<tr>
+						<th> <g:message code="bfcrowd.label.collab.project.ranking.pos"/> </th>
+						<th> <g:message code="bfcrowd.label.collab.project.ranking.user"/></th>
+						<th> <g:message code="bfcrowd.label.collab.project.ranking.xp"/></th>
+					</tr>
+				</thead>
+				<tbody>
+					<g:set var="pos" value="${1}" />
+					<g:each var="user" in="${project.getUsersRanking()}">
+						<tr>
+						<th scope="row">${pos}</th>
+						<td>${ User.get(user.key)}</td>
+						<td>${user.value}</td>
+						</tr>
+					<g:set var="pos" value="${pos + 1}" />	
+					</g:each>
+				
+				</tbody>
+				
 			</table>
 		</div>
 		

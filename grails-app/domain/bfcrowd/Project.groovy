@@ -67,7 +67,8 @@ class Project {
 	}
 	
 	public setUserXP(Long userID, int xpValue) {
-		this.usersXP = new LinkedHashMap()
+		if (!usersXP)
+			this.usersXP = new LinkedHashMap()
 		this.usersXP[(userID)]=xpValue
 		//println this.usersXP.class
 	}
@@ -81,6 +82,11 @@ class Project {
 			this.owners = new ArrayList()
 		}
 		this.owners.add(owner)
+	}
+
+	public getUsersRanking() {
+		this.usersXP.sort { -it.value }
+		
 	}
 	
 	/*
