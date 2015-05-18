@@ -82,6 +82,7 @@ class Project {
 			this.owners = new ArrayList()
 		}
 		this.owners.add(owner)
+		owner.addProjectAsOwned(this)
 	}
 
 	public getUsersRanking() {

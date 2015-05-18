@@ -12,18 +12,16 @@
 
 <g:set var="currentUser" value="${UserBase.get(SecurityUtils.subject.principal)}" />
 <div class="row-fluid">
-
 	<div class="span5 offset1">
 		<div id="createProject">
 			<g:link class="btn btn-primary" controller="project" action="create"> <g:message code="bfcrowd.label.researcher.createProject"/> </g:link>
 		</div>
 		
 		<h3> <g:message code="bfcrowd.label.researcher.myProjects"/> </h3>
-				
 			<g:if test="${currentUser.getOwnedProjects()}">
 				<g:each var="proj" in="${currentUser.getOwnedProjects()}">
 					<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
-						<strong> ${proj.name } </strong>
+						<g:link controller="project" action="show" id="${proj.id }"> <strong> ${proj.name } </strong> </g:link>
 						<p> ${proj.description}  </p>
 					</div>
 					<br/>

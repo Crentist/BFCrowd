@@ -55,4 +55,11 @@ class User extends grails.plugin.nimble.core.UserBase {
 		return rolesNames
 	}
 	
+	def addProjectAsOwned(Project project) {
+		if (!ownedProjects){
+			this.ownedProjects = new ArrayList()
+		}
+		this.ownedProjects.add(project)
+	}
+	
 }

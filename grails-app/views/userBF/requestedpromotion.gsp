@@ -3,18 +3,18 @@
 
 <head>
   <meta name="layout" content="${grailsApplication.config.nimble.layout.application}"/>
-  <title>Solicitud enviada</title>
+  <title><g:message code="bfcrowd.label.collab.requestPromotion.sent"/></title>
 </head>
 
 <body>
 
-	<h2>Solicitud enviada</h2>
+	<h2><g:message code="bfcrowd.label.collab.requestPromotion.sent"/></h2>
 	<p>
-	  La solicitud de promoción ha sido enviada satisfactoriamente. Presione el botón para continuar
+	  <g:message code="bfcrowd.label.collab.requestPromotion.sent.description"/>
 	</p>
 	<br/>
 	<p>
-		<a href="${createLink(uri:'/')}">Continuar</a>
+		<a href="${createLink(uri:'/')}"><g:message code="bfcrowd.label.collab.requestPromotion.sent.continue"/></a>
 	</p>
 
 </body>

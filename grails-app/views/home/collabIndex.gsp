@@ -37,7 +37,13 @@
 		<br/>
 		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
 			<h4> <g:message code="bfcrowd.label.collab.ranking"/> </h4>
-		</div>			
+		</div>	
+		
+		<br/>
+		<g:set var="currentUser" value="${UserBase.get(SecurityUtils.subject.principal)}" />	
+		<g:if test="${!currentUser.requests}">
+			<g:link controller="userBF" action="requestPromotion" id="${currentUser.id }"> <g:message code="bfcrowd.label.collab.requestPromotion"/>  </g:link>
+		</g:if>		
 	</div>
 
 </div>
