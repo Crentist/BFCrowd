@@ -24,7 +24,11 @@ class HomeController {
 			if (getAuthenticatedUser()?.hasRole("Investigador")) {
 				render view: "researcherIndex"
 			}
-			else render view: "index"
+			else 
+				if (getAuthenticatedUser()?.hasRole("SYSTEM ADMINISTRATOR"))
+					render view: "adminIndex"
+				else				
+					render view: "index"
 	}
 	
 	def joinProjectById(int id) {

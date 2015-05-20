@@ -24,7 +24,7 @@ class NimbleUrlMappings {
 
 	static mappings = {
 
-		/*"/administration/administrators/$action?/$id?" {
+		"/administration/administrators/$action?/$id?" {
 			controller = "admins"
 		}
 		
@@ -38,7 +38,7 @@ class NimbleUrlMappings {
 
 		"/administration/roles/$action?/$id?" {
 			controller = "role"
-		}*/
+		}
 		
 		"/user/edit/$id?" {
 			controller = "user"
