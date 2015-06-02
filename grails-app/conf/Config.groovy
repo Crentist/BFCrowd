@@ -105,7 +105,7 @@ log4j = {
     //
     appenders {
         console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
-		//file name: 'stacktrace', file: "/var/log/tomcat6/stacktrace.log"
+		file name: 'stacktrace', file: "/var/BFCrowdData/stacktrace.log"
     }
 
     error  'org.codehaus.groovy.grails.web.servlet',        // controllers
