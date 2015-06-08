@@ -32,7 +32,7 @@ class ProjectController {
     }
 
     def create() {
-        respond new Project(params)
+        respond new Project(params), [model:[layout_nosecondarymenu: true]]
     }
 
     @Transactional
