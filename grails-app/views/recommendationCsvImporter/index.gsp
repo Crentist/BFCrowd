@@ -16,7 +16,8 @@
 
 <span class="button">                   
         <input type="file" name="filecsv"/>
-        <input type="submit" class="upload" value="upload"/>
+        <input type="submit" class="upload" value=""/>
+        <g:submitButton name="create" class="btn btn-primary" value="${message(code: 'default.button.upload.label', default: 'Upload')}" />
 </span>
 
 </g:form>

@@ -28,9 +28,10 @@ class RecommendationCsvImporter {
 		} else {				
 			splittedLines.each { cells -> 
 				cells = cells.collect {
-					if (it.getAt(0) == '"' && it.getAt(it.size()-1) == '"') {
-						it = it.substring(1, it.size() - 1)
-					}
+					if (it.size() > 1)
+						if (it.getAt(0) == '"' && it.getAt(it.size()-1) == '"') {
+							it = it.substring(1, it.size() - 1)
+						}
 					it
 				}
 				def project = Project.findByName(cells[0])
@@ -49,6 +50,7 @@ class RecommendationCsvImporter {
 					obtainedErrors.add(recomm.errors.allErrors)
 				else
 					i++
+					
 			}
 		}
 		
