@@ -16,19 +16,19 @@ class ProjectController {
 	
 	def index(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Project.list(params), model:[projectInstanceCount: Project.count()]
+        respond Project.list(params), model:[projectInstanceCount: Project.count(), layout_nosecondarymenu: true]
     }
 
 	def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
-        respond Project.list(params), model:[projectInstanceCount: Project.count()]
+        respond Project.list(params), model:[projectInstanceCount: Project.count(), layout_nosecondarymenu: true]
     }
 
     def show(Project projectInstance) {
 		/*
 		 * Modificar para tener una vista personalizada del proyecto 
 		 */
-        respond projectInstance
+        respond projectInstance, [model:[layout_nosecondarymenu: true]]
     }
 
     def create() {
@@ -91,7 +91,7 @@ class ProjectController {
 	}
 	
     def edit(Project projectInstance) {
-        respond projectInstance
+        respond projectInstance, [model:[layout_nosecondarymenu: true]]
     }
 
     @Transactional
