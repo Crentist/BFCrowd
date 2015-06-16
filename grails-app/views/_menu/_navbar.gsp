@@ -31,10 +31,10 @@
 			                        <g:message code="nimble.link.myaccount" />
 			                     </g:link>
 			                  </li>-->
-							  <g:if test="${UserBase.get(SecurityUtils.subject.principal)?.hasRole("Científico Ciudadano")}" >
+							  <g:if test="${UserBase?.get(SecurityUtils.subject.principal)?.hasRole("Científico Ciudadano")}" >
 			                    <g:render template="/_menu/navColaborator" />
 			                  </g:if>
-							  <g:if test="${UserBase.get(SecurityUtils.subject.principal)?.hasRole("Investigador")}" >
+							  <g:if test="${UserBase?.get(SecurityUtils.subject.principal)?.hasRole("Investigador")}" >
 			                    <g:render template="/_menu/navResearcher" />
 			                  </g:if>
 			                  <li>
