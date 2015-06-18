@@ -11,24 +11,20 @@
 
 <body>
 
-<section id="index-recommendationCsvImporter" class="first">
-<g:form action="importFile" enctype="multipart/form-data" useToken="true">
-<select name="projectId">
-	<g:each var="pid" in="${ownProjects }">
-  		<option value="${pid.id }">${pid.name }</option>
-	</g:each>
-</select>
+<div class="tabbable tabs-left">
+  <ul class="nav nav-tabs">
+  <li class="active"><a href="#lA" data-toggle="tab">1. <g:message code="bfcrowd.importer.instructive.label" /></a></li>
+  <li><a href="#lB" data-toggle="tab">2. <g:message code="bfcrowd.importer.upload.label" /></a></li>
+  </ul>
+  <div class="tab-content">
 
-<span class="button">                   
-        <input type="file" name="filecsv"/>
-        <input class="btn btn-primary" type="submit" class="upload" value="${message(code: 'default.button.upload.label', default: 'Upload')}"/>
-</span>
 
-</g:form>
-</section>
-
+<div class="tab-pane active" id="lA">
 <section id="index-recommendationCsvImporter-instruct" class="first">
-<p class="text-center lead">Example as Table</p>
+<p> <g:message code="bfcrowd.importer.instructive.part1" /> </p> 
+<br><br>
+<p class="text-center lead"><g:message code="bfcrowd.importer.instructive.tableexample" /></p>
+<p> <g:message code="bfcrowd.importer.instructive.part2" /> </p>
 <table class="table">
   <thead>
     <tr>
@@ -118,7 +114,8 @@
 
 <br>
 <div class="container">
-<p class="text-center lead">Example as CSV</p>
+<p class="text-center lead"><g:message code="bfcrowd.importer.instructive.csvexample" /></p>
+<p><g:message code="bfcrowd.importer.instructive.part3" /></p>
 <br>
 <p>P1property1;P1path1;P1fromPage1;P1toPage1;P1instructions1;Checkbox<br>
 P1property2;P1path2;P1fromPage2;P1toPage2;P1instructions2;Checkbox<br>
@@ -131,6 +128,31 @@ P3property1;P3path1;P3fromPage1;P3toPage1;P3instructions1;Radio<br>
 P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio</p>
 </div><br>
 </section>
+</div>
+
+
+<div class="tab-pane" id="lB">
+<section id="index-recommendationCsvImporter" class="first">
+<g:message code="bfcrowd.importer.project.label" /><g:form action="importFile" enctype="multipart/form-data" useToken="true" >
+<select name="projectId">
+	<g:each var="pid" in="${ownProjects }">
+  		<option value="${pid.id }">${pid.name }</option>
+	</g:each>
+</select>
+
+<span class="button">                   
+        <input type="file" name="filecsv"/>
+        <input class="btn btn-primary" type="submit" class="upload" value="${message(code: 'bfcrowd.importer.button.upload.label', default: 'Upload')}"/>
+</span>
+
+</g:form>
+</section>
+</div>
+
+  </div>
+</div>
+
+
 
 </body>
 
