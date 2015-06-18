@@ -16,6 +16,8 @@
  */
 import grails.plugin.nimble.core.AdminsService
 import grails.plugin.nimble.security.NimbleFilterBase
+import org.apache.shiro.SecurityUtils
+import grails.plugin.nimble.core.UserBase
 
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views
@@ -30,6 +32,10 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 		secure(controller: "main") {
 			before = { accessControl { true } }
 		}
+		
+	/*	secureedit(controller: "user", action: "edit") { //Me sigue filtrando por rol admin
+			before = { accessControl { true } }
+		}*/
 
 		// Account management requiring authentication
 		accountsecure(controller: "account", action: "(changepassword|updatepassword|changedpassword)") {
@@ -42,5 +48,50 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 				accessControl { role(AdminsService.ADMIN_ROLE) }
 			}
 		}
+		
+		/*administration(controller: "user", action:"*", actionExclude:"edit") {
+			before = {
+				accessControl { role(AdminsService.ADMIN_ROLE) }
+			}
+		}*/
+		
+		recommendation(controller: "recommendation", action:"*") {
+			before = {
+				accessControl {
+					role("Investigador")
+				}
+			}
+		}
+		
+		project(controller: "project", action:"*", actionExclude:"show") {
+			before = {
+				accessControl {
+					role("Investigador")
+				}
+			}
+		}
+		
+		colaborator(controller: "colaborator", action:"*") {
+			before = { 
+				accessControl { 
+					true //O algún rol en particular
+				} 
+			}
+		}
+		
+		contribution(controller: "contribution", action:"*") {
+			before = {
+				accessControl { role(AdminsService.ADMIN_ROLE) }
+			}
+		}
+		
+		recommendationCsvImporter(controller: "recommendationCsvImporter", action:"*") {
+			before = {
+				accessControl {
+					role("Investigador")
+				}
+			}
+		}
+		
 	}
 }

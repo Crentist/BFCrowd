@@ -1,5 +1,5 @@
-<header id="Header" class="jumbotron masthead">
+<header id="Header" class="page-header">
 	<div class="container">
-		<h1 class="title"><g:layoutTitle default="${meta(name:'app.name')}" /></h1>
+		<h1 class="title">BFCrowd - Científicos Ciudadanos UNLP</h1>
 	</div>
 </header>

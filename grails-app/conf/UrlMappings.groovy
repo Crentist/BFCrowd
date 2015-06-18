@@ -28,6 +28,11 @@ class UrlMappings {
 				controller(matches:/^((?!(api|mobile|web)).*)$/)
 		  	}
 		}
+		
+		"/lolo" {
+			controller = "User"
+			action = "createUser"
+		}
 
 		/*
 		 * System Pages without controller

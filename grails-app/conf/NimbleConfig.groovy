@@ -33,7 +33,18 @@ nimble {
 	localusers {
 		authentication { enabled = true } 
 		registration { enabled = true }
-		provision { active = false }
+		provision { active = true }
+	}
+	
+	passwords {
+		mustcontain {
+			lowercase = true
+			uppercase = false
+			numbers = false
+			symbols = false
+		}
+		minlength = 4
+		allowreuse = false
 	}
 
 	messaging {

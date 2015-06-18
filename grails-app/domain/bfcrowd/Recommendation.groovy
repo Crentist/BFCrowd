@@ -21,19 +21,21 @@ class Recommendation {
 	String path  //Featured Path Query a utilizar
 	String fromPage 
 	String toPage
-	Boolean solved
-	Date date //Fecha en la que se realizó la recomendación. Podría funcionar como historial, con varias fechas (nueva clase?)
+	Boolean solved = false
+	Date dateAssigned = new Date(0) // Fecha en que se asignó la recomendación a un colaborador, para que no sea vuelta a asignar instantaneamente
 
 	/* Default (injected) attributes of GORM */
 //	Long	id
 //	Long	version
+	String instructions
+	String checkboxMode
 	
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
 //	Date	lastUpdated
 	
-	static belongsTo = [contribution:Contribution]	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
-//	static	hasOne		= []	// tells GORM to associate another domain object as an owner in a 1-1 mapping
+	static 	belongsTo 	= [project:Project]	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
+	static	hasOne		= [contribution:Contribution]	// tells GORM to associate another domain object as an owner in a 1-1 mapping
 //	static	hasMany		= []	// tells GORM to associate other domain objects for a 1-n or n-m mapping
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
@@ -41,6 +43,9 @@ class Recommendation {
     }
     
 	static	constraints = {
+		property unique: ['project', 'path', 'fromPage', 'toPage', 'instructions']
+		checkboxMode inList: ["Checkbox", "Radio"]
+		contribution nullable: true
     }
 	
 	/*
@@ -53,6 +58,10 @@ class Recommendation {
 	
 	Boolean isSolved(){
 		this.solved
+	}
+	
+	def setAssigned(){
+		this.dateAssigned = new Date()
 	}
 	
 	Boolean setAsSolved() {
@@ -71,4 +80,5 @@ class Recommendation {
 	def getSolutionScript() {
 		//TO-DO
 	}
+	
 }

@@ -1,8 +1,7 @@
+<%@page import="org.apache.shiro.SecurityUtils"%>
+<%@page import="grails.plugin.nimble.core.UserBase"%>
+<%@page import="grails.plugin.nimble.core.Role"%>
 <div id="Content" class="container">
-	<!-- Main menu in one row (e.g., controller entry points -->
-	<g:if test="${!layout_nomainmenu}">
-		<g:render template="/_menu/menubar"/>
-	</g:if>
 	
 	<!-- Secondary menu in one row (e.g., actions for current controller) -->
 	<g:if test="${!layout_nosecondarymenu}">
