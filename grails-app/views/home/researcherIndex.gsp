@@ -34,7 +34,6 @@
 	
 	<div class="span5">
 		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
-
 		</div>
 		<br/>
 		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
