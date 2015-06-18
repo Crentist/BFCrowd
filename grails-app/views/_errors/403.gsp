@@ -15,18 +15,18 @@
 		<div class="big-message">
 			<div class="container">
 				<h2>
-					403 - Forbidden
+					<g:message code="bfcrowd.label.error.forbidden.heading" />
 				</h2>
 				<p>
-					No posee el rol requerido para visualizar el contenido de esta página.
+					<g:message code="bfcrowd.label.error.forbidden.description1" />
 				</p>
 				<p>
-					Contáctese con el administrador si desea solicitar un rol diferente.
+					<g:message code="bfcrowd.label.error.forbidden.description2" />
 				</p>
 				<div class="actions">
 					<a href="${createLink(uri: '/')}" class="btn btn-large btn-primary">
 						<i class="glyphicon glyphicon-chevron-left icon-white"></i>
-						Volver al inicio
+						<g:message code="bfcrowd.label.error.forbidden.backToHome" />
 						<!--<g:message code="error.button.backToHome"/>-->
 					</a>
 					<!--  <a href="${createLink(uri: '/contact')}" class="btn btn-large btn-success">

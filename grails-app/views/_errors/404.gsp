@@ -15,23 +15,19 @@
 		<div class="big-message">
 			<div class="container">
 				<h1>
-					<g:message code="error.404.callout"/>
+					<g:message code="bfcrowd.label.error.notFound.callout"/>
 				</h1>
 				<h2>
-					<g:message code="error.404.title"/>
+					<g:message code="bfcrowd.label.error.notFound.title"/>
 				</h2>
 				<p>
-					<g:message code="error.404.message"/>
+					<g:message code="bfcrowd.label.error.notFound.message"/>
 				</p>
 				
 				<div class="actions">
 					<a href="${createLink(uri: '/')}" class="btn btn-large btn-primary">
 						<i class="glyphicon glyphicon-chevron-left icon-white"></i>
-						<g:message code="error.button.backToHome"/>
-					</a>
-					<a href="${createLink(uri: '/contact')}" class="btn btn-large btn-success">
-						<i class="glyphicon glyphicon-envelope"></i>
-						<g:message code="error.button.contactSupport"/>
+						<g:message code="bfcrowd.label.error.forbidden.backToHome"/>
 					</a>					
 				</div>
 			</div>
