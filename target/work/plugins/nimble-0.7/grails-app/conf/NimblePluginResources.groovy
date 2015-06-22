@@ -43,5 +43,8 @@ modules = {
 		dependsOn 'bootstrap-css, bootstrap-responsive-css, bootstrap-modal, bootstrap-alert, bootstrap-tab, bootstrap-dropdown'
 	}
 
-	'nimble-login' { dependsOn 'nimble-login-css, jquery, bootstrap-css' }
+	'nimble-login' { 
+		dependsOn 'nimble-login-css, jquery, bootstrap-css' 
+		resource url:'/js/facebookLogin.js'
+		}
 }
