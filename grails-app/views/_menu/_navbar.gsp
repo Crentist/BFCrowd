@@ -11,14 +11,18 @@
 			</button>
 		</div>
 
+		<a class="navbar-brand" href="${createLink(uri: '/../')}">
+			<img class="logo" src="${resource(dir:'images', file:'roble.png')}" alt="${meta(name:'app.name')}" width="16px" height="16px"/> 
+			Científicos Ciudadanos
+		</a>
+		<div class="navbar-brand"> - </div>
 		<a class="navbar-brand" href="${createLink(uri: '/')}">
-			<img class="logo" src="${resource(plugin: 'kickstart', dir:'images', file:'brand_logo.png')}" alt="${meta(name:'app.name')}" width="16px" height="16px"/> 
 			${meta(name:'app.name')}
 		</a>	
 		
 		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">
 		<g:set var="currentUser" value="${UserBase.get(SecurityUtils.subject.principal)}" />
-				<div class="container-fluid">           
+				<div class="container-fluid">
 			         <ul class="nav pull-right">
 			            <li class="profile dropdown">
 			               <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown">
@@ -50,7 +54,7 @@
 			<g:else>	
 				<ul class="nav pull-right" >	
 					<li>
-						<g:link controller="auth" action="login" style="color:#0088cc"><g:message code="bfcrowd.label.login.navbar" /></g:link>
+						<g:link controller="auth" action="login" ><g:message code="bfcrowd.label.login.navbar" /></g:link>
 					</li>		
 				</ul>														
 			</g:else>	
