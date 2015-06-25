@@ -1,5 +1,7 @@
 package bfcrowd
 
+import grails.plugins.rest.client.RestBuilder
+
 /**
  * HomeController
  * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
@@ -13,6 +15,20 @@ class HomeController {
 		 * Cambiar lo siguiente por una cláusula Switch si es posible
 		 * http://mrhaki.blogspot.com.ar/2009/08/groovy-goodness-switch-statement.html
 		 */
+		RestBuilder rest = new RestBuilder()
+		//def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
+		//println resp.json
+		
+		def resp = rest.post("https://cientificos-badges-api.herokuapp.com/badges/90812gjd/instances") {
+			contentType "application/json"
+			json {
+				email = "cacho@cacho.com"
+			}
+		}
+		
+		println resp.json
+		
+		
 		if (getAuthenticatedUser()?.hasRole("Científico Ciudadano")) {
 			render view: "collabIndex"
 		}

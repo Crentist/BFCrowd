@@ -145,4 +145,16 @@ class ProjectController {
             '*'{ render status: NOT_FOUND }
         }
     }
+	
+	def issueBadges() {
+		
+		def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
+	}
+	
+	def grantBadge() {
+		
+		
+	}
 }
+
+

@@ -22,7 +22,7 @@
 			         <ul class="nav pull-right">
 			            <li class="profile dropdown">
 			               <a class="dropdown-toggle" href="javascript:" data-toggle="dropdown">
-			               ${currentUser?.username}
+			               ${currentUser?.getProfile()?.fullName}
 			               <b class="caret icon-white"></b>                           
 			               </a>        
 			               <ul class="dropdown-menu">

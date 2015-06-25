@@ -48,7 +48,7 @@ class AuthController {
 		       model: [local: local, registration: registration, username: username, rememberMe: (rememberMe != null), targetUri: targetUri])
 	}
 
-	def signin(String username, String password, String rememberme) {
+	def signin(String username, String password, Boolean rememberme) {
 		def authToken = new UsernamePasswordToken(username, password)
 
 		if (rememberme) {

@@ -1,19 +1,6 @@
 var app_id = '864102200328600';
 var scopes = 'email, user_friends, user_online_presence';
 
-var btn_login = "<div id='facebook-profile' style='text-align: center;'>"
-	+ 	' <a  "href="#" onclick="FB.login();" class="btn btn-primary" style="text-align: center;">Iniciar Sesi&oacute;n con Facebook</a>';
-	+ "</div>";
-
-var btn_permission = 
-	"<div id='facebook-profile' style='text-align: center;'>"
-	+ 	' <a  "href="#" onclick="FB.login();" class="btn btn-primary" style="text-align: center;">Dar permisos a Facebook</a>';
-	+ "</div>";
-
-var btn_signin = "<div id='facebook-profile' style='text-align: center;'>"
-		+ 	' <a  "href="#" onclick="FB.login();" class="btn btn-primary" style="text-align: center;">Registrarse con Facebook</a>';
-		+ "</div>";
-
 // Load the SDK asynchronously
 (function(d, s, id) {
 	var js, fjs = d.getElementsByTagName(s)[0];
@@ -34,75 +21,47 @@ window.fbAsyncInit = function() {
 		version : 'v2.2' // use version 2.2
 	});
 
+	$("#login-btn, #signup-btn").click(function(){
+		FB.login(function(){}, {scope: scopes});
+
+	});
+	$("#post-btn").click(function() {
+		facebookPost();
+	});
+	$("#logout-btn").click(function() {
+		FB.logout();
+		window.location.reload();
+	});
+
 	FB.getLoginStatus(function(response) {
 		statusChangeCallback(response);
 	}
-	
+
 	);
-	
+
 };
 
 // This is called with the results from from FB.getLoginStatus().
 function statusChangeCallback(response) {
 	if (response.status === 'connected') {
-		getFacebookProfilebf();
-	} else if (response.status === 'not_authorized') {
-		showSignInButton();
+		showLoginForm(response);
 	} else {
-		// sino muestra el boton de login
 		showLoginButton();
-		// window.location.href="login.html";
 	}
 }
 
-function getFacebookProfile() {
-	FB.getLoginStatus(function(response) {
-		if (response.status === 'connected') {
-			FB.api('/me',function(response) {
-				$('#Content').prepend(div_profile);
-//				$('body').prepend(div_profile);
-				$('#name').text("Nombre: " + response.name);
-				$('#email').text("Email: " + response.email);
-				$('#facebook-profile img').attr('src','http://graph.facebook.com/'+ response.id+ '/picture?type=normal');
-				$('#controller').text("id: " + response.name);
-
-			});
-			} else {
-					showLoginButton();
-				}
-			});
-}
-
 var showLoginButton = function() {
-	$('#Content').prepend(btn_login);
-	//document.getElementById("div_facebook").innerHTML = btn_login;
+	$('#login-btn').show();
 }
-	
-var showLoginForm = function() {
-	FB.api('/me',function(response) {
-		$('#idFacebook').val(response.id);
+
+var showLoginForm = function(response) {
+	FB.api('/me', function(response) {
+		$('#login-controller').show();
+		$('#userName').val(response.id);
+		$('#fullName').val(response.name);
+		$('#email').val(response.email);
 	});
 }
-var showSignInButton = function() {
-	$('#Content').prepend(btn_signin);
-}
-
-var div_profile = "<div id='facebook-profile' style='text-align: center;'>"
-		+ "<img id='img_perfil' style='margin: 0 auto;border-radius: 10px;'></img>"
-		+ "<br>"
-		+ "<strong id='name'></strong> "
-		+ "<br>"
-		+ "<strong id='email'></strong>"
-		+ "<br>"
-		+ "<strong id='controller'></strong>"
-		+ "<br>"
-		+ "<a style='margin: 10px' href='#' onclick='facebookPost()' id='publicar' class='btn btn-primary'>Publicar prueba</a>"
-		+ "<br>"
-		+ "<a style='margin: 10px' href='#' id='login' class='btn btn-primary' onclick='FB.logout()'> Logout</a>";
-		+ "<strong id='controller'></strong> "
-		+ "</div>"
-
-
 // funcion que postea en el muro del usuario: "esto es una prueba"
 var facebookPost = function() {
 	FB.login(function() {
@@ -113,4 +72,3 @@ var facebookPost = function() {
 		scope : 'publish_actions'
 	});
 }
-

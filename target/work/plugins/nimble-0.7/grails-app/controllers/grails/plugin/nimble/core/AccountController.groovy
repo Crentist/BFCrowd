@@ -30,7 +30,7 @@ import org.apache.shiro.crypto.hash.Sha256Hash
  * @author Bradley Beddoes
  */
 class AccountController {
-
+	//, 
 	static Map allowedMethods = [saveuser: 'POST', validusername: 'POST', forgottenpasswordprocess: 'POST', updatepassword: 'POST']
 
 	def roleService
@@ -106,6 +106,7 @@ class AccountController {
 	}
 
 	def saveuser() {
+		println params
 		if (!nimbleConfig.localusers.registration.enabled) {
 			log.warn("Account registration is not enabled for local users, skipping request")
 			response.sendError(404)
