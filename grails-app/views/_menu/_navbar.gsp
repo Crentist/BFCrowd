@@ -17,7 +17,8 @@
 		</a>
 		<div class="navbar-brand"> - </div>
 		<a class="navbar-brand" href="${createLink(uri: '/')}">
-			${meta(name:'app.name')}
+			${meta(name:'app.name')} -
+			<g:message code="bfcrowd.label.admin.navbar.home" />	
 		</a>	
 		
 		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">

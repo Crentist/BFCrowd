@@ -60,9 +60,9 @@ class UserBFController {
 			def defaultRole = Role.findByName("Científico Ciudadano")
 			roleService.addMember(user, defaultRole)
 			
-			redirect controller: 'account', action: 'createduser'
+			//redirect controller: 'account', action: 'createduser'
 		}
-		else {
+		//else {
 			//login
 			//redirect(action:AuthController.signin(params["username"], params["username"], false))
 			def authToken = new UsernamePasswordToken(params["username"], "a"+params["username"])
@@ -110,7 +110,7 @@ class UserBFController {
 				flash.message = message(code: "nimble.login.failed.general")
 			}
 			redirect(uri: '/')
-		}
+		//}
 		//redirect(action: AccountController.saveuser(), params: this.params)
 		//AccountController.saveuser()
 		

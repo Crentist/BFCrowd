@@ -55,7 +55,7 @@
 					</span>
 				</div>
 
-				<div id="border" class="login-options border-top">
+				<!--  <div id="border" class="login-options border-top">
 					<h4>
 						<g:message code="bfcrowd.label.login.forgottenPassword.heading" />
 					</h4>
@@ -64,7 +64,8 @@
 						style="text-transform:lowercase;">
 						<g:message code="bfcrowd.label.login.resetPassword" />
 					</g:link>
-				</div>
+				</div>-->
+				
 			</g:form>
 
 			<div id="border" class="login-options border-top";>
@@ -74,17 +75,17 @@
 				</h4>
 
 				<div id="login-btn" style="margin-top: 10pt; display: none">
-					<a "href="#" onclick="FB.login();" class="btn btn-primary"
-						style="text-align: center;">Iniciar Sesi&oacute;n con Facebook</a>
+					<a "href="#" class="btn btn-primary"
+						style="text-align: center;"><g:message code="bfcrowd.label.login.button.withFB" /></a>
 				</div>
 				
 				<div id="login-controller" style="margin-top: 10pt; display: none">
-					Already logged in, these are your personal data
+					<g:message code="bfcrowd.label.login.withFB.alreadyIn" />
 					<g:form class="form-horizontal" controller="userBF" action="signinfb"
 						name="signup-form" method="post">
 
 						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-4 control-label">Username</label>
+							<label for="inputUsername" class="col-sm-4 control-label"><g:message code="bfcrowd.label.account.registeraccount.username" /></label>
 							<div class="col-sm-9">
 								<input readonly type="text" size="30" id="userName"
 									name="username" class="form-control">
@@ -92,8 +93,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-4 control-label">Full
-								name</label>
+							<label for="inputFullname" class="col-sm-4 control-label"><g:message code="bfcrowd.label.account.registeraccount.fullName" /></label>
 							<div class="col-sm-9">
 								<input readonly type="text" size="30" id="fullName"
 									name="fullName">
@@ -101,7 +101,7 @@
 						</div>
 
 						<div class="form-group">
-							<label for="inputEmail3" class="col-sm-4 control-label">EMail</label>
+							<label for="inputEmail" class="col-sm-4 control-label"><g:message code="bfcrowd.label.account.registeraccount.email" /></label>
 							<div class="col-sm-9">
 								<input readonly type="text" size="30" id="email" name="email" />
 							</div>
