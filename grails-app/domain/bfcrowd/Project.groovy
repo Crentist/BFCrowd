@@ -27,7 +27,7 @@ class Project {
 	static	hasMany		= [recommendations:Recommendation, users:User, owners:User] //Debe conocer las contribuciones
 //	static	belongsTo	= []	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
 	static	hasOne		= [usersXP:LinkedHashMap] //Colección que asocia a los usuarios con su experiencia ganada (ID de usuario + xp)
-	 												// tells GORM to associate another domain object as an owner in a 1-1 mapping
+ 	 												// tells GORM to associate another domain object as an owner in a 1-1 mapping
 //	static	hasMany		= []	// tells GORM to associate other domain objects for a 1-n or n-m mapping
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
@@ -74,6 +74,10 @@ class Project {
 	}
 	
 	public int getUserXPByID(Long id) {
+		/*
+		 * Método que dado un usuario retorne un entero que representa la experiencia obtenida del mismo
+		 * en el proyecto
+		 */
 		this.usersXP[(id)]
 	}
 	
@@ -90,8 +94,4 @@ class Project {
 		
 	}
 	
-	/*
-	 * Método que dado un usuario retorne un entero que representa la experiencia obtenida del mismo
-	 * en el proyecto
-	 */
 }

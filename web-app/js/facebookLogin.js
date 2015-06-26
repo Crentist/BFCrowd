@@ -23,7 +23,6 @@ window.fbAsyncInit = function() {
 
 	$("#login-btn, #signup-btn").click(function(){
 		FB.login(function(){}, {scope: scopes});
-		window.location.reload(); //cuidado
 	});
 	$("#post-btn").click(function() {
 		facebookPost();

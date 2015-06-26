@@ -2,6 +2,7 @@ package bfcrowd
 
 import grails.transaction.Transactional;
 import java.text.SimpleDateFormat
+import grails.plugins.rest.client.RestBuilder
 
 import org.apache.shiro.subject.Subject
 
@@ -94,6 +95,8 @@ class ColaboratorController {
 		def obtainedXP = p.xpValue + this.checkBonus(p, u)
 		p.usersXP[u.id] += obtainedXP
 		u.myXP += obtainedXP
+		//this.checkBadges()
+		
 		
 		def recom = p.getRecommendationFor(getAuthenticatedUser())
 		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true]
@@ -104,10 +107,42 @@ class ColaboratorController {
 		def sdf = new SimpleDateFormat("dd/MM/yyyy")
 		def today = new Date()
 		
+		//Acá tiene que ser las contrib de ese proyecto, no todas
 		if (u.getMyContributions().count { sdf.format(it.solvedDate) == sdf.format(today) } == p.getRequiredForBonus()) {
 			return p.bonusXP
 			}
 			else return 0
+		
+	}
+	
+	def checkBadges(User u) {
+		
+	/**
+	 * if (tiene una recomm)
+	 * 		dar badge de primer recomendacion (en el proyecto)
+	 * O
+	 * Project.grantBadge() (si es que tiene lo requerido)
+	 * 	
+	 */
+		
+	}
+	
+	def getBadges(int id, String projectName) {
+		
+		RestBuilder rest = new RestBuilder()
+		def email = getAuthenticatedUser().getProfile().getEmail()
+		def app = projectName.replace(" ", "_")
+		def resp = rest.get("https://ciencia.lifia.info.unlp.edu.ar/badges/issuers/bfcrowd_${app}/instances/${email}")
+		return resp.json
+		
+		/**def resp = rest.post("https://cientificos-badges-api.herokuapp.com/badges/90812gjd/instances") {
+			contentType "application/json"
+			json {
+				email = "cacho@cacho.com"
+			}
+		}
+		
+		println resp.json**/
 		
 	}
 }

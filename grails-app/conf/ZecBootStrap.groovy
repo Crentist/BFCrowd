@@ -7,6 +7,7 @@ import bfcrowd.Project
 import bfcrowd.Recommendation
 import bfcrowd.Contribution
 import bfcrowd.User
+import grails.plugins.rest.client.RestBuilder
 
 class ZecBootStrap {
 	
@@ -123,6 +124,34 @@ class ZecBootStrap {
 			recomm3.project = project1
 			recomm3.save()
 		}
+		
+		//Crear las badges por aquí
+		
+		def contenido = '''[
+								{
+							    	"id_app":"bfcrowd_Wikipedia_tasks",
+							    	"name":"BFCrowd Wikipedia Tasks",
+							    	"url":"http://ciencia.lifia.info.unlp.edu.ar/bfcrowd",
+							    	"badges":[
+							        	{
+							            	"name":"First contribution",
+							            	"imageUrl":"http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png",
+							            	"criteriaUrl":"http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges",
+							            	"description":"You love cats!"
+							        	},...
+							    	]
+								}
+							]'''
+		
+		RestBuilder rest = new RestBuilder()
+		def resp = rest.post("https://ciencia.lifia.info.unlp.edu.ar/badges-api/carga-json") {
+		 contentType "application/json"
+			 json {
+				 ${contenido}
+				 }
+			 }
+		 
+		 println resp.json
     }
     def destroy = {
     }

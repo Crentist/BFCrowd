@@ -54,19 +54,19 @@
 						</button>
 					</span>
 				</div>
-
-				<!--  <div id="border" class="login-options border-top">
-					<h4>
-						<g:message code="bfcrowd.label.login.forgottenPassword.heading" />
-					</h4>
-					<g:message code="bfcrowd.label.login.forgottenPassword.descriptive" />
-					<g:link controller="account" action="forgottenpassword"
-						style="text-transform:lowercase;">
-						<g:message code="bfcrowd.label.login.resetPassword" />
-					</g:link>
-				</div>-->
 				
 			</g:form>
+			
+			<!--   <div id="border" class="login-options border-top">
+				<h4>
+					<g:message code="bfcrowd.label.login.forgottenPassword.heading" />
+				</h4>
+				<g:message code="bfcrowd.label.login.forgottenPassword.descriptive" />
+				<g:link controller="account" action="forgottenpassword"
+					style="text-transform:lowercase;">
+					<g:message code="bfcrowd.label.login.resetPassword" />
+				</g:link>
+			</div> -->			
 
 			<div id="border" class="login-options border-top";>
 

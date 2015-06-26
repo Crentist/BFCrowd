@@ -3,6 +3,7 @@ package bfcrowd
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
+import grails.plugins.rest.client.RestBuilder
 
 /**
  * ProjectController
@@ -151,7 +152,20 @@ class ProjectController {
 		def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
 	}
 	
-	def grantBadge() {
+	def grantBadge(String userEmail, int idBadge) {
+		
+		RestBuilder rest = new RestBuilder()
+		//def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
+		//println resp.json
+		
+		def resp = rest.post("https://163.10.5.42/badges/90812gjd/instances") {
+			contentType "application/json"
+			json {
+				email = "${userEmail}"
+			}
+		}
+		
+		println resp.json
 		
 		
 	}
