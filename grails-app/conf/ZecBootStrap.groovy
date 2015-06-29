@@ -126,32 +126,37 @@ class ZecBootStrap {
 		}
 		
 		//Crear las badges por aquí
-		
-		def contenido = '''[
-								{
-							    	"id_app":"bfcrowd_Wikipedia_tasks",
-							    	"name":"BFCrowd Wikipedia Tasks",
-							    	"url":"http://ciencia.lifia.info.unlp.edu.ar/bfcrowd",
-							    	"badges":[
-							        	{
-							            	"name":"First contribution",
-							            	"imageUrl":"http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png",
-							            	"criteriaUrl":"http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges",
-							            	"description":"You love cats!"
-							        	},...
-							    	]
-								}
-							]'''
-		
+		/**def contenido = 
+		[
+			[
+			id_app:  'bfcrowd_Wikipedia_tasks',
+			name: 'BFCrowd Wikipedia Tasks',
+			url:  'http://ciencia.lifia.info.unlp.edu.ar/bfcrowd',
+			badges: (
+					[
+	            	name: "First contribution",
+	            	imageUrl: "http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png",
+	            	criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges",
+	            	description: "My first contribution"
+					] 
+					)
+				
+			]
+		]
+				
 		RestBuilder rest = new RestBuilder()
-		def resp = rest.post("https://ciencia.lifia.info.unlp.edu.ar/badges-api/carga-json") {
+		
+		//def resp = rest.get("http://ciencia.lifia.info.unlp.edu.ar/badges-api/")
+		//println resp.json
+		
+		def resp = rest.post("http://ciencia.lifia.info.unlp.edu.ar/badges-api/carga-json") {
 		 contentType "application/json"
 			 json {
-				 ${contenido}
+				 contenido
 				 }
 			 }
 		 
-		 println resp.json
+		 println resp.json**/
     }
     def destroy = {
     }

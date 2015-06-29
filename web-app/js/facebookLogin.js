@@ -49,6 +49,10 @@ function statusChangeCallback(response) {
 	}
 }
 
+function afterFbLogin() {
+	window.location.reload(true);
+}
+
 var showLoginButton = function() {
 	$('#login-btn').show();
 }
