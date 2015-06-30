@@ -12,7 +12,7 @@
 
 <div class="row-fluid">
 
-	<div class="span5 offset1">
+	<div class="span8">
 		<!-- Proyectos del usuario & resto de proyectos a los cuales unirse (mockup vista de la página de inicio del colaborador, lado izquierdo) -->
 		
 		<h3> <g:message code="bfcrowd.label.admin.index.heading"/></h3>
@@ -23,7 +23,7 @@
 		<g:link class="btn btn-primary" controller="user" action="list"> <g:message code="bfcrowd.label.admin.index.go" />  </g:link>
 	</div>
 	
-	<div class="span5">
+	<div class="span4">
 	
 	</div>
 

@@ -30,7 +30,7 @@
 	
 </ul> 
 	<section id="create-project" class="first">
-		<div class="span5">
+		<div class="span12">
 			<g:hasErrors bean="${projectInstance}">
 			<div class="alert alert-danger">
 				<g:renderErrors bean="${projectInstance}" as="list" />

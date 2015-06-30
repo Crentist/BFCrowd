@@ -12,7 +12,7 @@
 
 <div class="container">
 
-	<div class="span5 offset1">
+	<div class="span6">
 		<h1><g:message code="bfcrowd.label.welcome"/></h1>
 		<p>
 			<g:message code="bfcrowd.description.index"/>
@@ -36,7 +36,7 @@
 		<g:set var="allProjects" value="${Project.getAll()}" />
 		<!-- Listar los proyectos disponibles dentro de recuadros o algo por el estilo -->
 		<g:each var="proj" in="${allProjects}">
-			<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+			<div class="show-component"> 
 				<strong> ${proj.name } </strong>
 				<p> ${proj.description } </p>
 			</div>
