@@ -15,15 +15,15 @@
 <body>
 
 <div class="row-fluid">
-	<div class="span5 offset1">
-		<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+	<div class="span8">
+		<div class="show-component"> 
 			<strong> ${project.name } </strong>
 			<p> ${project.description } </p>
 	    </div>
 	    <br/>
-	    <div style="width:90%;min-height:320px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+	    <div class="show-component">
 			<g:if test="${recommendation}">
-		    	<div style="width:100%;height:100%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+		    	<div class="show-component">
 					    	<div id="instructions">
 					        <h4><g:message code="bfcrowd.label.collab.project.instructions"/></h4>
 					        <p id="instruction">${recommendation.instructions }</p>
@@ -31,9 +31,9 @@
 				        </div>
 			    </div>
 			    <br/>
-			    <div id="feedback" style="width:100%;height:100%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+			    <div class="show-component">
 					<h4><g:message code="bfcrowd.label.collab.project.feedback"/></h4>
-						<g:form controller="colaborator" class="form-horizontal" role="form" class="row-fluid">
+						<g:form controller="colaborator" action="project" params="${[id:recommendation.project.id]}" class="form-horizontal" role="form" class="row-fluid">
 							<g:hiddenField name="recommendationId" value="${recommendation.id}"/>
 							<div class="span5">
 								<ul id="feedbackOptions">
@@ -59,15 +59,15 @@
 				
 			</g:if>
 			<g:else>
-				<div id="emptyProject" style="padding-top:50%;padding-bottom:50%">
+				<div id="emptyProject" >
 					<p style="text-align:center"><g:message code="bfcrowd.label.collab.project.noRecomm"/></p>
 				</div>
 			</g:else>			
 	    </div>
 	</div>
 
-	<div class="span5">
-		<div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+	<div class="span4">
+		<div class="show-component"> 
 			<strong><g:message code="bfcrowd.label.collab.project.myBadges"/> ${project.name }</strong>
 				<div id="insignias" style="padding: 5px 5px 5px 5px">
 				TO DO
@@ -87,7 +87,7 @@
 				</div>		
 		</div>	
 		<br/>
-		<div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;">
+		<div class="show-component">
 			<strong><g:message code="bfcrowd.label.collab.project.ranking"/> ${project.name }</strong>
 			<table class="table">
 				<thead>

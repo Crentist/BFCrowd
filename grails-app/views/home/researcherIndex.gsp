@@ -11,16 +11,21 @@
 <body>
 
 <g:set var="currentUser" value="${UserBase.get(SecurityUtils.subject.principal)}" />
+
 <div class="row-fluid">
-	<div class="span5 offset1">
+	<div class="span12">
 		<div id="createProject">
 			<g:link class="btn btn-primary" controller="project" action="create"> <g:message code="bfcrowd.label.researcher.createProject"/> </g:link>
 		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div class="span8">
 		
 		<h3> <g:message code="bfcrowd.label.researcher.myProjects"/> </h3>
 			<g:if test="${currentUser.getOwnedProjects()}">
 				<g:each var="proj" in="${currentUser.getOwnedProjects()}">
-					<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+					<div class="show-component"> 
 						<g:link controller="project" action="show" id="${proj.id }"> <strong> ${proj.name } </strong> </g:link>
 						<p> ${proj.description}  </p>
 					</div>
@@ -32,11 +37,11 @@
 			</g:else>
 	</div>
 	
-	<div class="span5">
-		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
+	<div class="span4">
+		<div class="show-component"> 
 		</div>
 		<br/>
-		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
+		<div class="show-component"> 
 		</div>			
 	</div>
 

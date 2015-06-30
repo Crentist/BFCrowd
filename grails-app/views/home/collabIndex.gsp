@@ -12,7 +12,7 @@
 
 <div class="row-fluid">
 
-	<div class="span5 offset1">
+	<div class="span8">
 		<!-- Proyectos del usuario & resto de proyectos a los cuales unirse (mockup vista de la página de inicio del colaborador, lado izquierdo) -->
 		
 		<h3> <g:message code="bfcrowd.label.collab.myProjects"/></h3>
@@ -21,8 +21,8 @@
 			</div>
 	</div>
 	
-	<div class="span5">
-		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
+	<div class="span4">
+		<div class="show-component"> 
 			<h4> <g:message code="bfcrowd.label.collab.myBadges"/> </h4>
 			<div><!-- Insignias. TO DO --></div>
 			
@@ -35,7 +35,7 @@
 			<div><!-- Progress bar para la siguiente insignia. TO DO --></div>
 		</div>
 		<br/>
-		<div style="width:90%;height:200px;border-style:solid;border-width:medium"> 
+		<div class="show-component"> 
 			<h4> <g:message code="bfcrowd.label.collab.ranking"/> </h4>
 		</div>	
 		
