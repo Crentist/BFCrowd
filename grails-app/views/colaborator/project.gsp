@@ -70,7 +70,7 @@
 		<div class="show-component"> 
 			<strong><g:message code="bfcrowd.label.collab.project.myBadges"/> ${project.name }</strong>
 				<div id="insignias" style="padding: 5px 5px 5px 5px">
-				TO DO
+				${project.getUserBadges(UserBase.get(SecurityUtils.subject.principal)) }
 				</div>
 			<strong><g:message code="bfcrowd.label.collab.project.stats"/> ${project.name }</strong>
 				<div id="estadisticas" style="padding: 5px 5px 5px 5px">

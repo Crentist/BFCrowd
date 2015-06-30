@@ -17,7 +17,8 @@ class HomeController {
 		 * http://mrhaki.blogspot.com.ar/2009/08/groovy-goodness-switch-statement.html
 		 */
 		
-		/**def contenido =
+		def contenido =
+		 [
 			[
 			    id_app: 'bfcrowd_Wikipedia_tasks',
 			    name: 'BFCrowd Wikipedia Tasks',
@@ -27,12 +28,14 @@ class HomeController {
 			     ]
 			  
 			]
+		]
 			
-		def js2 = new groovy.json.JsonBuilder(contenido);
+		def js2 = new JsonBuilder(contenido);
 		println js2
 		
 		def jsond = new JsonBuilder()
 		jsond
+		[
 		{
 			id_app  'bfcrowd_Wikipedia_tasks'
 			name 'BFCrowd Wikipedia Tasks'
@@ -45,6 +48,7 @@ class HomeController {
 			}	
 			
 		}
+		]
 		
 		//println json.toPrettyString()
 		
@@ -64,11 +68,12 @@ class HomeController {
 		def resp = rest.post("http://ciencia.lifia.info.unlp.edu.ar/badges-api/carga-json") {
 		 contentType "application/json"
 			 json {
-				 js2
-				 }
+			 	contenido
 			 }
+			 
+		}
 		 
-		 println resp.json**/
+		 println resp.json
 
 		if (getAuthenticatedUser()?.hasRole("Científico Ciudadano")) {
 			render view: "collabIndex"
