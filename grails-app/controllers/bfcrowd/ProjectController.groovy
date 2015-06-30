@@ -146,29 +146,6 @@ class ProjectController {
             '*'{ render status: NOT_FOUND }
         }
     }
-	
-	def issueBadges() {
-		
-		def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
-	}
-	
-	def grantBadge(String userEmail, int idBadge) {
-		
-		RestBuilder rest = new RestBuilder()
-		//def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
-		//println resp.json
-		
-		def resp = rest.post("https://163.10.5.42/badges/90812gjd/instances") {
-			contentType "application/json"
-			json {
-				email = "${userEmail}"
-			}
-		}
-		
-		println resp.json
-		
-		
-	}
 }
 
 

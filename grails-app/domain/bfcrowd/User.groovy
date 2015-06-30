@@ -1,5 +1,6 @@
-
 package bfcrowd
+
+import grails.plugins.rest.client.RestBuilder
 
 class User extends grails.plugin.nimble.core.UserBase {
 
@@ -62,4 +63,37 @@ class User extends grails.plugin.nimble.core.UserBase {
 		this.ownedProjects.add(project)
 	}
 	
+
+	//def checkBadges(User u) {
+		
+	/**
+	 * if (tiene una recomm)
+	 * 		dar badge de primer recomendacion (en el proyecto)
+	 * O
+	 * Project.grantBadge() (si es que tiene lo requerido)
+	 *
+	 */
+		
+	//}
+
+	/**def getEsos (Long id, String projectName) {
+		
+		RestBuilder rest = new RestBuilder()
+		def email = getAuthenticatedUser().getProfile().getEmail()
+		def app = projectName.replace(" ", "_")
+		def resp = rest.get("https://ciencia.lifia.info.unlp.edu.ar/badges/issuers/bfcrowd_${app}/instances/${email}")
+		return resp.json**/
+		
+		/**def resp = rest.post("https://cientificos-badges-api.herokuapp.com/badges/90812gjd/instances") {
+			contentType "application/json"
+			json {
+				email = "cacho@cacho.com"
+			}
+		}
+		
+		println resp.json**/
+		
+	//}
+
+		
 }

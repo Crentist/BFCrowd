@@ -79,7 +79,9 @@
 						style="text-align: center;"><g:message code="bfcrowd.label.login.button.withFB" /></a>
 				</div> -->
 				
-				<fb:login-button id="login-btn" style="margin-top: 10pt; display: none" show-faces="true" width="600" max-rows="1" scope="publish_stream, manage_pages, email" onlogin="afterFbLogin()"><g:message code="bfcrowd.label.login.button.withFB" /></fb:login-button>
+				 <fb:login-button id="login-btn" style="margin-top: 10pt; display: none" data-show-faces="true" width="600" max-rows="1"  onlogin="afterFbLogin()"><g:message code="bfcrowd.label.login.button.withFB" /></fb:login-button>
+				
+				<!--<div id="login-btn" class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="false"><g:message code="bfcrowd.label.login.button.withFB" /></div>-->
 				
 				<div id="login-controller" style="margin-top: 10pt; display: none">
 					<g:message code="bfcrowd.label.login.withFB.alreadyIn" />

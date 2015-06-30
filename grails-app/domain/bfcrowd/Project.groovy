@@ -1,6 +1,6 @@
 package bfcrowd
 
-
+import grails.plugins.rest.client.RestBuilder
 /**
  * Project
  * A domain class describes the data object and its mapping to the database
@@ -93,5 +93,32 @@ class Project {
 		this.usersXP.sort { -it.value }
 		
 	}
+
+	/**def issueBadges() {
 	
+	//def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
+	}
+	
+	def grantBadge(String userEmail, int idBadge) {
+		
+		RestBuilder rest = new RestBuilder()
+		//def resp = rest.get("https://cientificos-badges-api.herokuapp.com/")
+		//println resp.json
+		
+		def resp = rest.post("https://163.10.5.42/badges/90812gjd/instances") {
+			contentType "application/json"
+			json {
+				email = "${userEmail}"
+			}
+		}
+		
+		println resp.json
+	}
+	
+	def getUserBadges(User u) {
+		//def badges = User.getEsos(u.id, this.name)
+		User.holaMundo()
+	
+	}**/
+		
 }
