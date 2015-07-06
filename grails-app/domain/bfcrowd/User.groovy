@@ -5,7 +5,7 @@ import grails.plugins.rest.client.RestBuilder
 class User extends grails.plugin.nimble.core.UserBase {
 
 	// Extend UserBase with your custom values here
-	String wikipediaUserID
+	String facebookID
 	boolean requests //Indicates whether the user wants to be promoted to researcher
 	int myXP
 
@@ -27,7 +27,7 @@ class User extends grails.plugin.nimble.core.UserBase {
 	}
 	
 	static	constraints = {
-		wikipediaUserID nullable:true, blank: false
+		facebookID nullable:true, blank: true
 	}
 	
 	public String toString() {

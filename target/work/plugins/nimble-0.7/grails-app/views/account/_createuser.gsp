@@ -34,19 +34,14 @@
                   </div>
                   <div class="control-group">
                      <div class="controls">
-                        <input type="text" size="30" id="fullName" name="fullName" value="${user.profile?.fullName?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.fullName')}"]> 						                   
+                        <input type="text" size="30" id="fullName1" name="fullName" value="${user.profile?.fullName?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.fullName')}"]> 						                   
                      </div>
                   </div>
                   <div class="control-group">
                      <div class="controls">
-                        <input type="text" size="30" id="email" name="email" value="${user.profile?.email?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.email')}"/> 						                   
+                        <input type="text" size="30" id="email1" name="email" value="${user.profile?.email?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.email')}"/> 						                   
                      </div>
                   </div>
-				  <div class="control-group">
-				     <div class="controls">      
-				        <input type="text" id="wikipediaUserID" name="wikipediaUserID" value="${user.wikipediaUserID?.encodeAsHTML()}" placeholder="${message(code:'bfcrowd.label.account.registeraccount.wikiUser')}">
-				     </div>
-				  </div>   
 				  
 				  <div class="control-group">
 				     <div class="controls">   

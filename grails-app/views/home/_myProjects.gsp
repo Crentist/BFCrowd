@@ -25,7 +25,12 @@
 	<div class="show-component"> 
 		<strong> ${proj.name } </strong>
 		<p> ${proj.description}  </p>
-		<g:remoteLink action="joinProjectById" id="${proj.id}" style="float:right" update="myProjects"><g:message code="bfcrowd.label.collab.joinProject"/></g:remoteLink>
+		<g:if test="${currentUser.getFacebookID()}">
+			<g:remoteLink action="joinProjectById" onSuccess="facebookPost('Me he unido al proyecto ${proj.name} en BFCrowd!')" id="${proj.id}" style="float:right" update="myProjects"><g:message code="bfcrowd.label.collab.joinProject"/></g:remoteLink>
+		</g:if>
+		<g:else>
+			<g:remoteLink action="joinProjectById" id="${proj.id}" style="float:right" update="myProjects"><g:message code="bfcrowd.label.collab.joinProject"/></g:remoteLink>
+		</g:else>
 	</div>
 	<br/>
 	</g:if>

@@ -76,3 +76,13 @@ var facebookPost = function() {
 		scope : 'publish_actions'
 	});
 }
+
+var facebookPost = function(text) {
+	FB.login(function() {
+		FB.api('/me/feed', 'post', {
+			message : text
+		});
+	}, {
+		scope : 'publish_actions'
+	});
+}

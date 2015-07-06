@@ -42,6 +42,7 @@ class UserBFController {
 			user.username = params["username"]
 			user.pass = "a"+params["username"]
 			user.passConfirm = "a"+params["username"]
+			user.facebookID = params["username"]
 			user.enabled = true
 
 			def userProfile = InstanceGenerator.profile(grailsApplication)
