@@ -43,7 +43,7 @@
 								</ul>
 							</div>
 							<div class="span6">
-								<g:textArea name="text"><g:message code="bfcrowd.label.collab.project.comments"/></g:textArea>	
+								<g:textArea name="text" style="width:100%"><g:message code="bfcrowd.label.collab.project.comments"/></g:textArea>	
 							</div>
 							    
 			    
@@ -70,7 +70,7 @@
 		<div style="width:90%;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
 			<strong><g:message code="bfcrowd.label.collab.project.myBadges"/> ${project.name }</strong>
 				<div id="insignias" style="padding: 5px 5px 5px 5px">
-				${project.getUserBadges(UserBase.get(SecurityUtils.subject.principal)) }
+				<!--  project.getUserBadges(UserBase.get(SecurityUtils.subject.principal)) -->
 				</div>
 			<strong><g:message code="bfcrowd.label.collab.project.stats"/> ${project.name }</strong>
 				<div id="estadisticas" style="padding: 5px 5px 5px 5px">
@@ -102,7 +102,7 @@
 					<g:each var="user" in="${project.getUsersRanking()}">
 						<tr>
 						<th scope="row">${pos}</th>
-						<td>${ User.get(user.key)}</td>
+						<td>${ User.get(user.key).getProfile().getFullName()}</td>
 						<td>${user.value}</td>
 						</tr>
 					<g:set var="pos" value="${pos + 1}" />	

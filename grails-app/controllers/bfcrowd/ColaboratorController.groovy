@@ -108,7 +108,8 @@ class ColaboratorController {
 		def today = new Date()
 		
 		//Acá tiene que ser las contrib de ese proyecto, no todas
-		if (u.getMyContributions().count { sdf.format(it.solvedDate) == sdf.format(today) } == p.getRequiredForBonus()) {
+		if (u.getMyContributions().count {it.getRecomendation().getProject() == p && sdf.format(it.solvedDate) == sdf.format(today) } == p.getRequiredForBonus()) {
+		//if (u.getMyContributions().count { sdf.format(it.solvedDate) == sdf.format(today) } == p.getRequiredForBonus()) {
 			return p.bonusXP
 			}
 			else return 0

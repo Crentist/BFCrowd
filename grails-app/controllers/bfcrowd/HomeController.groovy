@@ -1,6 +1,7 @@
 package bfcrowd
 
 import groovy.json.JsonBuilder
+import grails.converters.JSON
 import grails.plugins.rest.client.RestBuilder
 import groovy.json.JsonOutput
 /**
@@ -18,7 +19,7 @@ class HomeController {
 		 */
 		
 		def contenido =
-		 [
+		 //[
 			[
 			    id_app: 'bfcrowd_Wikipedia_tasks',
 			    name: 'BFCrowd Wikipedia Tasks',
@@ -28,10 +29,10 @@ class HomeController {
 			     ]
 			  
 			]
-		]
+		//]
 			
-		def js2 = new JsonBuilder(contenido);
-		println js2
+		JsonBuilder js2 = new JsonBuilder(contenido);
+		//println js2.toPrettyString()
 		
 		def jsond = new JsonBuilder()
 		jsond
@@ -57,7 +58,7 @@ class HomeController {
 		//def lolao = [{"id_app":"galaxy_conqueror", name:'Galaxy Conqueror', url:'http://example.com', badges:[{"name":"Cat Lover","imageUrl":"http://example.com/cat.png","criteriaUrl":"http://example.com/catBadge.html","description":"You love cats!"}]}]
 		
 		//def loalalso = {    "state": {        "name": "Colorado",        "statehood": 1876,        "capital": "Denver",        "majorCities": [            "Denver",            "Colorado Springs",            "Fort Collins",            "Boulder",            "Grand Junction"        ]    }}
-		println contenido
+		//println contenido
 		
 		
 		RestBuilder rest = new RestBuilder()
@@ -65,15 +66,30 @@ class HomeController {
 		//def resp = rest.get("http://ciencia.lifia.info.unlp.edu.ar/badges-api/")
 		//println resp.json
 		
-		def resp = rest.post("http://ciencia.lifia.info.unlp.edu.ar/badges-api/carga-json") {
-		 contentType "application/json"
+		/**def resp = rest.post("http://ciencia.lifia.info.unlp.edu.ar/badges-api/carga-json") {
+			 contentType "text/html"
 			 json {
-			 	contenido
+				 '''[
+					{
+					    "id_app": "bfcrowd_Wikipedia_tasks",
+					    "name": "BFCrowd Wikipedia Tasks",
+					    "url": "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd",
+					    "badges": [
+					        {
+					            "name": "First contribution",
+					            "imageUrl": "http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png",
+					            "criteriaUrl": "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges",
+					            "description": "My first contribution"
+					        }
+					    ]
+					}
+				 	]
+				 '''
 			 }
 			 
 		}
 		 
-		 println resp.json
+		 println resp.json**/
 
 		if (getAuthenticatedUser()?.hasRole("Científico Ciudadano")) {
 			render view: "collabIndex"

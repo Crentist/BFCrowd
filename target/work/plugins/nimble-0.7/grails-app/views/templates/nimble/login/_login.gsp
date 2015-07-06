@@ -79,7 +79,7 @@
 						style="text-align: center;"><g:message code="bfcrowd.label.login.button.withFB" /></a>
 				</div> -->
 				
-				 <fb:login-button id="login-btn" style="margin-top: 10pt; display: none" data-show-faces="true" width="600" max-rows="1"  onlogin="afterFbLogin()"><g:message code="bfcrowd.label.login.button.withFB" /></fb:login-button>
+				 <fb:login-button id="login-btn" scope="email,user_friends,public_profile,publish_actions" style="margin-top: 10pt; display: none" data-show-faces="true" width="600" max-rows="1"  onlogin="afterFbLogin()"><g:message code="bfcrowd.label.login.button.withFB" /></fb:login-button>
 				
 				<!--<div id="login-btn" class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="true" data-auto-logout-link="false"><g:message code="bfcrowd.label.login.button.withFB" /></div>-->
 				
@@ -107,7 +107,7 @@
 						<div class="form-group">
 							<label for="inputEmail" class="col-sm-4 control-label"><g:message code="bfcrowd.label.account.registeraccount.email" /></label>
 							<div class="col-sm-9">
-								<input readonly type="text" size="30" id="email" name="email" />
+								<g:field required="true" type="text" size="30" id="email" name="email" />
 							</div>
 						</div>
 

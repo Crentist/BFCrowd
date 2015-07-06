@@ -63,6 +63,12 @@ class User extends grails.plugin.nimble.core.UserBase {
 		this.ownedProjects.add(project)
 	}
 	
+	def getMyProjectContributions() {
+		
+		//this.myContributions.each { }
+
+	}
+	
 
 	//def checkBadges(User u) {
 		

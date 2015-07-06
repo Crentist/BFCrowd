@@ -1,5 +1,6 @@
-var app_id = '864102200328600';
-var scopes = 'email,user_friends,public_profile';
+//var app_id = '864102200328600';
+var app_id = '872159592856194';
+var scopes = 'email, user_friends, public_profile, publish_actions';
 
 // Load the SDK asynchronously
 (function(d, s, id) {
