@@ -5,7 +5,7 @@
 <g:set var="myProjects" value="${currentUser.getMyProjects()}" />
 <g:if test="${!(myProjects.size() == 0)}">
 	<g:each var="proj" in="${myProjects}">
-		<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+		<div class="show-component"> 
 			<g:link controller="colaborator" action="project" id="${proj.id}"> <strong> ${proj.name } </strong> </g:link>
 			<p> ${proj.description} </p>
 			<g:remoteLink action="leaveProjectById" id="${proj.id}" style="float:right" update="myProjects"	before="if(!confirm('Are you sure?')) return false"> <g:message code="bfcrowd.label.collab.leaveProject"/> </g:remoteLink>
@@ -22,7 +22,7 @@
 <!-- Listar los proyectos disponibles dentro de recuadros o algo por el estilo -->
 <g:each var="proj" in="${allProjects}">
 	<g:if test="${!currentUser.getMyProjects().contains(proj)}">
-	<div style="width:90%;height:90px;border-style:solid;border-width:medium;padding: 5px 5px 5px 5px;"> 
+	<div class="show-component"> 
 		<strong> ${proj.name } </strong>
 		<p> ${proj.description}  </p>
 		<g:remoteLink action="joinProjectById" id="${proj.id}" style="float:right" update="myProjects"><g:message code="bfcrowd.label.collab.joinProject"/></g:remoteLink>

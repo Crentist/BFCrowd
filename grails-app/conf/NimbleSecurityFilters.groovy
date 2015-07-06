@@ -18,6 +18,8 @@ import grails.plugin.nimble.core.AdminsService
 import grails.plugin.nimble.security.NimbleFilterBase
 import org.apache.shiro.SecurityUtils
 import grails.plugin.nimble.core.UserBase
+import org.apache.shiro.subject.Subject
+import bfcrowd.Project
 
 /**
  * Filter that works with Nimble security model to protect controllers, actions, views
@@ -72,10 +74,18 @@ class NimbleSecurityFilters extends NimbleFilterBase {
 		}
 		
 		colaborator(controller: "colaborator", action:"*") {
-			before = { 
-				accessControl { 
+			before = {
+				accessControl {
 					true //O algún rol en particular
-				} 
+				}
+			}
+		}
+		
+		colaborator(controller: "colaborator", action:"project") {
+			before = {
+				accessControl { 
+					UserBase.get(SecurityUtils.subject.principal).getMyProjects().contains(Project.get(params.id))
+				}
 			}
 		}
 		

@@ -67,8 +67,9 @@ class ColaboratorController {
 		if(id){
 			Project p = Project.get(id)
 			if(p){
+				println("hola")
 				def r = p.getRecommendationFor(getAuthenticatedUser())
-				[project: p, recommendation: r, layout_nosecondarymenu: true]
+				render view: "project", model: [project: p, recommendation: r, layout_nosecondarymenu: true]
 			} else
 				render "error"
 		}
@@ -87,16 +88,17 @@ class ColaboratorController {
 	def saveContribution(int recommendationId, String state, String text) {
 		// Acá deberían ser solo Recommendations a las que el User pueda contribuir
 		def r = Recommendation.get(recommendationId)
-		def u = getAuthenticatedUser()
-		Contribution c = new Contribution([text: text, state: state, recomendation: r, user: u, solvedDate: new Date()])
-		c.save(flush: true)
-		println c
 		Project p = Project.get(r.project.id)
-		def obtainedXP = p.xpValue + this.checkBonus(p, u)
-		p.usersXP[u.id] += obtainedXP
-		u.myXP += obtainedXP
-		//this.checkBadges()
-		
+		if (state) {
+			def u = getAuthenticatedUser()
+			Contribution c = new Contribution([text: text, state: state, recomendation: r, user: u, solvedDate: new Date()])
+			c.save(flush: true)
+			println c
+			def obtainedXP = p.xpValue + this.checkBonus(p, u)
+			p.usersXP[u.id] += obtainedXP
+			u.myXP += obtainedXP
+			//this.checkBadges()
+		}
 		
 		def recom = p.getRecommendationFor(getAuthenticatedUser())
 		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true]
