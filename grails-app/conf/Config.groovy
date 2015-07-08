@@ -92,10 +92,11 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
+		//grails.serverURL = "https://bfcrowd.com"
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        // TODO: grails.serverURL = "https://ciencia.lifia.info.unlp.edu.ar/bfcrowd"
     }
 }
 

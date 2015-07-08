@@ -80,15 +80,15 @@ class ZecBootStrap {
 			Project project1 = new Project(name: "Wikipedia tasks", description: "Help us improve the contents on Wikipedia!", xpValue: 25, bonusXP: 25, requiredForBonus: 2)
 			project1.addOwner(researcher)
 			project1.save()
-			Project project2 = new Project(name: "Spam filter", description: "SPAM SPAM SPAM LOVELY SPAM", xpValue: 15, bonusXP: 15, requiredForBonus: 3)
+			Project project2 = new Project(name: "Catálogo de aves autóctonas", description: "Ayudanos a determinar si el ave de la foto corresponde a un ejemplar propio de la región patagónica", xpValue: 15, bonusXP: 15, requiredForBonus: 3)
 			project2.addOwner(researcher)
 			project2.save()
-			Project project3 = new Project(name: "Prank call", description: "Moe Szyslak is not amused", xpValue: 10, bonusXP: 10, requiredForBonus: 3)
+			Project project3 = new Project(name: "Encuesta de polución sonora", description: "Responda a esta encuesta para ayudarnos a entender la polución sonora de nuestra ciudad.", xpValue: 10, bonusXP: 10, requiredForBonus: 3)
 			project3.addOwner(researcher)
 			project3.save()
-			Project project4 = new Project(name: "Drink supplier", description: "First aid on all things alcohol!", xpValue: 5, bonusXP: 5, requiredForBonus: 3)
+			/**Project project4 = new Project(name: "Drink supplier", description: "First aid on all things alcohol!", xpValue: 5, bonusXP: 5, requiredForBonus: 3)
 			project4.addOwner(researcher)
-			project4.save()
+			project4.save()**/
 			def recomm1 = new Recommendation(property: "peopleFrom",
 											path: "path",
 											fromPage: "Rosario",

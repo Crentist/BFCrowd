@@ -89,28 +89,30 @@
 		<br/>
 		<div class="show-component">
 			<strong><g:message code="bfcrowd.label.collab.project.ranking"/> ${project.name }</strong>
-			<table class="table">
-				<thead>
-					<tr>
-						<th> <g:message code="bfcrowd.label.collab.project.ranking.pos"/> </th>
-						<th> <g:message code="bfcrowd.label.collab.project.ranking.user"/></th>
-						<th> <g:message code="bfcrowd.label.collab.project.ranking.xp"/></th>
-					</tr>
-				</thead>
-				<tbody>
-					<g:set var="pos" value="${1}" />
-					<g:each var="user" in="${project.getUsersRanking()}">
+			<div class="table-responsive">
+				<table class="table">
+					<thead>
 						<tr>
-						<th scope="row">${pos}</th>
-						<td>${ User.get(user.key).getProfile().getFullName()}</td>
-						<td>${user.value}</td>
+							<th> <g:message code="bfcrowd.label.collab.project.ranking.pos"/> </th>
+							<th> <g:message code="bfcrowd.label.collab.project.ranking.user"/></th>
+							<th> <g:message code="bfcrowd.label.collab.project.ranking.xp"/></th>
 						</tr>
-					<g:set var="pos" value="${pos + 1}" />	
-					</g:each>
-				
-				</tbody>
-				
-			</table>
+					</thead>
+					<tbody>
+						<g:set var="pos" value="${1}" />
+						<g:each var="user" in="${project.getUsersRanking()}">
+							<tr>
+							<th scope="row">${pos}</th>
+							<td>${ User.get(user.key).getProfile().getFullName()}</td>
+							<td>${user.value}</td>
+							</tr>
+						<g:set var="pos" value="${pos + 1}" />	
+						</g:each>
+					
+					</tbody>
+					
+				</table>
+			</div>
 		</div>
 		
 	</div>

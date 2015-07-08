@@ -17,13 +17,19 @@
     <link rel="apple-touch-icon"	href="assets/ico/apple-touch-icon-114x114.png"	sizes="114x114">
 	
 	<%-- Manual switch for the skin can be found in /view/_menu/_config.gsp --%>
-	<r:require modules="jquery"/> <%-- jQuery is required for Bootstrap! --%>
+	<%--<r:require modules="jquery"/> --%>
+	<%-- jQuery is required for Bootstrap! --%>
+	<%--<g:javascript library="jquery"/>--%>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js">
+	</script>
 	<r:require modules="bootstrap"/>
 	<r:require modules="bootstrap_utils"/>
+	<r:require modules="bfcrowd-resources"/>
+	
 
 	<r:layoutResources />
 	<g:layoutHead />
-	<link rel="stylesheet" href="${resource(dir: 'css', file: 'bfcrowd.css')}" type="text/css">
+	<!--<link rel="stylesheet" href="{resource(dir: 'css', file: 'bfcrowd.css')}" type="text/css">-->
 
 	<!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
 	<!--[if lt IE 9]>
