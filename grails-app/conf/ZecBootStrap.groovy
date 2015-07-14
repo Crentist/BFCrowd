@@ -41,6 +41,7 @@ class ZecBootStrap {
 			def userProfile = InstanceGenerator.profile(grailsApplication)
 			userProfile.fullName = "Maurice Moss"
 			userProfile.owner = user
+			userProfile.email = "maurice@local.net"
 			user.profile = userProfile
 
 			def savedUser = userService.createUser(user)
@@ -62,6 +63,7 @@ class ZecBootStrap {
 			def userProfile = InstanceGenerator.profile(grailsApplication)
 			userProfile.fullName = "Sherlock Holmes"
 			userProfile.owner = user
+			userProfile.email = "sher@lock.net"
 			user.profile = userProfile
 
 			def savedUser = userService.createUser(user)

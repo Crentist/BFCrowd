@@ -3,9 +3,9 @@
 </h3>
 <dl>
  
-   <dt>
+   <!--<dt>
       <g:message code="bfcrowd.label.admin.user.show.extendedinformation.wikiUser" />
    </dt>
-   <dd>${user.wikipediaUserID?.encodeAsHTML() ?: g.message(code:'nimble.label.none')}</dd>   
+     <dd>{user.wikipediaUserID?.encodeAsHTML() ?: g.message(code:'nimble.label.none')}</dd>   -->
    
 </dl>

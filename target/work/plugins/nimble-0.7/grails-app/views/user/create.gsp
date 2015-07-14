@@ -69,15 +69,15 @@
             </div>
          </div>
 
-         <div class="control-group">
+         <!--  <div class="control-group">
             <label class="control-label" for="wikiUser">
                <g:message code="bfcrowd.label.admin.user.create.wikiUser" />
                * 
             </label>
             <div class="controls">      
-               <input type="text" id="wikiUser" name="wikiUser" value="${user.wikipediaUserID?.encodeAsHTML()}">
+               <input type="text" id="wikiUser" name="wikiUser" value="{user.wikipediaUserID?.encodeAsHTML()}">
             </div>
-         </div>         
+         </div>    -->     
          
          <div class="form-actions">
             <button type="submit" class="btn btn-primary">

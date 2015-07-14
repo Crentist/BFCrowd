@@ -48,6 +48,7 @@ class UserBFController {
 			def userProfile = InstanceGenerator.profile(grailsApplication)
 			userProfile.fullName = params["fullName"]
 			userProfile.owner = user
+			userProfile.email = params["email"]
 			user.profile = userProfile
 
 			log.info("Creating default user account with username:user")

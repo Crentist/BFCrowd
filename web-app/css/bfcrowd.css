@@ -28,3 +28,17 @@ ul.option-list li div {
           
   border-radius: 6px;
 }
+
+.nav-tabs { max-width: 600px; }
+.nav-tabs-responsive { overflow: auto; }
+
+.insignia {
+	width:50px;
+	height:50px;
+	display:inline-block;
+}
+
+.row li{
+  width: 33.3%;
+  float: left;
+}

@@ -14,8 +14,11 @@
 
 <ul>
 	<li>
-		<img src="http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2014/11/1415490092badge.png" alt="15x15" style="width: 50px; height: 50px;"class="img-rounded"><label>My first collaboration:</label> <g:message code="bfcrowd.badges.first.description"/>
+		<img src="https://163.10.5.42/images/bfcrowdimages/firstContribution.png" style="width: 50px; height: 50px;"class="img-rounded"><label>My first collaboration:</label> <g:message code="bfcrowd.badges.firstCollab.description"/>
 	</li>
+	<li>
+		<img src="https://163.10.5.42/images/bfcrowdimages/firstBonus.jpg" style="width: 50px; height: 50px;"class="img-rounded"><label>My first bonus:</label> <g:message code="bfcrowd.badges.firstBonus.description"/>
+	</li>	
 </ul>
 
 </div>

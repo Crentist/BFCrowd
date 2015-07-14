@@ -1,6 +1,7 @@
-var app_id = '872159592856194';
-//var app_id = '864102200328600';
-var scopes = 'email, user_friends, public_profile, publish_actions';
+//var app_id = '872159592856194';
+//var app_id = '864102200328600'; //deployed
+var app_id = '865746580140252';
+var scopes = 'email, user_friends, public_profile';
 
 // Load the SDK asynchronously
 (function(d, s, id) {
@@ -93,3 +94,18 @@ var facebookShare = function() {
 		  href: 'https://ciencia.lifia.info.unlp.edu.ar/bfcrowd/',
 		}, function(response){});
 }
+
+function facebookFriends() {
+    FB.api('/me/friends', {fields: 'name,id'}, function(response) {
+        if(response.data) {
+        	console.log(response.data);
+			return response.data;
+        }
+    });
+}
+
+$(function() {
+  $('a[name="enterProject"]').bind('click', function() {
+    $(this).attr('href', $(this).attr('href') + '?friends=' + facebookFriends());
+  })
+})	
