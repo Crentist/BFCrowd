@@ -145,7 +145,7 @@
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#general"><g:message
 										code="bfcrowd.label.collab.project.ranking.default" /></a></li>
-							<li><a data-toggle="tab" href="#friends"><g:message
+							<li><a data-toggle="tab" href="#friends" onclick="facebookFriends();"><g:message
 										code="bfcrowd.label.collab.project.ranking.fb" /></a></li>
 						</ul>
 					</div>
@@ -185,7 +185,36 @@
 
 						</div>
 						<div id="friends" class="tab-pane fade">
-							<p>Soon</p>
+							<table class="table">
+								<thead>
+									<tr>
+										<th><g:message
+												code="bfcrowd.label.collab.project.ranking.pos" /></th>
+										<th><g:message
+												code="bfcrowd.label.collab.project.ranking.user" /></th>
+										<th><g:message
+												code="bfcrowd.label.collab.project.ranking.xp" /></th>
+									</tr>
+								</thead>
+								<tbody>
+									<g:set var="pos" value="${1}" />
+									<g:each var="user" in="${project.getUsersRanking()}">
+										<tr id="${User.get(user.key).getFacebookID() }" style="display: none">
+											<th scope="row">
+												${pos}
+											</th>
+											<td>
+												${ User.get(user.key).getProfile().getFullName()}
+											</td>
+											<td>
+												${user.value}
+											</td>
+										</tr>
+										<g:set var="pos" value="${pos + 1}" />
+									</g:each>
+								</tbody>
+
+							</table>
 						</div>
 					</div>
 

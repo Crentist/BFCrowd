@@ -20,9 +20,9 @@ window.fbAsyncInit = function() {
 		cookie : true, // enable cookies to allow the server to access the
 		// session
 		xfbml : true, // parse social plugins on this page
-		version : 'v2.2' // use version 2.2
+		version : 'v2.4' // use version 2.4
 	});
-
+	
 	$("#login-btn, #signup-btn").click(function(){
 		FB.login(function(){}, {scope: scopes});
 	});
@@ -98,9 +98,15 @@ var facebookShare = function() {
 function facebookFriends() {
     FB.api('/me/friends', {fields: 'name,id'}, function(response) {
         if(response.data) {
-        	console.log(response.data);
-			return response.data;
-        }
+			$.each(response.data, function(index, friend) {
+				var id = '#' + friend.id;
+				$(id).show();
+			});
+		FB.api('/me', function(response) {
+			var id = '#' + response.id;
+			$(id).show();        
+        });
+		}
     });
 }
 
