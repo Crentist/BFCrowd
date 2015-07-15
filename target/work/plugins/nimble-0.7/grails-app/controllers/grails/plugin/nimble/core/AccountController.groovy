@@ -106,7 +106,6 @@ class AccountController {
 	}
 
 	def saveuser() {
-		println params
 		if (!nimbleConfig.localusers.registration.enabled) {
 			log.warn("Account registration is not enabled for local users, skipping request")
 			response.sendError(404)

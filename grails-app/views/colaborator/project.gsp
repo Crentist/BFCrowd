@@ -106,14 +106,14 @@
 					<g:if test="${b[0]}">
 						<div class="insignia">
 							<img title="${b[0]["name"] }"
-								src="https://163.10.5.42/images/bfcrowdimages/firstContribution.png"
+								src="https://ciencia.lifia.info.unlp.edu.ar/images/bfcrowdimages/firstContribution.png"
 								alt="Responsive image" class="img-circle img-responsive">
 						</div>
 					</g:if>	
 					<g:if test="${b[1]}">
 						<div class="insignia">
 							<img title="${b[1]["name"] }"
-								src="https://163.10.5.42/images/bfcrowdimages/firstBonus.jpg"
+								src="https://ciencia.lifia.info.unlp.edu.ar/images/bfcrowdimages/firstBonus.jpg"
 								alt="Responsive image" class="img-circle img-responsive">
 						</div>
 					</g:if>	
