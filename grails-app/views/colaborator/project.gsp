@@ -102,7 +102,7 @@
 					<!--  project.getUserBadges(UserBase.get(SecurityUtils.subject.principal)) -->
 				
 					<div class="row">
-					
+
 					<g:if test="${b[0]}">
 						<div class="insignia">
 							<img title="${b[0]["name"] }"
@@ -145,8 +145,10 @@
 						<ul class="nav nav-tabs">
 							<li class="active"><a data-toggle="tab" href="#general"><g:message
 										code="bfcrowd.label.collab.project.ranking.default" /></a></li>
-							<li><a data-toggle="tab" href="#friends" onclick="facebookFriends();"><g:message
-										code="bfcrowd.label.collab.project.ranking.fb" /></a></li>
+							<g:if test="${UserBase.get(SecurityUtils.subject.principal).getFacebookID()}">			
+								<li><a data-toggle="tab" href="#friends" onclick="facebookFriends();"><g:message
+											code="bfcrowd.label.collab.project.ranking.fb" /></a></li>
+							</g:if>			
 						</ul>
 					</div>
 					<div class="tab-content">

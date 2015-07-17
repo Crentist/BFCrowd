@@ -204,6 +204,8 @@ class ColaboratorController {
 		//def result = slurper.parse(resp.json.toString())
 		//println result.name
 		//println URL
+		if (resp.json[email] == null)
+			return []
 		return resp.json[email]
 		//println resp.json["cacho@cacho.com"][0]["name"]
 		

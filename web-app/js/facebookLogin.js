@@ -60,7 +60,7 @@ var showLoginButton = function() {
 }
 
 var showLoginForm = function(response) {
-	FB.api('/me', function(response) {
+	FB.api('/me?fields=id,name,email', function(response) {
 		$('#login-controller').show();
 		$('#userName').val(response.id);
 		$('#fullName').val(response.name);
