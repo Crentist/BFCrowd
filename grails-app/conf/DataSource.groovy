@@ -1,7 +1,9 @@
 dataSource {
     pooled = true
     jmxExport = true
-    driverClassName = "org.h2.Driver"
+    //driverClassName = "org.h2.Driver"
+	driverClassName = "com.mysql.jdbc.Driver"
+	dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
     username = "sa"
     password = ""
 }
@@ -15,12 +17,22 @@ hibernate {
 
 // environment specific settings
 environments {
-    development {
+    /**development {
         dataSource {
             dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
             url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE"
         }
-    }
+    }**/
+	
+	development {
+		dataSource {
+			dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
+            url = "jdbc:mysql://localhost/bfcrowd?useUnicode=yes&characterEncoding=UTF-8"
+            username = "root"
+            password = "root"
+		}
+	}
+	
     test {
         dataSource {
             dbCreate = "create-drop"
