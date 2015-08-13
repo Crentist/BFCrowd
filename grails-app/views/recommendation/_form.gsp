@@ -13,7 +13,7 @@
 			<div class="${hasErrors(bean: recommendationInstance, field: 'contribution', 'error')} ">
 				<label for="contribution" class="control-label"><g:message code="recommendation.contribution.label" default="Contribution" /></label>
 				<div>
-					<g:select class="form-control" id="contribution" name="contribution.id" from="${bfcrowd.Contribution.list()}" optionKey="id" value="${recommendationInstance?.contribution?.id}" class="many-to-one" noSelection="['null': '']"/>
+					<g:select class="form-control" id="contribution" name="contribution.id" from="${bfcrowd.Contribution.list()}" optionKey="id" value="${recommendationInstance?.contributions?.id}" class="many-to-one" noSelection="['null': '']"/>
 					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'contribution', 'error')}</span>
 				</div>
 			</div>
@@ -66,6 +66,14 @@
 				</div>
 			</div>
 
+			<div class="${hasErrors(bean: recommendationInstance, field: 'toPage', 'error')} ">
+				<label for="toPage" class="control-label"><g:message code="recommendation.toPage.label" default="To Page" /></label>
+				<div>
+					<g:textField class="form-control" name="toPage" value="${recommendationInstance?.toPage}"/>
+					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'toPage', 'error')}</span>
+				</div>
+			</div>
+			
 			<div class="${hasErrors(bean: recommendationInstance, field: 'solved', 'error')} ">
 				<label for="solved" class="control-label"><g:message code="recommendation.solved.label" default="Solved" /></label>
 				<div>
@@ -73,12 +81,23 @@
 					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'solved', 'error')}</span>
 				</div>
 			</div>
-
-			<div class="${hasErrors(bean: recommendationInstance, field: 'toPage', 'error')} ">
-				<label for="toPage" class="control-label"><g:message code="recommendation.toPage.label" default="To Page" /></label>
+			
+			<div class="${hasErrors(bean: recommendationInstance, field: 'repeatableBetweenUsers', 'error')} ">
+				<label for="repeatableBetweenUsers" class="control-label"><g:message code="bfcrowd.recommendation.repeatableBetweenUsers.label" default="repeatableBetweenUsers" /></label>
 				<div>
-					<g:textField class="form-control" name="toPage" value="${recommendationInstance?.toPage}"/>
-					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'toPage', 'error')}</span>
+					<bs:checkBox name="repeatableBetweenUsers" value="${recommendationInstance?.repeatableBetweenUsers}" />
+					<span class="help-inline">${hasErrors(bean: recommendationInstance, field: 'repeatableBetweenUsers', 'error')}</span>
+				</div>
+			</div>
+			
+			<div class="${hasErrors(bean: projectInstance, field: 'maxRepeats', 'error')} ">
+				<label for="name"><g:message code="bfcrowd.recommendation.maxRepeats.label" default="maxRepeats" /></label>
+				<div>
+					<g:textField name="maxRepeats" value="${projectInstance?.bonusXP}"/>
+					<a id="maxRepeats" rel="maxRepeats" title="${message(code:'bfcrowd.recommendation.maxRepeats.maxRepeats.help')}">
+						<i class="icon-question-sign"></i>
+					</a> 					
+					<span class="help-inline">${hasErrors(bean: projectInstance, field: 'maxRepeats', 'error')}</span>
 				</div>
 			</div>
 

@@ -30,13 +30,17 @@ class Recommendation {
 	String instructions
 	String checkboxMode
 	
+	
+	Boolean repeatableBetweenUsers = false
+	int maxRepeats = 1
+	
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
 //	Date	lastUpdated
 	
 	static 	belongsTo 	= [project:Project]	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
-	static	hasOne		= [contribution:Contribution]	// tells GORM to associate another domain object as an owner in a 1-1 mapping
-//	static	hasMany		= []	// tells GORM to associate other domain objects for a 1-n or n-m mapping
+//	static	hasOne		= []	// tells GORM to associate another domain object as an owner in a 1-1 mapping
+	static	hasMany		= [contributions:Contribution]	// tells GORM to associate other domain objects for a 1-n or n-m mapping
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
     static	mapping = {
@@ -45,7 +49,7 @@ class Recommendation {
 	static	constraints = {
 		property unique: ['project', 'path', 'fromPage', 'toPage', 'instructions']
 		checkboxMode inList: ["Checkbox", "Radio"]
-		contribution nullable: true
+		contributions nullable: true
     }
 	
 	/*
@@ -57,7 +61,7 @@ class Recommendation {
 //	}
 	
 	Boolean isSolved(){
-		this.solved
+		return this.solved
 	}
 	
 	def setAssigned(){
@@ -80,5 +84,35 @@ class Recommendation {
 	def getSolutionScript() {
 		//TO-DO
 	}
+	
+	def canBeDeliveredFor(User u){
+		if (this.contributions.size() == this.maxRepeats){
+			// maximas repeticiones
+			return false
+		}
+		if (this.repeatableBetweenUsers) {
+			// es repetible
+			def user = this.contributions.find{ Contribution c ->
+					c.user == u
+					}
+			if (user) {
+				// pero contribuyó a la recomendacion
+				return false
+			}
+			return true
+		}
+		// si no es repetible puede que ya este resuelta
+		if (this.isSolved()) {
+			// ya esta resuelta por alguien
+			return false
+		}
+		// no es repetible y no fue resuelta, entonces importa si fue asignada
+		if (this.dateAssigned.time > ((new Date()).time - 3600)) {
+			//ya esta asignada a alguien mas 
+			return false
+		}
+		// entonces se puede resolver...
+		return true
+	} 
 	
 }
