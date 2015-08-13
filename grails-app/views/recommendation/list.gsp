@@ -37,7 +37,7 @@
 			
 				<td><g:link action="show" id="${recommendationInstance.id}">${fieldValue(bean: recommendationInstance, field: "checkboxMode")}</g:link></td>
 			
-				<td>${fieldValue(bean: recommendationInstance, field: "contribution")}</td>
+				<td>${fieldValue(bean: recommendationInstance, field: "contributions")}</td>
 			
 				<td><g:formatDate date="${recommendationInstance.dateAssigned}" /></td>
 			
