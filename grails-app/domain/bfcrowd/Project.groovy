@@ -53,10 +53,8 @@ class Project {
 	
 	public Recommendation getRecommendationFor(User u){
 		if(this.recommendations) {
-			def d = new Date()
 			def r = this.recommendations.find{ Recommendation w -> 
-				w.dateAssigned.time < (d.time - 3600) && 
-				!w.contribution &&
+				w.canBeDeliveredFor(u) &&
 				!u.skippedRecom.contains(w)
 				}
 			if(r)

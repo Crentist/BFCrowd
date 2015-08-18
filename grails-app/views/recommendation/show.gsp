@@ -22,14 +22,20 @@
 				<td valign="top" class="value">${fieldValue(bean: recommendationInstance, field: "checkboxMode")}</td>
 				
 			</tr>
-		
+		 
 			<tr class="prop">
 				<td valign="top" class="name"><g:message code="recommendation.contribution.label" default="Contribution" /></td>
 				
-				<td valign="top" class="value"><g:link controller="contribution" action="show" id="${recommendationInstance?.contribution?.id}">${recommendationInstance?.contribution?.encodeAsHTML()}</g:link></td>
+				<td valign="top" class="value">
+					<ul>
+					<g:each in="${recommendationInstance?.contributions}" var="r">
+						<li><g:link controller="contribution" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+					</g:each>
+					</ul>
+					</td>
 				
 			</tr>
-		
+		 
 			<tr class="prop">
 				<td valign="top" class="name"><g:message code="recommendation.dateAssigned.label" default="Date Assigned" /></td>
 				
