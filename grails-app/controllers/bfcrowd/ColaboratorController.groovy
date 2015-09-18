@@ -1,12 +1,15 @@
 package bfcrowd
 
 import grails.transaction.Transactional;
+
 import java.text.SimpleDateFormat
+
+import grails.converters.JSON
 import grails.plugins.rest.client.RestBuilder
 import groovy.json.JsonSlurper
+
 import org.apache.commons.collections.map.MultiValueMap
 import org.springframework.util.LinkedMultiValueMap
-
 import org.apache.shiro.subject.Subject
 
 /**
@@ -26,13 +29,15 @@ class ColaboratorController {
 			render "No hay usuario logueado"
     }
 	
-	def joinProject(String name) {
+	/**def joinProject(String name) {
 		if(name){
 			Project p = Project.findByName(name)
 			if(p){
 				def user = getAuthenticatedUser()
 				user.myProjects.add(p)
-				p.usersXP[user.id]=0 //Initialize xp value on that project
+
+				if (!(p.usersXP[user.id]))
+					p.usersXP[user.id]=0 //Initialize xp value on that project
 				assert p.usersXP.get(user.id) == 0
 			}
 		}
@@ -40,16 +45,20 @@ class ColaboratorController {
 	}
 	
 	def joinProjectById(int id) {
+		println "HGETYE"
 		Project p = Project.get(id)
 		if(p){
 			def user = getAuthenticatedUser()
 			user.myProjects.add(p)
 			//println p.name
-			p.usersXP[user.id]=0 //Initialize xp value on that project
+			println "HGETYE"
+			println "hey "+(p.usersXP[user.id] != null)
+			if (!(p.usersXP[user.id]))
+				p.usersXP[user.id]=0 //Initialize xp value on that project
 			assert p.usersXP.get(user.id) == 0
 		}
 		render template: "myProjects", model: [myProjects: getAuthenticatedUser().myProjects, otherProjects: Project.getAll() - getAuthenticatedUser().myProjects]
-	}
+	}**/
 	
 	def leaveProjectById(int id) {
 		Project p = Project.get(id)
@@ -72,8 +81,9 @@ class ColaboratorController {
 			//println params["friends"]
 			if(p){
 				def badges = this.getUserBadges(getAuthenticatedUser(),p)
+				//println "badges: "+badges
 				def r = p.getRecommendationFor(getAuthenticatedUser())
-				render view: "project", model: [project: p, recommendation: r, layout_nosecondarymenu: true, b: badges]
+				render view: "${p.type}", model: [project: p, recommendation: r, layout_nosecondarymenu: true, b: badges]
 			} else
 				render "error"
 		}
@@ -89,28 +99,40 @@ class ColaboratorController {
 		
 		def badges = this.getUserBadges(getAuthenticatedUser(),p)
 		
-		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true, b:badges]
+		render view: "${p.type}", model: [project: p, recommendation: recom, layout_nosecondarymenu: true, b:badges]
 	}
 	
 	def saveContribution(int recommendationId, String state, String text) {
-		// Acá deberían ser solo Recommendations a las que el User pueda contribuir
+		// Acá deberían ser sólo Recommendations a las que el User pueda contribuir
 		def r = Recommendation.get(recommendationId)
 		Project p = Project.get(r.project.id)
+		//println "state: "+state
+		//println "text: "+text
 		if (state) {
 			def u = getAuthenticatedUser()
 			Contribution c = new Contribution([text: text, state: state, recomendation: r, user: u, solvedDate: new Date()])
-			c.save(flush: true)
+			c.save(flush:true)
 			//println c
 			def obtainedXP = p.xpValue + this.checkBonus(p, u)
-			p.usersXP[u.id] += obtainedXP
+			//println "pre usersXP: "+p.getUserXPByID(u.id)
+			//println "bonus: "+this.checkBonus(p, u)
+			//println "obtainedXP: "+obtainedXP
+			//println "pre experiencia usuario: "+p.experiencia
+			//println "usersXP: "+p.usersXP
+			p.usersXP[u.id] +=  obtainedXP
 			u.myXP += obtainedXP
+			//println "usersXP usuario: "+p.usersXP[u.id]
+			//println "experiencia usuario: "+p.experiencia
+			//println "myXP: "+u.myXP 
+			//println (p as JSON)
+			//p.save()
 			this.checkUserBadges(u, p)
 		}
 		
 		def badges = this.getUserBadges(getAuthenticatedUser(),p)
 		
 		def recom = p.getRecommendationFor(getAuthenticatedUser())
-		render view: "project", model: [project: p, recommendation: recom, layout_nosecondarymenu: true, b:badges]
+		render view: "${p.type}", model: [project: p, recommendation: recom, layout_nosecondarymenu: true, b:badges]
 	}
 	
 	def checkBonus(Project p, User u) {
@@ -134,33 +156,40 @@ class ColaboratorController {
 		 * Chequea si se le debe otorgar o no una insignia a un usuario
 		 */
 		def email = getAuthenticatedUser().getProfile().getEmail()
-		def app = p.getName().replace(" ", "_").toLowerCase()
+		def app = p.getName().replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
 				
 		RestBuilder rest = new RestBuilder()
 		//Obtengo las badges del proyecto
 		def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
 		//println "http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges"
-		
-		def badgesProject = resp.json
-		
-		LinkedMultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>()
-		form.add("email", email)
-						
-		if (u.getMyContributions().count {it.getRecomendation().getProject() == p} == 1) {
-			//Doy la insignia de primer tarea resuelta
-			//Busco la insignia
-			String badge = "null"
-			int iterator = 0
-			while (badgesProject[iterator]["name"] != "First contribution") {
-				iterator++
-				//println iterator
-			}
-			String idBadge = badgesProject[iterator]["id_badge_class"]
-			//println "http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances"
-			resp = rest.post("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances") {
-				accept("text/html")
-				contentType("application/x-www-form-urlencoded")
-				body(form)
+		//println "hola"
+		//println "badges json check: "+resp.json
+		//println resp.json
+		if (resp.json != [:]) {
+			def badgesProject = resp.json
+			
+			LinkedMultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>()
+			form.add("email", email)
+							
+			if (u.getMyContributions().count {it.getRecomendation().getProject() == p} == 1) {
+				//Doy la insignia de primer tarea resuelta
+				//Busco la insignia
+				String badge = "null"
+				int iterator = 0
+				while (badgesProject[iterator]["name"] != "First contribution") {
+					iterator++
+					//println iterator
+				}
+				
+				String idBadge = badgesProject[iterator]["id_badge_class"]
+				//println "idBadge: "+idBadge
+				//println "http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances"
+				resp = rest.post("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances") {
+					accept("text/html")
+					contentType("application/x-www-form-urlencoded")
+					body(form)
+				}
+				//println "dio badge o no: "+resp.json
 			}
 		}
 	}
@@ -168,19 +197,20 @@ class ColaboratorController {
 	def assignBadge(User u, Project p, String badgeName) {
 		
 		def email = u.getProfile().getEmail()
-		def app = p.getName().replace(" ", "_").toLowerCase()
+		def app = p.getName().replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
 		
 		RestBuilder rest = new RestBuilder()
 		//Obtengo las badges del proyecto
 		def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
 		def badgesProject = resp.json
-
+		//println "badges json assign: "+resp.json
 		LinkedMultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>()
 		form.add("email", email)
-		
+		//println "badges project en 0: "+badgesProject[0]
+		//println "badges project en 1: "+badgesProject[1]
 		String badge = "null"
 		int iterator = 0
-		while (badgesProject[iterator]["name"] != "First Bonus") {
+		while (badgesProject[iterator]["name"] != "First bonus") {
 			iterator++
 		}
 		String idBadge = badgesProject[iterator]["id_badge_class"]
@@ -189,6 +219,7 @@ class ColaboratorController {
 			contentType("application/x-www-form-urlencoded")
 			body(form)
 		}
+		//println "dio badge o no: "+resp.json
 	}
 	
 	def getUserBadges(User u, Project p) {
@@ -197,13 +228,14 @@ class ColaboratorController {
 		
 		RestBuilder rest = new RestBuilder()
 		def email = getAuthenticatedUser().getProfile().getEmail()
-		def app = p.getName().replace(" ", "_").toLowerCase()
-		def URL = "http://ciencia.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/instances/${email}"
+		def app = p.getName().replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
+		//def URL = "http://ciencia.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/instances/${email}"
 		def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/instances/${email}")
 		//def slurper = new JsonSlurper()
 		//def result = slurper.parse(resp.json.toString())
 		//println result.name
 		//println URL
+		//println "resp badges usuario: "+resp.json
 		if (resp.json[email] == null)
 			return []
 		return resp.json[email]

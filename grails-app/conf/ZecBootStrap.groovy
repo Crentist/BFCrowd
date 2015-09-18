@@ -79,13 +79,13 @@ class ZecBootStrap {
 			researcher = User.findByUsername("researcher")
 		
 		if(!Project.findByName("Wikipedia tasks")) {
-			Project project1 = new Project(name: "Wikipedia tasks", description: "Help us improve the contents on Wikipedia!", xpValue: 25, bonusXP: 25, requiredForBonus: 2)
+			Project project1 = new Project(name: "Wikipedia tasks", description: "Help us improve the contents on Wikipedia!", xpValue: 25, bonusXP: 25, requiredForBonus: 2, type:"taskProject")
 			project1.addOwner(researcher)
 			project1.save()
-			Project project2 = new Project(name: "Catálogo de aves autóctonas", description: "Ayudanos a determinar si el ave de la foto corresponde a un ejemplar propio de la región patagónica", xpValue: 15, bonusXP: 15, requiredForBonus: 3)
+			Project project2 = new Project(name: "Catálogo de aves autóctonas", description: "Ayudanos a determinar si el ave de la foto corresponde a un ejemplar propio de la región patagónica. PROYECTO PARA ENSEÑAR A USAR COLABORATORIO", xpValue: 15, bonusXP: 15, requiredForBonus: 3, type:"imageProject")
 			project2.addOwner(researcher)
 			project2.save()
-			Project project3 = new Project(name: "Encuesta de polución sonora", description: "Responda a esta encuesta para ayudarnos a entender la polución sonora de nuestra ciudad.", xpValue: 10, bonusXP: 10, requiredForBonus: 3)
+			Project project3 = new Project(name: "Encuesta de polución sonora", description: "Responda a esta encuesta para ayudarnos a entender la polución sonora de nuestra ciudad.", xpValue: 10, bonusXP: 10, requiredForBonus: 3, type:"taskProject")
 			project3.addOwner(researcher)
 			project3.save()
 			/**Project project4 = new Project(name: "Drink supplier", description: "First aid on all things alcohol!", xpValue: 5, bonusXP: 5, requiredForBonus: 3)
@@ -125,9 +125,191 @@ class ZecBootStrap {
 	
 			recomm3.project = project1
 			recomm3.save()
+			
+			def recomm4 = new Recommendation(property: "null",
+											path: "null",
+											fromPage: "null",
+											toPage: "null",
+											solved: false,
+											date: new Date(),
+											instructions: "¿Pertenece este ave a la región patagónica?",
+											checkboxMode: "Checkbox",
+											repeatableBetweenUsers: true,
+											repeatableBySingleUser: true,
+											maxRepeats: -1,
+											imagePath: "blueparrot.jpg")
+			
+			recomm4.project = project2
+			recomm4.save()
+			
+			def recomm5 = new Recommendation(property: "null",
+											path: "null",
+											fromPage: "null",
+											toPage: "null",
+											solved: false,
+											date: new Date(),
+											instructions: "¿Pertenece este ave a la región patagónica?",
+											checkboxMode: "Checkbox",
+											repeatableBetweenUsers: true,
+											repeatableBySingleUser: true,
+											maxRepeats: -1,
+											imagePath: "cometocino.jpeg")
+
+			recomm5.project = project2
+			recomm5.save()
+						
+			def recomm6 = new Recommendation(property: "null",
+											path: "null",
+											fromPage: "null",
+											toPage: "null",
+											solved: false,
+											date: new Date(),
+											instructions: "¿Pertenece este ave a la región patagónica?",
+											checkboxMode: "Checkbox",
+											repeatableBetweenUsers: true,
+											repeatableBySingleUser: true,
+											maxRepeats: -1,
+											imagePath: "loicacomun.jpg")
+			
+			recomm6.project = project2
+			recomm6.save()
+			
+			def recomm7 = new Recommendation(property: "null",
+											path: "null",
+											fromPage: "null",
+											toPage: "null",
+											solved: false,
+											date: new Date(),
+											instructions: "¿Pertenece este ave a la región patagónica?",
+											checkboxMode: "Checkbox",
+											repeatableBetweenUsers: true,
+											repeatableBySingleUser: true,
+											maxRepeats: -1,
+											imagePath: "patagon.jpg")
+
+			recomm7.project = project2
+			recomm7.save()
+			
+			def recomm8 = new Recommendation(property: "null",
+											path: "null",
+											fromPage: "null",
+											toPage: "null",
+											solved: false,
+											date: new Date(),
+											instructions: "¿Pertenece este ave a la región patagónica?",
+											checkboxMode: "Checkbox",
+											repeatableBetweenUsers: true,
+											repeatableBySingleUser: true,
+											maxRepeats: -1,
+											imagePath: "puffinnorway.jpg")
+
+			recomm8.project = project2
+			recomm8.save()
 		}
 		
 		//Crear las badges por aquí
+		
+		//def proyectos = Project.getAll()*.name
+		//RestBuilder rest = new RestBuilder()
+		//for (int i = 0; i<proyectos.size();i++) {
+			//si alguna vez anda con tildes, sacar los 5 últimos replace
+			//def app = proyectos[i].replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
+			//def resp = rest.get("http://163.10.5.42/badges-api/issuers/asdasd/badges")
+			//def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
+			//println resp.json
+			//println (resp.json == [:])
+			
+			//id_app: 'bfcrowd_'+app,
+			//name: 'BFCrowd '+proyectos[i],
+			/**
+			if (resp.json == []) {
+				def contenido =
+				[
+				   [
+					   id_app: 'bfcrowd_',
+					   name: 'BFCrowd ',
+					   url: 'http://ciencia.lifia.info.unlp.edu.ar/bfcrowd',
+					   badges : [
+						[ name: "First contribution", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstContribution.png", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "My first contribution"],
+						[ name: "First bonus", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstBonus.jpg", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "First bonus"]
+						]
+					 
+				   ]
+				]
+				
+				println contenido
+				resp = rest.post("http://163.10.5.42:9292/carga-json") {
+					contentType "application/json"
+							body {
+								contenido
+							}
+					   }
+			}
+		}**/
+		  /** ,
+		   [
+			   id_app: 'bfcrowd_Catálogo_de_aves_autóctonas',
+			   name: 'BFCrowd Catálogo de aves autóctonas',
+			   url: 'http://ciencia.lifia.info.unlp.edu.ar/bfcrowd',
+			   badges : [
+				[ name: "First contribution", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstContribution.png", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "My first contribution"],
+				[ name: "First bonus", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstBonus.jpg", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "First bonus"]
+				]
+		   ]
+		   
+	   ]**/
+		
+		def proyectos = Project.getAll()*.name
+		RestBuilder rest = new RestBuilder()
+		//println proyectos.size()
+		for (int i = 0; i<proyectos.size();i++) {
+			//println "hola"
+			//si alguna vez anda con tildes, sacar los 5 últimos replace
+			def app = proyectos[i].replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
+			//def resp = rest.get("http://163.10.5.42/badges-api/issuers/asdasd/badges")
+			def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
+			//println "tiene o no: "+resp.json
+			//println (resp.json == [:])
+			
+			if (resp.json == []) {
+				//println "no tiene"
+				def contenido =
+				[
+				   [
+					   id_app: 'bfcrowd_'+app,
+					   name: 'BFCrowd '+app,
+					   url: 'http://ciencia.lifia.info.unlp.edu.ar/bfcrowd',
+					   badges : [
+						[ name: "First contribution", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstContribution.png", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "My first contribution"],
+						[ name: "First bonus", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstBonus.jpg", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "First bonus"]
+						]
+					 
+				   ]
+				]
+				
+				//println contenido
+				
+				resp = rest.post("http://163.10.5.42:9292/carga-json") {
+					contentType "application/json"
+						json {
+							contenido
+							}
+						}
+				
+				//println "resp despues de crear: "+resp.json
+			}
+		}
+		
+		
+		
+		/**resp = rest.post("http://163.10.5.42/badges-api/carga-json") {
+		contentType "application/json"
+				body {
+					contenido
+				}	
+		   }**/
+		
+		
 		/**def contenido = 
 		[
 			[

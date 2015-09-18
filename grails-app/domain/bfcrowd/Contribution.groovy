@@ -27,7 +27,8 @@ class Contribution {
     }
     
 	static	constraints = {
-		state inList: ["Done", "Moderated Page", "Already Done"]
+		text nullable: true
+		//state inList: ["Done", "Moderated Page", "Already Done"]
     }
 	
 	/*

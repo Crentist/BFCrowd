@@ -30,9 +30,10 @@ class Recommendation {
 	String instructions
 	String checkboxMode
 	
-	
+	String imagePath
 	Boolean repeatableBetweenUsers = false
-	int maxRepeats = 1
+	Boolean repeatableBySingleUser = false
+	int maxRepeats = 1 // -1 = infinito o algo asi
 	
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
@@ -47,9 +48,10 @@ class Recommendation {
     }
     
 	static	constraints = {
-		property unique: ['project', 'path', 'fromPage', 'toPage', 'instructions']
+		//property unique: ['project', 'path', 'fromPage', 'toPage', 'instructions']
 		checkboxMode inList: ["Checkbox", "Radio"]
 		contributions nullable: true
+		imagePath nullable:true
     }
 	
 	/*
@@ -86,7 +88,7 @@ class Recommendation {
 	}
 	
 	def canBeDeliveredFor(User u){
-		if (this.contributions.size() == this.maxRepeats){
+		if ((this.contributions.size() == this.maxRepeats) && (this.maxRepeats != -1)){
 			// maximas repeticiones
 			return false
 		}
@@ -95,10 +97,11 @@ class Recommendation {
 			def user = this.contributions.find{ Contribution c ->
 					c.user == u
 					}
-			if (user) {
-				// pero contribuyó a la recomendacion
-				return false
-			}
+			if (!(this.repeatableBySingleUser))
+				if (user) {
+					// pero contribuyó a la recomendacion
+					return false
+				}
 			return true
 		}
 		// si no es repetible puede que ya este resuelta

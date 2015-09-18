@@ -12,9 +12,10 @@ class Project {
 //	Long	version
 	String name
 	String description
+	String type
 	byte[] logo
 	String logoType
-	int xpValue //Amount of XP obtained by the user per recommendation solved (i.e Contribution) within the project
+	int xpValue //Amount of XP obtained by the user per recommendation solved (i.e Contribution) in the project
 	//LinkedHashMap usersXP = [:]//Colección que asocie a los usuarios con su experiencia ganada (ID de usuario + xp)
 	int bonusXP //Amount of XP obtained by the user when (s)he meets the required amount of recomendations solved (stored in 'requiredForBonus')
 	int requiredForBonus
@@ -32,7 +33,7 @@ class Project {
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
     static	mapping = {
-		usersXP column: 'usersXP', sqlType: 'VARBINARY(10000)'
+		usersXP column: 'usersXP', sqlType: 'BLOB(100000)'
     }
     
 	static	constraints = {
@@ -42,6 +43,7 @@ class Project {
 		usersXP nullable: true, blank: true
 		logo(nullable:true, maxSize: 50000 /* 16K */)
 		logoType(nullable:true)
+		//type inList: ["imageProject", "taskProject"]
     }
 	
 	/*
@@ -54,8 +56,7 @@ class Project {
 	public Recommendation getRecommendationFor(User u){
 		if(this.recommendations) {
 			def r = this.recommendations.find{ Recommendation w -> 
-				w.canBeDeliveredFor(u) &&
-				!u.skippedRecom.contains(w)
+				w.canBeDeliveredFor(u) && !u.skippedRecom.contains(w)
 				}
 			if(r)
 				r.setAssigned()
@@ -64,10 +65,18 @@ class Project {
 		return null
 	}
 	
-	public setUserXP(Long userID, int xpValue) {
-		if (!usersXP)
+	public setUserXP(Long userID) {
+		if (!usersXP) {
 			this.usersXP = new LinkedHashMap()
-		this.usersXP[(userID)]=xpValue
+			this.usersXP[(userID)]=0
+			//println "gola"
+		}
+		else
+			if (!(this.usersXP[userID])) {
+				this.usersXP[(userID)]=0
+				//println "gola2"
+			}
+			
 		//println this.usersXP.class
 	}
 	

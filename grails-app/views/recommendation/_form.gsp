@@ -93,11 +93,22 @@
 			<div class="${hasErrors(bean: projectInstance, field: 'maxRepeats', 'error')} ">
 				<label for="name"><g:message code="bfcrowd.recommendation.maxRepeats.label" default="maxRepeats" /></label>
 				<div>
-					<g:textField name="maxRepeats" value="${projectInstance?.bonusXP}"/>
+					<g:textField name="maxRepeats" value="${projectInstance?.maxRepeats}"/>
 					<a id="maxRepeats" rel="maxRepeats" title="${message(code:'bfcrowd.recommendation.maxRepeats.maxRepeats.help')}">
 						<i class="icon-question-sign"></i>
 					</a> 					
 					<span class="help-inline">${hasErrors(bean: projectInstance, field: 'maxRepeats', 'error')}</span>
 				</div>
 			</div>
+			
+			<div class="${hasErrors(bean: projectInstance, field: 'maxRepeats', 'imagePath')} ">
+				ImagePath
+				<div>
+					<g:textField name="imagePath" value="${projectInstance?.imagePath}"/>
+					<a id="maxRepeats" rel="maxRepeats" title="${message(code:'bfcrowd.recommendation.maxRepeats.maxRepeats.help')}">
+						<i class="icon-question-sign"></i>
+					</a> 					
+					<span class="help-inline">${hasErrors(bean: projectInstance, field: 'imagePath', 'error')}</span>
+				</div>
+			</div>			
 
