@@ -15,12 +15,12 @@
 		<a class="navbar-brand" href="${createLink(uri: '/../')}"> <img
 			class="logo" src="${resource(dir:'images', file:'roble.png')}"
 			alt="${meta(name:'app.name')}" width="16px" height="16px" />
-			Científicos Ciudadanos
+			Cientópolis
 		</a>
 		<div class="navbar-brand">-</div>
 		<a class="navbar-brand" href="${createLink(uri: '/')}"> ${meta(name:'app.name')}
 		</a>
-
+		<g:if test="${0==1}">
 		<g:if test="${UserBase.get(SecurityUtils.subject.principal)}">
 			<g:set var="currentUser"
 				value="${UserBase.get(SecurityUtils.subject.principal)}" />
@@ -54,5 +54,7 @@
 					</g:link></li>
 			</ul>
 		</g:else>
+		
+		</g:if>
 	</div>
 </nav>

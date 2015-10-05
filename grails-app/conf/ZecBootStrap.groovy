@@ -79,7 +79,7 @@ class ZecBootStrap {
 			researcher = User.findByUsername("researcher")
 		
 		if(!Project.findByName("Wikipedia tasks")) {
-			Project project1 = new Project(name: "Wikipedia tasks", description: "Help us improve the contents on Wikipedia!", xpValue: 25, bonusXP: 25, requiredForBonus: 2, type:"taskProject")
+			Project project1 = new Project(name: "Tareas en Wikipedia", description: "Ayudanos a mejorar el contenido en Wikipedia", xpValue: 25, bonusXP: 25, requiredForBonus: 2, type:"taskProject")
 			project1.addOwner(researcher)
 			project1.save()
 			Project project2 = new Project(name: "Catálogo de aves autóctonas", description: "Ayudanos a determinar si el ave de la foto corresponde a un ejemplar propio de la región patagónica. PROYECTO PARA ENSEÑAR A USAR COLABORATORIO", xpValue: 15, bonusXP: 15, requiredForBonus: 3, type:"imageProject")
