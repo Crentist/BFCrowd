@@ -78,8 +78,8 @@ class ZecBootStrap {
 		else 
 			researcher = User.findByUsername("researcher")
 		
-		if(!Project.findByName("Wikipedia tasks")) {
-			Project project1 = new Project(name: "Wikipedia tasks", description: "Help us improve the contents on Wikipedia!", xpValue: 25, bonusXP: 25, requiredForBonus: 2, type:"taskProject")
+		if(!Project.findByName("Explorando La Plata")) {
+			/**Project project1 = new Project(name: "Wikipedia tasks", description: "Help us improve the contents on Wikipedia!", xpValue: 25, bonusXP: 25, requiredForBonus: 2, type:"taskProject")
 			project1.addOwner(researcher)
 			project1.save()
 			Project project2 = new Project(name: "Catálogo de aves autóctonas", description: "Ayudanos a determinar si el ave de la foto corresponde a un ejemplar propio de la región patagónica. PROYECTO PARA ENSEÑAR A USAR COLABORATORIO", xpValue: 15, bonusXP: 15, requiredForBonus: 3, type:"imageProject")
@@ -87,11 +87,34 @@ class ZecBootStrap {
 			project2.save()
 			Project project3 = new Project(name: "Encuesta de polución sonora", description: "Responda a esta encuesta para ayudarnos a entender la polución sonora de nuestra ciudad.", xpValue: 10, bonusXP: 10, requiredForBonus: 3, type:"taskProject")
 			project3.addOwner(researcher)
-			project3.save()
+			project3.save()**/
+			Project project4 = new Project(name: "Explorando La Plata", description: "Este proyecto busca que los voluntarios identifiquen edificios históricos o de importancia en la ciudad de La Plata. Las fotos aquí presentes fueron obtenidas a partir de la búsqueda de las palabras 'La Plata' en Flickr bajo licencia Creative Commons. Se reservan todos los derechos a sus respectivos autores.", xpValue: 10, bonusXP: 25, requiredForBonus: 8, type:"imageProject")
+			project4.addOwner(researcher)
+			project4.save()
+			
+			for (int i = 1; i<=50;i++) {
+				def recomm = new Recommendation(property: "null",
+														path: "null",
+														fromPage: "null",
+														toPage: "null",
+														solved: false,
+														date: new Date(),
+														instructions: "¿Podés reconocer en esta foto algún edificio representativo de La Plata? (Por ejemplo, la municipalidad, el Teatro Argentino, la catedral, etc). Tené en cuenta que no hace falta que estés 100% seguro, ya que muchas personas van a analizar esta misma imagen.",
+														checkboxMode: "Radio",
+														repeatableBetweenUsers: true,
+														repeatableBySingleUser: false,
+														maxRepeats: -1,
+														imagePath: "ColaboratorioLaPlata/laplata"+i+".jpg")
+				recomm.project = project4
+				recomm.save()
+			}
+			
+			
+			
 			/**Project project4 = new Project(name: "Drink supplier", description: "First aid on all things alcohol!", xpValue: 5, bonusXP: 5, requiredForBonus: 3)
 			project4.addOwner(researcher)
 			project4.save()**/
-			def recomm1 = new Recommendation(property: "peopleFrom",
+			/**def recomm1 = new Recommendation(property: "peopleFrom",
 											path: "path",
 											fromPage: "Rosario",
 											toPage: "Lionel_Messi",
@@ -204,7 +227,7 @@ class ZecBootStrap {
 											imagePath: "puffinnorway.jpg")
 
 			recomm8.project = project2
-			recomm8.save()
+			recomm8.save()**/
 		}
 		
 		//Crear las badges por aquí
@@ -267,7 +290,7 @@ class ZecBootStrap {
 			//si alguna vez anda con tildes, sacar los 5 últimos replace
 			def app = proyectos[i].replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
 			//def resp = rest.get("http://163.10.5.42/badges-api/issuers/asdasd/badges")
-			def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
+			def resp = rest.get("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/badges")
 			//println "tiene o no: "+resp.json
 			//println (resp.json == [:])
 			
@@ -278,7 +301,7 @@ class ZecBootStrap {
 				   [
 					   id_app: 'bfcrowd_'+app,
 					   name: 'BFCrowd '+app,
-					   url: 'http://ciencia.lifia.info.unlp.edu.ar/bfcrowd',
+					   url: 'http://cientopolis.lifia.info.unlp.edu.ar/badges-api/Colaboratorio',
 					   badges : [
 						[ name: "First contribution", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstContribution.png", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "My first contribution"],
 						[ name: "First bonus", imageUrl: "http://163.10.5.42/images/bfcrowdimages/firstBonus.jpg", criteriaUrl: "http://ciencia.lifia.info.unlp.edu.ar/bfcrowd/badges", description: "First bonus"]
@@ -289,7 +312,7 @@ class ZecBootStrap {
 				
 				//println contenido
 				
-				resp = rest.post("http://163.10.5.42:9292/carga-json") {
+				resp = rest.post("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/carga-json") {
 					contentType "application/json"
 						json {
 							contenido

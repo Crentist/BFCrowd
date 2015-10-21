@@ -29,14 +29,17 @@
 			<div class="show-component">
 				<g:if test="${recommendation}">
 					<div class="show-component">
+						<h4>
+							<g:message code="bfcrowd.label.collab.project.instructions" />
+						</h4>
+						<p id="instruction">
+							${recommendation.instructions }
+						</p>
+					</div>
+					<div class="show-component">
 						<div id="instructions">
-							<h4>
-								<g:message code="bfcrowd.label.collab.project.instructions" />
-							</h4>
-							<p id="instruction">
-								${recommendation.instructions }
-							</p>
-							<g:img dir="images" file="${recommendation.imagePath }" />
+
+							<g:img dir="images" width="650px" height="auto" file="${recommendation.imagePath }" />
 							<script>document.getElementById('instruction').innerHTML = Autolinker.link( "${recommendation.instructions.encodeAsHTML() }" );</script>
 							
 							<g:form controller="colaborator" action="project"
@@ -91,26 +94,16 @@
 						code="bfcrowd.label.collab.project.myBadges" /> ${project.name }</strong>
 				<div id="insignias" style="padding: 5px 5px 5px 5px">
 					<!--  project.getUserBadges(UserBase.get(SecurityUtils.subject.principal)) -->
-
 					<div class="row">
-						<g:if test="${b[0]}">
+						<g:each var="badge" in="${b.toArray()}">
 							<div class="insignia">
-								<img title="${b[0]["name"] }"
-									src="https://ciencia.lifia.info.unlp.edu.ar/images/bfcrowdimages/firstContribution.png"
-									alt="${b[0]["name"] }" class="img-circle img-responsive">
+								<img title="${badge.name}"
+									src="${badge.imageUrl}"
+									alt="${badge.name}" class="img-circle img-responsive">
 							</div>
-						</g:if>
-						<g:if test="${b[1]}">
-							<div class="insignia">
-								<img title="${b[1]["name"] }"
-									src="https://ciencia.lifia.info.unlp.edu.ar/images/bfcrowdimages/firstBonus.jpg"
-									alt="${b[1]["name"] }" class="img-circle img-responsive">
-							</div>
-						</g:if>
-
-						<!-- Cuando supere las 12, link con "ver más" -->
+						</g:each>
 					</div>
-
+					
 
 
 				</div>

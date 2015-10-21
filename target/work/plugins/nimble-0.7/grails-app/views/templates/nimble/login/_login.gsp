@@ -89,9 +89,9 @@
 						name="signup-form" method="post">
 
 						<div class="form-group">
-							<label for="inputUsername" class="col-sm-4 control-label"><g:message code="bfcrowd.label.account.registeraccount.username" /></label>
+							<!-- <label for="inputUsername" class="col-sm-4 control-label"><g:message code="bfcrowd.label.account.registeraccount.username" /></label> -->
 							<div class="col-sm-9">
-								<input readonly type="text" size="30" id="userName"
+								<input type="hidden" readonly type="text" size="30" id="userName"
 									name="username" class="form-control">
 							</div>
 						</div>

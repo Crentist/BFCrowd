@@ -34,6 +34,7 @@ class Project {
 	
     static	mapping = {
 		usersXP column: 'usersXP', sqlType: 'BLOB(100000)'
+		description column: 'description', sqlType: 'varchar(1000)'
     }
     
 	static	constraints = {
@@ -55,6 +56,11 @@ class Project {
 	
 	public Recommendation getRecommendationFor(User u){
 		if(this.recommendations) {
+			/**if (u.skippedRecom.size() == this.getRecommendations().size()) {
+				//println "Reseteando las recomendaciones"
+				u.skippedRecom.clear()
+				}**/
+			//println("skippeds: "+u.skippedRecom)
 			def r = this.recommendations.find{ Recommendation w -> 
 				w.canBeDeliveredFor(u) && !u.skippedRecom.contains(w)
 				}

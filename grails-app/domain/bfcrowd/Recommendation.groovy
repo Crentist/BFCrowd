@@ -45,6 +45,7 @@ class Recommendation {
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
     static	mapping = {
+		instructions column: 'instructions', sqlType: 'varchar(1000)'
     }
     
 	static	constraints = {

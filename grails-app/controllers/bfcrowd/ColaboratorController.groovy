@@ -96,7 +96,8 @@ class ColaboratorController {
 		u.skippedRecom.add(r)
 		Project p = Project.get(r.project.id)
 		def recom = p.getRecommendationFor(getAuthenticatedUser())
-		
+		//println("skippeds: "+u.skippedRecom)
+		//println("skippeds size: "+u.skippedRecom.size())
 		def badges = this.getUserBadges(getAuthenticatedUser(),p)
 		
 		render view: "${p.type}", model: [project: p, recommendation: recom, layout_nosecondarymenu: true, b:badges]
@@ -126,6 +127,13 @@ class ColaboratorController {
 			//println "myXP: "+u.myXP 
 			//println (p as JSON)
 			//p.save()
+			
+			//Solución parcial para permitir que siempre hayan recomendaciones para resolver!! begin
+			//u.skippedRecom.add(r)
+			//Solución parcial para permitir que siempre hayan recomendaciones para resolver!! end
+			
+			//println("skippeds: "+u.skippedRecom)
+			//println("skippeds size: "+u.skippedRecom.size())
 			this.checkUserBadges(u, p)
 		}
 		
@@ -160,7 +168,7 @@ class ColaboratorController {
 				
 		RestBuilder rest = new RestBuilder()
 		//Obtengo las badges del proyecto
-		def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
+		def resp = rest.get("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/badges")
 		//println "http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges"
 		//println "hola"
 		//println "badges json check: "+resp.json
@@ -184,7 +192,7 @@ class ColaboratorController {
 				String idBadge = badgesProject[iterator]["id_badge_class"]
 				//println "idBadge: "+idBadge
 				//println "http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances"
-				resp = rest.post("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances") {
+				resp = rest.post("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/badges/${idBadge}/instances") {
 					accept("text/html")
 					contentType("application/x-www-form-urlencoded")
 					body(form)
@@ -201,7 +209,7 @@ class ColaboratorController {
 		
 		RestBuilder rest = new RestBuilder()
 		//Obtengo las badges del proyecto
-		def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges")
+		def resp = rest.get("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/badges")
 		def badgesProject = resp.json
 		//println "badges json assign: "+resp.json
 		LinkedMultiValueMap<String, String> form = new LinkedMultiValueMap<String, String>()
@@ -214,7 +222,7 @@ class ColaboratorController {
 			iterator++
 		}
 		String idBadge = badgesProject[iterator]["id_badge_class"]
-		resp = rest.post("http://163.10.5.42:9292/issuers/bfcrowd_${app}/badges/${idBadge}/instances") {
+		resp = rest.post("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/badges/${idBadge}/instances") {
 			accept("text/html")
 			contentType("application/x-www-form-urlencoded")
 			body(form)
@@ -230,12 +238,14 @@ class ColaboratorController {
 		def email = getAuthenticatedUser().getProfile().getEmail()
 		def app = p.getName().replace(" ", "_").replace("á", "a").replace("é", "e").replace("í", "i").replace("ó", "o").replace("ú", "u").toLowerCase()
 		//def URL = "http://ciencia.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/instances/${email}"
-		def resp = rest.get("http://163.10.5.42:9292/issuers/bfcrowd_${app}/instances/${email}")
+		def resp = rest.get("http://cientopolis.lifia.info.unlp.edu.ar/badges-api/issuers/bfcrowd_${app}/instances/${email}")
 		//def slurper = new JsonSlurper()
 		//def result = slurper.parse(resp.json.toString())
 		//println result.name
 		//println URL
-		//println "resp badges usuario: "+resp.json
+		//println "resp badges usuario: "+resp.json[email]
+		//def alala = resp.json[email].toArray()
+		//println alala.size()
 		if (resp.json[email] == null)
 			return []
 		return resp.json[email]
