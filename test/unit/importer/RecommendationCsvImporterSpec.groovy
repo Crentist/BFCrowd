@@ -11,7 +11,7 @@ import bfcrowd.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(RecommendationCsvImporter)
+//@TestFor(RecommendationCsvImporter)
 class RecommendationCsvImporterSpec extends Specification {
 
     def setup() {
@@ -19,7 +19,7 @@ class RecommendationCsvImporterSpec extends Specification {
 		def project2 = new Project(name: "Project2", description: "Help us improve the contents on Wikipedia!", xpValue: 25)
 		def project3 = new Project(name: "Project3", description: "Help us improve the contents on Wikipedia!", xpValue: 25)
 		mockDomain(Project, [project1,project2,project3])
-		mockDomain(Recommendation)
+		mockDomain(Task)
     }
 
     def cleanup() {
@@ -97,7 +97,7 @@ Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
 		then:
 		result.passed == 0
 		result.errors.size() == 1
-		Recommendation.getAll().size() == 0
+		Task.getAll().size() == 0
 	}
 	
 	void "test importFile with more fields"() {
@@ -133,7 +133,7 @@ Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
 		then:
 		result.passed == 0
 		result.errors.size() == 1
-		Recommendation.getAll().size() == 0
+		Task.getAll().size() == 0
 	}
 	
 	void "test importFile with blank lines"() {
@@ -171,7 +171,7 @@ Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
 		then:
 		result.passed == 0
 		result.errors.size() == 1
-		Recommendation.getAll().size() == 0
+		Task.getAll().size() == 0
 	}
 	
 	void "test importFile with scaped delimiters and cut them"() {
@@ -205,9 +205,9 @@ Project3;P3property2;P3path2;P3fromPage2;P3toPage2;P3instructions2;Radio
 		def result = importer.importFile()
 		
 		then:
-		Recommendation.get(2).fromPage == "P1fromPage2"
-		Recommendation.get(3).fromPage == "P1 ; P1fromPage3"
-		Recommendation.get(4).fromPage == "\"P1 \" ; \"P1fromPage4\""
+		Task.get(2).fromPage == "P1fromPage2"
+		Task.get(3).fromPage == "P1 ; P1fromPage3"
+		Task.get(4).fromPage == "\"P1 \" ; \"P1fromPage4\""
 		result.passed == 9
 		result.errors.size() == 0
 		Project.findByName("Project1").recommendations.size() == 4

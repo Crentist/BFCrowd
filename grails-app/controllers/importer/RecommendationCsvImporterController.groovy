@@ -1,6 +1,6 @@
 package importer
 
-import bfcrowd.Recommendation
+import bfcrowd.Task
 import bfcrowd.Project
 
 import org.apache.shiro.subject.Subject

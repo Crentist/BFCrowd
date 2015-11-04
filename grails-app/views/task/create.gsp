@@ -1,16 +1,16 @@
-<%@ page import="bfcrowd.Recommendation" %>
+<%@ page import="bfcrowd.Task" %>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta name="layout" content="kickstart" />
 	<g:set var="entityName" value="${message(code: 'recommendation.label', default: 'Recommendation')}" />
-	<title><g:message code="default.edit.label" args="[entityName]" /></title>
+	<title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
 
 <body>
 
-	<section id="edit-recommendation" class="first">
+	<section id="create-recommendation" class="first">
 
 		<g:hasErrors bean="${recommendationInstance}">
 		<div class="alert alert-danger">
@@ -18,15 +18,11 @@
 		</div>
 		</g:hasErrors>
 
-		<g:form method="post" class="form-horizontal" role="form" >
-			<g:hiddenField name="id" value="${recommendationInstance?.id}" />
-			<g:hiddenField name="version" value="${recommendationInstance?.version}" />
-			<g:hiddenField name="_method" value="PUT" />
-			
+		<g:form action="save" class="form-horizontal" role="form" >
 			<g:render template="form"/>
-			
+
 			<div class="form-actions margin-top-medium">
-				<g:actionSubmit class="btn btn-primary" action="update" value="${message(code: 'default.button.update.label', default: 'Update')}" />
+				<g:submitButton name="create" class="btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 	            <button class="btn" type="reset"><g:message code="default.button.reset.label" default="Reset" /></button>
 			</div>
 		</g:form>

@@ -13,21 +13,17 @@ class Project {
 	String name
 	String description
 	String type
-	byte[] logo
-	String logoType
-	int xpValue //Amount of XP obtained by the user per recommendation solved (i.e Contribution) in the project
-	//LinkedHashMap usersXP = [:]//Colección que asocie a los usuarios con su experiencia ganada (ID de usuario + xp)
-	int bonusXP //Amount of XP obtained by the user when (s)he meets the required amount of recomendations solved (stored in 'requiredForBonus')
-	int requiredForBonus
+	//Image logo
+	//Tutorial tutorial
 	
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
 //	Date	lastUpdated
 	static	belongsTo	= User
 	static  mappedBy = [users: 'myProjects',	owners: 'ownedProjects']
-	static	hasMany		= [recommendations:Recommendation, users:User, owners:User] //Debe conocer las contribuciones
+	static	hasMany		= [tasks:Task, users:User, owners:User] //Debe conocer las contribuciones
 //	static	belongsTo	= []	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
-	static	hasOne		= [usersXP:LinkedHashMap] //Colección que asocia a los usuarios con su experiencia ganada (ID de usuario + xp)
+	static	hasOne		= [usersXP:LinkedHashMap, logo:Image, tutorial:Tutorial, definition:ProjectDefinition] //usersXP: Colección que asocia a los usuarios con su experiencia ganada (ID de usuario + xp)
  	 												// tells GORM to associate another domain object as an owner in a 1-1 mapping
 //	static	hasMany		= []	// tells GORM to associate other domain objects for a 1-n or n-m mapping
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
@@ -40,10 +36,8 @@ class Project {
 	static	constraints = {
 		name unique: true
 		users nullable: true, blank: true
-		recommendations nullable: true, blank: true
+		tasks nullable: true, blank: true
 		usersXP nullable: true, blank: true
-		logo(nullable:true, maxSize: 50000 /* 16K */)
-		logoType(nullable:true)
 		//type inList: ["imageProject", "taskProject"]
     }
 	
@@ -54,18 +48,46 @@ class Project {
 		return "${name}";
 	}
 	
-	public Recommendation getRecommendationFor(User u){
-		if(this.recommendations) {
+	def findNextTaskForUser(User u) {
+		
+		return this.tasks.find{ Task w ->
+			this.canTaskBeAssignedTo(u,w) && !u.skippedRecom.contains(w)
+			}
+		
+	}
+	
+	def canTaskBeAssignedTo(User u,Task w){
+		
+		if ((w.contributions.size() == this.getDefinition().getMaxTaskRepeats()) && (this.getDefinition().getMaxTaskRepeats() != -1)){
+			// maximas repeticiones
+			return false
+		}
+		if (this.getDefinition().getAreTasksRepeatableBetweenUsers()) {
+			// es repetible
+			def user = w.contributions.find{ Contribution c ->
+					c.user == u
+					}
+			if (!(this.getAreTasksRepeatableBySingleUser()))
+				if (user) {
+					// pero contribuyó a la recomendacion
+					return false
+				}
+			return true
+		}
+		// entonces se puede resolver...
+		return true
+	}
+	
+	public Task getRecommendationFor(User u){
+		if(this.tasks) {
 			/**if (u.skippedRecom.size() == this.getRecommendations().size()) {
 				//println "Reseteando las recomendaciones"
 				u.skippedRecom.clear()
 				}**/
 			//println("skippeds: "+u.skippedRecom)
-			def r = this.recommendations.find{ Recommendation w -> 
+			def r = this.findNextTaskForUser(u)/**this.tasks.find{ Task w -> 
 				w.canBeDeliveredFor(u) && !u.skippedRecom.contains(w)
-				}
-			if(r)
-				r.setAssigned()
+				}**/
 			return r
 		}
 		return null

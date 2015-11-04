@@ -13,7 +13,7 @@ import bfcrowd.*
  */
 //@TestFor(RecommendationCsvImporter)
 //@Mock([Project, Recommendation, Contribution, User, Profile])
-class RecommendationCsvImporterSpec extends GroovyTestCase {
+class RecommendationCsvImporterSpec2 extends GroovyTestCase { //Le agregué un 2 al final porque tiraba error de que la clase ya existe. VER @Giuliano
 
     def setup() {
 //		mockDomain(Project)

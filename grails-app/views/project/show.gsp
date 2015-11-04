@@ -74,7 +74,7 @@
 				<td valign="top" style="text-align: left;" class="value">
 					<ul>
 					<g:each in="${projectInstance?.recommendations}" var="r">
-						<li><g:link controller="recommendation" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
+						<li><g:link controller="task" action="show" id="${r.id}">${r?.encodeAsHTML()}</g:link></li>
 					</g:each>
 					</ul>
 				</td>

@@ -26,7 +26,7 @@
 			<tr class="prop">
 				<td valign="top" class="name"><g:message code="contribution.recomendation.label" default="Recomendation" /></td>
 				
-				<td valign="top" class="value"><g:link controller="recommendation" action="show" id="${contributionInstance?.recomendation?.id}">${contributionInstance?.recomendation?.encodeAsHTML()}</g:link></td>
+				<td valign="top" class="value"><g:link controller="task" action="show" id="${contributionInstance?.recomendation?.id}">${contributionInstance?.recomendation?.encodeAsHTML()}</g:link></td>
 				
 			</tr>
 		

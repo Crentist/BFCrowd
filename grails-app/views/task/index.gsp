@@ -1,17 +1,17 @@
 
-<%@ page import="bfcrowd.Recommendation" %>
+<%@ page import="bfcrowd.Task" %>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta name="layout" content="kickstart" />
 	<g:set var="entityName" value="${message(code: 'recommendation.label', default: 'Recommendation')}" />
-	<title><g:message code="default.list.label" args="[entityName]" /></title>
+	<title><g:message code="default.index.label" args="[entityName]" /></title>
 </head>
 
 <body>
 
-<section id="list-recommendation" class="first">
+<section id="index-recommendation" class="first">
 
 	<table class="table table-bordered margin-top-medium">
 		<thead>
@@ -37,7 +37,7 @@
 			
 				<td><g:link action="show" id="${recommendationInstance.id}">${fieldValue(bean: recommendationInstance, field: "checkboxMode")}</g:link></td>
 			
-				<td>${fieldValue(bean: recommendationInstance, field: "contributions")}</td>
+				<td>${fieldValue(bean: recommendationInstance, field: "contribution")}</td>
 			
 				<td><g:formatDate date="${recommendationInstance.dateAssigned}" /></td>
 			

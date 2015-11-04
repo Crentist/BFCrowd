@@ -4,7 +4,7 @@ import grails.plugin.nimble.core.Role
 import grails.plugin.nimble.core.RoleService
 import grails.plugin.nimble.core.UserBase
 import bfcrowd.Project
-import bfcrowd.Recommendation
+import bfcrowd.Task
 import bfcrowd.Contribution
 import bfcrowd.User
 import grails.plugins.rest.client.RestBuilder
@@ -93,18 +93,12 @@ class ZecBootStrap {
 			project4.save()
 			
 			for (int i = 1; i<=50;i++) {
-				def recomm = new Recommendation(property: "null",
-														path: "null",
-														fromPage: "null",
-														toPage: "null",
-														solved: false,
-														date: new Date(),
-														instructions: "¿Podés reconocer en esta foto algún edificio representativo de La Plata? (Por ejemplo, la municipalidad, el Teatro Argentino, la catedral, etc). Tené en cuenta que no hace falta que estés 100% seguro, ya que muchas personas van a analizar esta misma imagen.",
-														checkboxMode: "Radio",
-														repeatableBetweenUsers: true,
-														repeatableBySingleUser: false,
-														maxRepeats: -1,
-														imagePath: "ColaboratorioLaPlata/laplata"+i+".jpg")
+				def recomm = new Task(	repeatableBetweenUsers: true,
+										repeatableBySingleUser: false,
+										maxRepeats: -1
+										)
+				recomm.setInstructionsForm("¿Podés reconocer en esta foto algún edificio representativo de La Plata? (Por ejemplo, la municipalidad, el Teatro Argentino, la catedral, etc). Tené en cuenta que no hace falta que estés 100% seguro, ya que muchas personas van a analizar esta misma imagen.")
+				recomm.setResource("ColaboratorioLaPlata/laplata"+i+".jpg")
 				recomm.project = project4
 				recomm.save()
 			}

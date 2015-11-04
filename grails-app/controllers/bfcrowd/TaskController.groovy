@@ -9,7 +9,7 @@ import grails.transaction.Transactional
  * A controller class handles incoming web requests and performs actions such as redirects, rendering views and so on.
  */
 @Transactional(readOnly = true)
-class RecommendationController {
+class TaskController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
@@ -23,16 +23,16 @@ class RecommendationController {
         respond Recommendation.list(params), model:[recommendationInstanceCount: Recommendation.count()]
     }
 
-    def show(Recommendation recommendationInstance) {
+    def show(Task recommendationInstance) {
         respond recommendationInstance
     }
 
     def create() {
-        respond new Recommendation(params)
+        respond new Task(params)
     }
 
     @Transactional
-    def save(Recommendation recommendationInstance) {
+    def save(Task recommendationInstance) {
         if (recommendationInstance == null) {
             notFound()
             return
@@ -54,12 +54,12 @@ class RecommendationController {
         }
     }
 
-    def edit(Recommendation recommendationInstance) {
+    def edit(Task recommendationInstance) {
         respond recommendationInstance
     }
 
     @Transactional
-    def update(Recommendation recommendationInstance) {
+    def update(Task recommendationInstance) {
         if (recommendationInstance == null) {
             notFound()
             return
@@ -82,7 +82,7 @@ class RecommendationController {
     }
 
     @Transactional
-    def delete(Recommendation recommendationInstance) {
+    def delete(Task recommendationInstance) {
 
         if (recommendationInstance == null) {
             notFound()

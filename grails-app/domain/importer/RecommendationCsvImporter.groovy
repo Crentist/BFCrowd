@@ -15,7 +15,7 @@ class RecommendationCsvImporter {
     }
 	
 	def importFile(String splitChar) {
-		Recommendation recomm
+		Task recomm
 		String rows = new File('web-app/last_import.csv').getText('UTF-8')
 		def regExp = splitChar+'(?=([^\"]*\"[^\"]*\")*[^\"]*$)'
 		def obtainedErrors = []
@@ -44,7 +44,7 @@ class RecommendationCsvImporter {
 					instructions:cells[5],
 					checkboxMode:cells[6]
 					]
-				recomm = new Recommendation(params)
+				recomm = new Task(params)
 
 				if (!recomm.save(flush:true)){
 					obtainedErrors.add(recomm.errors.allErrors)
@@ -62,7 +62,7 @@ class RecommendationCsvImporter {
 	}
 	
 	def importFileWithProject(String splitChar, Project project) {
-		Recommendation recomm
+		Task recomm
 		String rows = new File('web-app/last_import.csv').getText('UTF-8')
 		def regExp = splitChar+'(?=([^\"]*\"[^\"]*\")*[^\"]*$)'
 		def obtainedErrors = []
@@ -90,7 +90,7 @@ class RecommendationCsvImporter {
 					instructions:cells[4],
 					checkboxMode:cells[5]
 					]
-				recomm = new Recommendation(params)
+				recomm = new Task(params)
 
 				if (!recomm.save(flush:true)){
 					obtainedErrors.add(recomm.errors.allErrors)

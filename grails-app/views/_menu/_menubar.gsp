@@ -12,7 +12,7 @@
 			</g:link>
 		</li>
 		<li class="controller">
-			<g:link controller="recommendation" action="index">
+			<g:link controller="task" action="index">
 				<g:message code="recommendation.label" default="Recommendation"/>
 			</g:link>
 		</li>

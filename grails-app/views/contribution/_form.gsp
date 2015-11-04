@@ -5,7 +5,7 @@
 			<div class="${hasErrors(bean: contributionInstance, field: 'recomendation', 'error')} required">
 				<label for="recomendation" class="control-label"><g:message code="contribution.recomendation.label" default="Recomendation" /><span class="required-indicator">*</span></label>
 				<div>
-					<g:select class="form-control" id="recomendation" name="recomendation.id" from="${bfcrowd.Recommendation.list()}" optionKey="id" required="" value="${contributionInstance?.recomendation?.id}" class="many-to-one"/>
+					<g:select class="form-control" id="recomendation" name="recomendation.id" from="${bfcrowd.Task.list()}" optionKey="id" required="" value="${contributionInstance?.recomendation?.id}" class="many-to-one"/>
 					<span class="help-inline">${hasErrors(bean: contributionInstance, field: 'recomendation', 'error')}</span>
 				</div>
 			</div>

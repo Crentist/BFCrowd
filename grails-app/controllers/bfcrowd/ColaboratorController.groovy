@@ -90,7 +90,7 @@ class ColaboratorController {
 	}
 	
 	def skip(int recommendationId) {
-		def r = Recommendation.get(recommendationId)
+		def r = Task.get(recommendationId)
 		def u = getAuthenticatedUser()
 		r.dateAssigned = new Date(0)
 		u.skippedRecom.add(r)
@@ -105,7 +105,7 @@ class ColaboratorController {
 	
 	def saveContribution(int recommendationId, String state, String text) {
 		// Acá deberían ser sólo Recommendations a las que el User pueda contribuir
-		def r = Recommendation.get(recommendationId)
+		def r = Task.get(recommendationId)
 		Project p = Project.get(r.project.id)
 		//println "state: "+state
 		//println "text: "+text

@@ -1,5 +1,5 @@
 
-<%@ page import="bfcrowd.Recommendation" %>
+<%@ page import="bfcrowd.Task" %>
 <!DOCTYPE html>
 <html>
 
