@@ -20,13 +20,11 @@ class Project {
 //	Date	dateCreated
 //	Date	lastUpdated
 	static	belongsTo	= User
-	static  mappedBy = [users: 'myProjects',	owners: 'ownedProjects']
+	static  mappedBy = [users: 'myProjects',	owners: 'ownedProjects'] // specifies which property should be used in a mapping 
 	static	hasMany		= [tasks:Task, users:User, owners:User] //Debe conocer las contribuciones
 //	static	belongsTo	= []	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
 	static	hasOne		= [usersXP:LinkedHashMap, logo:Image, tutorial:Tutorial, definition:ProjectDefinition] //usersXP: Colección que asocia a los usuarios con su experiencia ganada (ID de usuario + xp)
  	 												// tells GORM to associate another domain object as an owner in a 1-1 mapping
-//	static	hasMany		= []	// tells GORM to associate other domain objects for a 1-n or n-m mapping
-//	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
     static	mapping = {
 		usersXP column: 'usersXP', sqlType: 'BLOB(100000)'

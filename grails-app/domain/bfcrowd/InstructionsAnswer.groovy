@@ -1,12 +1,10 @@
 package bfcrowd
 
 /**
- * Contribution
+ * InstructionsAnswer
  * A domain class describes the data object and it's mapping to the database
  */
-class Contribution {
-	
-	Date solvedDate
+class InstructionsAnswer {
 
 	/* Default (injected) attributes of GORM */
 //	Long	id
@@ -15,20 +13,17 @@ class Contribution {
 	/* Automatic timestamping of GORM */
 //	Date	dateCreated
 //	Date	lastUpdated
-	//String text
-	//String state
 	
-	static	belongsTo	= [user:User, recomendation:Task]	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
-//	static	hasOne		= []	// tells GORM to associate another domain object as an owner in a 1-1 mapping
-	static	hasMany		= [answers:InstructionsAnswer]	// tells GORM to associate other domain objects for a 1-n or n-m mapping
+	List answers
+	static	belongsTo	= [contribution: Contribution]	// tells GORM to cascade commands: e.g., delete this object if the "parent" is deleted.
+	static	hasOne		= [singleQuestion:InstructionsForm]	// tells GORM to associate another domain object as an owner in a 1-1 mapping
+//	static	hasMany		= []	// tells GORM to associate other domain objects for a 1-n or n-m mapping
 //	static	mappedBy	= []	// specifies which property should be used in a mapping 
 	
     static	mapping = {
     }
     
 	static	constraints = {
-		//text nullable: true
-		//state inList: ["Done", "Moderated Page", "Already Done"]
     }
 	
 	/*
@@ -38,6 +33,4 @@ class Contribution {
 //	public String toString() {
 //		return "${name}";
 //	}
-	
-	
 }

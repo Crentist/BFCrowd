@@ -8,13 +8,22 @@ import spock.lang.Specification
  */
 @TestFor(InstructionsForm)
 class InstructionsFormSpec extends Specification {
-
+	InstructionsForm inst
     def setup() {
     }
 
     def cleanup() {
     }
 
-    void "test something"() {
+    void "test default instance creation"() {
+		given: "a single default InstructionsForm instantiation"
+		inst = new InstructionsForm()
+		
+		expect:
+		inst.getContributions() == null
+
+		//assertFalse(task.hasContribution())
+		//assertFalse(task.hasProject())
+		
     }
 }

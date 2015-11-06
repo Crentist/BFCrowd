@@ -7,7 +7,6 @@ class User extends grails.plugin.nimble.core.UserBase {
 	// Extend UserBase with your custom values here
 	String facebookID
 	boolean requests //Indicates whether the user wants to be promoted to researcher
-	int myXP
 
 	/* Default (injected) attributes of GORM */
 //	Long	id

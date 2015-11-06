@@ -17,7 +17,7 @@ class TaskSpec extends Specification {
     }
 
     def cleanup() {
-		task = null
+		//task = null
     }
 
     void "test default instance creation"() {
