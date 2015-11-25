@@ -13,7 +13,7 @@ import bfcrowd.*
  */
 //@TestFor(RecommendationCsvImporter)
 //@Mock([Project, Recommendation, Contribution, User, Profile])
-class RecommendationCsvImporterSpec extends GroovyTestCase {
+class RecommendationCsvImporterSpecc extends GroovyTestCase {
 
     def setup() {
 //		mockDomain(Project)

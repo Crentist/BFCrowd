@@ -11,7 +11,7 @@ import bfcrowd.*
 /**
  * See the API for {@link grails.test.mixin.domain.DomainClassUnitTestMixin} for usage instructions
  */
-@TestFor(RecommendationCsvImporter)
+//@TestFor(RecommendationCsvImporter)
 class RecommendationCsvImporterSpec extends Specification {
 
     def setup() {

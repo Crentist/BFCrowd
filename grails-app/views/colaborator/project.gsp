@@ -10,12 +10,13 @@
 <g:set var="entityName"
 	value="${message(code: 'colaborator.label', default: 'Colaborator')}" />
 <title><g:message code="bfcrowd.label.collab.project.show" /></title>
+<g:javascript src="tutorial.js" />
 <g:javascript src="autolinker.js" />
 <g:javascript src="facebookLogin.js" />
 </head>
 
 <body>
-
+	<g:javascript>tutorial.init({})</g:javascript>
 	<div class="row-fluid">
 		<div class="span8">
 			<div class="show-component">
