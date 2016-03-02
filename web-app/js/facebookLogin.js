@@ -1,6 +1,6 @@
 //var app_id = '872159592856194';
-//var app_id = '864102200328600'; //deployed
-var app_id = '865746580140252';
+var app_id = '864102200328600'; //deployed
+//var app_id = '865746580140252';
 var scopes = 'email, user_friends, public_profile';
 
 // Load the SDK asynchronously

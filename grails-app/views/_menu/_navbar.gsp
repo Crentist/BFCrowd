@@ -15,7 +15,7 @@
 		<a class="navbar-brand" href="${createLink(uri: '/../')}"> <img
 			class="logo" src="${resource(dir:'images', file:'roble.png')}"
 			alt="${meta(name:'app.name')}" width="16px" height="16px" />
-			Científicos Ciudadanos
+			Cientópolis
 		</a>
 		<div class="navbar-brand">-</div>
 		<a class="navbar-brand" href="${createLink(uri: '/')}"> ${meta(name:'app.name')}
